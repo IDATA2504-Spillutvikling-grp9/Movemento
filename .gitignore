@@ -1,0 +1,9 @@
+#Gitignore files
+
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bj]uild/
+/[Bj]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
