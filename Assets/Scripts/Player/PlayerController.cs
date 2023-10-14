@@ -6,37 +6,36 @@ public class PlayerController : MonoBehaviour
 {
 
     [Header("Horizontal Movement Settings")]
-    // The walking speed of the character in Horizontal direction.
-    [SerializeField] private float walkSpeed = 10;
+    [SerializeField] private float walkSpeed = 10;          //sets the players movement speed on the ground
     [Space(5)]
 
     [Header("Vertical Movement Settings")]
-    [SerializeField] private float jumpForce = 35;
-    [SerializeField] private int jumpBufferFrames;
-    private int jumpBufferCounter = 0;
-    [SerializeField] private float coyoteTime;
-    private float coyoteTimeCounter = 0;
-    [SerializeField] private int maxAirJumps;
-    private int airJumpCounter = 0;
+    [SerializeField] private float jumpForce = 35;          //sets how hight the player can jump
+    [SerializeField] private int jumpBufferFrames;          //sets the max amount of frames the jump buffer input is stored
+    private int jumpBufferCounter = 0;                      //stores the jump button input
+    [SerializeField] private float coyoteTime;              //sets the max amount of frames the Grounded() bool is stored
+    private float coyoteTimeCounter = 0;                    //stores the Grounded() bool
+    [SerializeField] private int maxAirJumps;               //the max no. of air jumps
+    private int airJumpCounter = 0;                         //keeps track of how many times the player has jumped in the air
+    private float gravity;                                  //stores the gravity scale at start
     [Space(5)]
 
     [Header("Ground Check Settings")]
-    [SerializeField] private Transform groundCheckPoint;
-    [SerializeField] private float groundCheckX = 0.5f;
-    [SerializeField] private float groundCheckY = 0.2f;
-    [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] private Transform groundCheckPoint;    //point at which ground check happens
+    [SerializeField] private float groundCheckX = 0.5f;     //how far horizontally from ground chekc point to the edge of the player is
+    [SerializeField] private float groundCheckY = 0.2f;     //how far down from ground chekc point is Grounded() checked
+    [SerializeField] private LayerMask whatIsGround;        //sets the ground layer
     [Space(5)]
 
     [Header("Dash Settings")]
-    [SerializeField] private float dashSpeed;
-    [SerializeField] private float dashTime;
-    [SerializeField] private float dashCooldown;
+    [SerializeField] private float dashSpeed;               //speed of the dash
+    [SerializeField] private float dashTime;                //amount of time spent dashing
+    [SerializeField] private float dashCooldown;            //amount of time between dashes
     [Space(5)]
 
     PlayerStateList pState;
     private float xAxis;
     Animator anim;
-    private float gravity;
     private Rigidbody2D rb;
     private bool canDash = true;
     private bool dashed;
