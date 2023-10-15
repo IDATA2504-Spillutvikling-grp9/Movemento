@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashSpeed;               //speed of the dash
     [SerializeField] private float dashTime;                //amount of time spent dashing
     [SerializeField] private float dashCooldown;            //amount of time between dashes
+    [SerializeField] GameObject dashEffect;                 //Lets us put in an empty game object with an Animation for the dash Effect on the ground.
     [Space(5)]
 
     PlayerStateList pState;
@@ -62,7 +63,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         pState = GetComponent<PlayerStateList>();
+        
         rb = GetComponent<Rigidbody2D>();
+
         anim = GetComponent<Animator>();
 
         gravity = rb.gravityScale;
@@ -130,9 +133,10 @@ public class PlayerController : MonoBehaviour
     {
         canDash = false;
         pState.dashing = true;
-        //anim.SetTrigger("Dashing"); fix animations
+        anim.SetTrigger("Dashing");
         rb.gravityScale = 0;
         rb.velocity = new Vector2(transform.localScale.x * dashSpeed, 0);
+        if(Grounded()) Instantiate(dashEffect, transform);
         yield return new WaitForSeconds(dashTime);
         rb.gravityScale = gravity;
         pState.dashing = false;

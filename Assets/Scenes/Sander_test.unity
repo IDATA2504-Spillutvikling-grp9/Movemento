@@ -1729,6 +1729,7 @@ MonoBehaviour:
   dashSpeed: 70
   dashTime: 0.2
   dashCooldown: 0.35
+  dashEffect: {fileID: 2900482415745597033, guid: 5086a2a68765bba429020bad5cb3ef7a, type: 3}
 --- !u!50 &2039107088
 Rigidbody2D:
   serializedVersion: 4
