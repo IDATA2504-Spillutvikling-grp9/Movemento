@@ -60,12 +60,14 @@
     <Compile Include="Assets\_GabrielBissonnette\Sad - Main Menu Pack\_essentials\Demo Resources\_returnToMainMenu.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\MovingPlatform.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\ObjectPooling.cs" />
+    <Compile Include="Assets\Scripts\Player\TimeController.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\DestroyFinishedParticles.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\CheckPoint.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\MoveResPlatformSwitchLeft.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\BackgroundController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\RotationalMovement.cs" />
+    <Compile Include="Assets\Scripts\Menu\ButtonScript.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\InZoomObj.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\DesctroyAfterColliding.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\LaserControl.cs" />
@@ -77,10 +79,12 @@
     <Compile Include="Assets\_PixelArtAssets\Scripts\MoveResPlatformSwitch.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\SawSpawner.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\Movement.cs" />
+    <Compile Include="Assets\Scripts\Menu\Game Manager.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\DollyZoom.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStateList.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelSelector.cs" />
     <Compile Include="Assets\_GabrielBissonnette\Sad - Main Menu Pack\Scripts\MainMenuManager.cs" />
+    <Compile Include="Assets\Scripts\Player\SpawnController.cs" />
     <Compile Include="Assets\_GabrielBissonnette\Sad - Main Menu Pack\Scripts\_menuAnimations.cs" />
   </ItemGroup>
   <ItemGroup>
