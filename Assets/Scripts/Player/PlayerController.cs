@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         pState = GetComponent<PlayerStateList>();
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
 
         gravity = rb.gravityScale;
     }
@@ -74,7 +75,7 @@ public class PlayerController : MonoBehaviour
         UpdateJumpVariables();
         if (pState.dashing) return;
 
-        //flip();
+        Flip();
         Move();
         Jump();
         StartDash();
@@ -106,6 +107,7 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         rb.velocity = new Vector2(walkSpeed * xAxis, rb.velocity.y);
+        anim.SetBool("Walking", rb.velocity.x != 0 && Grounded());        //Sets the Walking bool in animator to true, when conditions is met.
     }
 
     //checking if bools are true and jump is pressed, if not it runs the Dash coroutine.
@@ -191,9 +193,9 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, jumpForce);
 
             pState.jumping = true;
-
-            //anim.SetBool("Jumping", !Grounded());
         }
+
+        anim.SetBool("Jumping", !Grounded());
     }
 
 
