@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -187,20 +188,24 @@ public class PlayerController : MonoBehaviour
             if (yAxis == 0 || yAxis < 0 && Grounded())
             {
                 Hit(SideAttackTransform, SideAttackArea);
+                Instantiate(slashEffect, SideAttackTransform);
             }
             else if (yAxis > 0)
             {
                 Hit(UpAttackTransform, UpAttackArea);
+                SlashEffectAtAngle(slashEffect, 60, UpAttackTransform);
             }
             else if (yAxis < 0 && !Grounded())
             {
                 Hit(DownAttackTransform, DownAttackArea);
+                SlashEffectAtAngle(slashEffect, -90, DownAttackTransform);
             }
         }
     }
 
     //Function used to check if an object is hittable
     //The functions collects an array of objects that are within the position and area of the parameters passed in. Also checks if the attackable layer is added in.
+    // Loops through the array to check if it has hit something, if it has, do damage.
     private void Hit(Transform _attackTransform, Vector2 _attackArea)
     {
         Collider2D[] objectsToHit = Physics2D.OverlapBoxAll(_attackTransform.position, _attackArea, 0, attackableLayer);
@@ -209,6 +214,21 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Hit");
         }
+        for(int i = 0; i < objectsToHit.Length; i++)
+        {
+            if (objectsToHit[i].GetComponent<Enemy>() != null)
+            {
+                objectsToHit[i].GetComponent<Enemy>().EnemyHit(damage);
+            }
+        }
+    }
+
+
+    void SlashEffectAtAngle(GameObject _slashEffect, int _effectAngle, Transform _attackTransform)
+    {
+        _slashEffect = Instantiate(_slashEffect, _attackTransform);
+        _slashEffect.transform.eulerAngles = new Vector3(0, 0, _effectAngle);
+        _slashEffect.transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y);
     }
 
 
