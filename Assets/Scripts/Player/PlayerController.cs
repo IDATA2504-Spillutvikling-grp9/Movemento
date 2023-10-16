@@ -34,8 +34,27 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject dashEffect;                 //Lets us put in an empty game object with an Animation for the dash Effect on the ground.
     [Space(5)]
 
+    [Header("Attacking")]
+    [SerializeField] Transform SideAttackTransform;         //position - the middle of the side attack area
+    [SerializeField] Transform UpAttackTransform;           //position - the middle of the up attack area
+    [SerializeField] Transform DownAttackTransform;         //position - the middle of the down attack area
+    [Space(5)]
+    [SerializeField] Vector2 SideAttackArea;                //Size - of the side attack area
+    [SerializeField] Vector2 UpAttackArea;                  //Size - of the up attack area 
+    [SerializeField] Vector2 DownAttackArea;                //Size - of the down attack are
+    [Space(5)]
+    [SerializeField] private float damage;                  //Damage the player does to an enemy
+    [SerializeField] private GameObject slashEffect;        //Effects - Slash effect.
+    [SerializeField] LayerMask attackableLayer;             //Layer - for the player to attack on
+    float timeBetweenAttack, timeSinceAttack;
+    bool attack = false;
+    [Space(5)]
+
+
+
     PlayerStateList pState;
     private float xAxis;
+    private float yAxis;
     Animator anim;
     private Rigidbody2D rb;
     private bool canDash = true;
@@ -43,7 +62,6 @@ public class PlayerController : MonoBehaviour
 
 
     public static PlayerController Instance;
-
 
     private void Awake()
     {
@@ -63,7 +81,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         pState = GetComponent<PlayerStateList>();
-        
+
         rb = GetComponent<Rigidbody2D>();
 
         anim = GetComponent<Animator>();
@@ -71,17 +89,28 @@ public class PlayerController : MonoBehaviour
         gravity = rb.gravityScale;
     }
 
+
+    // Method is only used for Drawing the "hitboxes" onto the screen.
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(SideAttackTransform.position, SideAttackArea);
+        Gizmos.DrawWireCube(UpAttackTransform.position, UpAttackArea);
+        Gizmos.DrawWireCube(DownAttackTransform.position, DownAttackArea);
+    }
+
     // Update is called once per frame
     void Update()
     {
         GetInputs();
         UpdateJumpVariables();
-        if (pState.dashing) return;
 
+        if (pState.dashing) return;
         Flip();
         Move();
         Jump();
         StartDash();
+        Attack();
     }
 
 
@@ -89,6 +118,8 @@ public class PlayerController : MonoBehaviour
     void GetInputs()
     {
         xAxis = Input.GetAxisRaw("Horizontal");
+        yAxis = Input.GetAxisRaw("Vertical");
+        attack = Input.GetMouseButtonDown(0);
     }
 
     void Flip()
@@ -136,12 +167,48 @@ public class PlayerController : MonoBehaviour
         anim.SetTrigger("Dashing");
         rb.gravityScale = 0;
         rb.velocity = new Vector2(transform.localScale.x * dashSpeed, 0);
-        if(Grounded()) Instantiate(dashEffect, transform);
+        if (Grounded()) Instantiate(dashEffect, transform);
         yield return new WaitForSeconds(dashTime);
         rb.gravityScale = gravity;
         pState.dashing = false;
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
+    }
+
+
+    void Attack()
+    {
+        timeSinceAttack += Time.deltaTime;
+        if (attack && timeSinceAttack >= timeBetweenAttack)
+        {
+            timeSinceAttack = 0;
+            anim.SetTrigger("Attacking");
+
+            if (yAxis == 0 || yAxis < 0 && Grounded())
+            {
+                Hit(SideAttackTransform, SideAttackArea);
+            }
+            else if (yAxis > 0)
+            {
+                Hit(UpAttackTransform, UpAttackArea);
+            }
+            else if (yAxis < 0 && !Grounded())
+            {
+                Hit(DownAttackTransform, DownAttackArea);
+            }
+        }
+    }
+
+    //Function used to check if an object is hittable
+    //The functions collects an array of objects that are within the position and area of the parameters passed in. Also checks if the attackable layer is added in.
+    private void Hit(Transform _attackTransform, Vector2 _attackArea)
+    {
+        Collider2D[] objectsToHit = Physics2D.OverlapBoxAll(_attackTransform.position, _attackArea, 0, attackableLayer);
+
+        if(objectsToHit.Length > 0)
+        {
+            Debug.Log("Hit");
+        }
     }
 
 
