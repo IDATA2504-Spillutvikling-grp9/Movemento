@@ -6,7 +6,7 @@ using UnityEngine;
 public class Ghost : Enemy
 {
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         rb.gravityScale = 12f;        
     }
