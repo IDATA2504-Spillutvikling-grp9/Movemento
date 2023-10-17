@@ -81,6 +81,7 @@
     <Compile Include="Assets\_PixelArtAssets\Scripts\MoveResPlatformTwo.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\MoveResPlatformSwitch.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\SawSpawner.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Ghost.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\Movement.cs" />
     <Compile Include="Assets\Scripts\Menu\Game Manager.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\DollyZoom.cs" />
