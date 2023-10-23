@@ -69,6 +69,14 @@ public class PlayerController : MonoBehaviour
     public int maxHealth;                                   // maximum health the player can have
     [Space(5)]
 
+    [Header("Healing Settings")]
+/*     [SerializeField] float timeToHeal;
+    float healTimer; */
+    [Space(5)]
+
+    [Header("Mana Settings")]
+    [Space(5)]
+
 
 
     [HideInInspector] public PlayerStateList pState;
@@ -136,6 +144,7 @@ public class PlayerController : MonoBehaviour
         Attack();
         restoreTimeScale();
         FlashWhileInvincible();
+        /* Heal(); */
     }
 
     private void FixedUpdate() 
@@ -431,6 +440,28 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+/*     void Heal()
+    {
+        if(Input.GetButton("Healing") && Health < maxHealth && !pState.jumping && !pState.dashing)
+        {
+            pState.healing = true;
+
+            //healing
+            healTimer += Time.deltaTime;
+
+            if(healTimer >= timeToHeal)
+            {
+                Health++;
+                healTimer = 0;
+            }
+        }
+        else
+        {
+            pState.healing = false;
+            healTimer = 0;
+        }
+    } */
 
 
     void Jump()

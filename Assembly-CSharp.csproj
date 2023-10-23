@@ -64,6 +64,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.7f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Player\Ability\Pickup\HealAbility_Pickup.cs" />
     <Compile Include="Assets\_GabrielBissonnette\Sad - Main Menu Pack\_essentials\Demo Resources\_returnToMainMenu.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\MovingPlatform.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\ObjectPooling.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Assets\_PixelArtAssets\Scripts\InZoomObj.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\DesctroyAfterColliding.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\LaserControl.cs" />
+    <Compile Include="Assets\Scripts\Player\Ability\HealAbility.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Menu\QuitGame.cs" />
     <Compile Include="Assets\_PixelArtAssets\Scripts\MoveResPlatform.cs" />
