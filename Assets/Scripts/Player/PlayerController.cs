@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public PlayerStateList pState;
     private float xAxis;
     private float yAxis;
-    Animator anim;
+    public Animator anim;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private bool canDash = true;
@@ -182,8 +182,16 @@ public class PlayerController : MonoBehaviour
     //and y = the standard velocity in the vertical axis. 
     private void Move()
     {
-        rb.velocity = new Vector2(walkSpeed * xAxis, rb.velocity.y);
-        anim.SetBool("Walking", rb.velocity.x != 0 && Grounded());        //Sets the Walking bool in animator to true, when conditions is met.
+
+        if (!pState.healing)
+        {
+                rb.velocity = new Vector2(walkSpeed * xAxis, rb.velocity.y);
+                anim.SetBool("Walking", rb.velocity.x != 0 && Grounded());        //Sets the Walking bool in animator to true, when conditions is met.
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);  //quick fix, to stop the player from moving while healing. REFACTOR LATER.
+        }
     }
 
     //checking if bools are true and jump is pressed, if not it runs the Dash coroutine.
@@ -441,7 +449,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-/*     void Heal()
+/*     void Heal(REMOVED AFTER REFACTORING)
     {
         if(Input.GetButton("Healing") && Health < maxHealth && !pState.jumping && !pState.dashing)
         {

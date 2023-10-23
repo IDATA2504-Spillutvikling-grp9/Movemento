@@ -5,8 +5,10 @@ using UnityEngine;
 public class HealAbility : MonoBehaviour
 {
     [SerializeField] private float timeToHeal;
-    private float healTimer;
+    [SerializeField] GameObject healingVFX;
     private PlayerController playerController;
+    private float healTimer;
+    private bool hasSpawnedVFX;
 
     private void Start()
     {
@@ -23,7 +25,14 @@ public class HealAbility : MonoBehaviour
     {
         if (Input.GetButton("Healing") && playerController.Health < playerController.maxHealth && !playerController.pState.jumping && !playerController.pState.dashing)
         {
-            playerController.pState.healing = true;
+            if (!hasSpawnedVFX)
+            {
+                playerController.pState.healing = true;
+                playerController.anim.SetBool("Healing", true);
+                GameObject _healingVFX = Instantiate(healingVFX, new Vector2(transform.position.x, transform.position.y - 1.2f), Quaternion.identity);
+                Destroy(_healingVFX, timeToHeal);
+                hasSpawnedVFX = true;
+            }
 
             // Healing
             healTimer += Time.deltaTime;
@@ -36,7 +45,13 @@ public class HealAbility : MonoBehaviour
         }
         else
         {
-            playerController.pState.healing = false;
+            if (hasSpawnedVFX)
+            {
+                playerController.pState.healing = false;
+                playerController.anim.SetBool("Healing", false);
+                hasSpawnedVFX = false;
+            }
+            
             healTimer = 0;
         }
     }
