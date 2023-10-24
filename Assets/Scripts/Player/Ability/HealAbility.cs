@@ -8,7 +8,7 @@ public class HealAbility : MonoBehaviour
     [SerializeField] GameObject healingVFX;
     private PlayerController playerController;
     private float healTimer;
-    private bool hasSpawnedVFX;
+    private GameObject _healingVFX; // Store a reference to the spawned healing VFX
 
     private void Start()
     {
@@ -23,15 +23,15 @@ public class HealAbility : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButton("Healing") && playerController.Health < playerController.maxHealth && !playerController.pState.jumping && !playerController.pState.dashing)
+        // Check if the healing button is pressed and if health is less than maxHealth
+        if (Input.GetButton("Healing") && playerController.Health < playerController.maxHealth)
         {
-            if (!hasSpawnedVFX)
+            if (_healingVFX == null) // If the VFX is not already spawned, spawn it
             {
                 playerController.pState.healing = true;
                 playerController.anim.SetBool("Healing", true);
-                GameObject _healingVFX = Instantiate(healingVFX, new Vector2(transform.position.x, transform.position.y - 1.2f), Quaternion.identity);
+                _healingVFX = Instantiate(healingVFX, new Vector2(transform.position.x, transform.position.y - 1.2f), Quaternion.identity);
                 Destroy(_healingVFX, timeToHeal);
-                hasSpawnedVFX = true;
             }
 
             // Healing
@@ -45,13 +45,13 @@ public class HealAbility : MonoBehaviour
         }
         else
         {
-            if (hasSpawnedVFX)
+            if (_healingVFX != null) // If the VFX is spawned, destroy it
             {
-                playerController.pState.healing = false;
-                playerController.anim.SetBool("Healing", false);
-                hasSpawnedVFX = false;
+                Destroy(_healingVFX);
             }
-            
+
+            playerController.pState.healing = false;
+            playerController.anim.SetBool("Healing", false);
             healTimer = 0;
         }
     }
