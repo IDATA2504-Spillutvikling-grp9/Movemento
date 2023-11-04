@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -67,6 +68,12 @@ public class PlayerController : MonoBehaviour
     public delegate void OnHealthChangedDelegate();
     public int health;                                      // health stat of the player
     public int maxHealth;                                   // maximum health the player can have
+    
+    //Ole har laga, healt variabler for GUI
+    public int numOfHearths;
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
     [Space(5)]
 
     [Header("Healing Settings")]
@@ -145,6 +152,8 @@ public class PlayerController : MonoBehaviour
         restoreTimeScale();
         FlashWhileInvincible();
         /* Heal(); */
+        
+        UpdateHearths();
     }
 
     private void FixedUpdate() 
@@ -523,6 +532,32 @@ public class PlayerController : MonoBehaviour
         else
         {
             jumpBufferCounter--;
+        }
+    }
+    
+    
+    
+    //Ole, metoder for å opptatere healt i UI.
+    void UpdateHearths()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < health)
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+            if (i < numOfHearths)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
         }
     }
 }

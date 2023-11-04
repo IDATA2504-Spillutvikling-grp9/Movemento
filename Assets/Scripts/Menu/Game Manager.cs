@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private bool isPaused = false;
 
+    public GameObject optionMenuScreen;
+
     void Start()
     {
         if (pauseScreen != null)
@@ -28,6 +30,8 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         {
             audioSource = GetComponent<AudioSource>();
         }
+
+        HideOptionScreen();
     }
 
     void Update()
@@ -92,5 +96,28 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     IEnumerator LoadSceneWithDelay(string sceneName, float delayTime) {
         yield return new WaitForSeconds(delayTime);
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void HideOptionScreen()
+    {
+        optionMenuScreen.SetActive(false);
+    }
+
+    public void OpenOptionScreen()
+    {
+        optionMenuScreen.SetActive(true);
+        pauseScreen.SetActive(false);
+    }
+
+    public void BackButton(GameObject gameObject)
+    {
+        gameObject.SetActive(false);
+        pauseScreen.SetActive(true);
     }
 }
