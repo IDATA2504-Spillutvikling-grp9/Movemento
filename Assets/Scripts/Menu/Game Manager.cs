@@ -4,20 +4,54 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
-public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class GameManager : MonoBehaviour
 {
-    
-    [SerializeField] AudioClip sound_click;
-    [SerializeField] AudioClip sound_hover;
-    [Space(10)] [SerializeField] AudioSource audioSource;
-    public GameObject pauseScreen;
+    /// <summary>
+    /// The audio clip to be played on click.
+    /// </summary>
+    [SerializeField] private AudioClip sound_click;
 
+    [Space(10)] 
+    /// <summary>
+    /// The audio source component for playing sounds.
+    /// </summary>
+    [SerializeField] private AudioSource audioSource;
+
+    public AudioClip sound_hover;
+
+    /// <summary>
+    /// The pause screen GameObject.
+    /// </summary>
+    [SerializeField] private GameObject pauseScreen;
+
+    /// <summary>
+    /// The name of the scene to be loaded.
+    /// </summary>
     public string sceneName;
 
     private bool isPaused = false;
 
-    public GameObject optionMenuScreen;
+    /// <summary>
+    /// The option menu screen GameObject.
+    /// </summary>
+    [SerializeField] private GameObject optionMenuScreen;
+
+    /// <summary>
+    /// The audio source component for playing music.
+    /// </summary>
+    [SerializeField] public AudioMixer musicAudioSource;
+
+    /// <summary>
+    /// The Game audio source
+    /// </summary>
+    [SerializeField] public AudioMixer gameAudioSource;
+
+    private Resolution[] resolutions;
+
+    public Dropdown resolutionDropdown;
+    
 
     void Start()
     {
@@ -26,12 +60,29 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             pauseScreen.SetActive(false);
         }
         
-        if (audioSource == null)
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
-
         HideOptionScreen();
+        setUpResolutions();
+    }
+
+    private void setUpResolutions()
+    {
+        resolutions = Screen.resolutions;
+        resolutionDropdown.ClearOptions();
+        List<string> options = new List<string>();
+        int currentResolutionIndex = 0;
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            string option = resolutions[i].width + " x " + resolutions[i].height;
+            options.Add(option);
+
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            {
+                currentResolutionIndex = i;
+            }
+        }
+        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.value = currentResolutionIndex;
+        resolutionDropdown.RefreshShownValue();
     }
 
     void Update()
@@ -68,7 +119,10 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             pauseScreen.SetActive(false);
         }
     }
-    
+
+    /// <summary>
+    /// Plays the click sound.
+    /// </summary>
     public void UIClick()
     {
         audioSource.PlayOneShot(sound_click);
@@ -79,21 +133,13 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         audioSource.PlayOneShot(sound_hover);
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void NextLevel()
     {
-        UIHover();
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        // You can add logic here if you want to stop the sound on hover exit.
-    }
-
-    public void NextLevel() {
         StartCoroutine(LoadSceneWithDelay(sceneName, 0.5f));
     }
 
-    IEnumerator LoadSceneWithDelay(string sceneName, float delayTime) {
+    IEnumerator LoadSceneWithDelay(string sceneName, float delayTime)
+    {
         yield return new WaitForSeconds(delayTime);
         SceneManager.LoadScene(sceneName);
     }
@@ -112,12 +158,32 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OpenOptionScreen()
     {
         optionMenuScreen.SetActive(true);
-        pauseScreen.SetActive(false);
     }
 
     public void BackButton(GameObject gameObject)
     {
         gameObject.SetActive(false);
         pauseScreen.SetActive(true);
+    }
+
+    public void SetVolumeMusic(float volume)
+    {
+        musicAudioSource.SetFloat("musicVolume", volume);
+    }
+
+    public void SetVolumeGame(float volume)
+    {
+        gameAudioSource.SetFloat("gameVolume", volume);
+    }
+
+    public void SetFullScreen(bool isFullscreen)
+    {
+        Screen.fullScreen = isFullscreen;
+    }
+
+    public void SetResolution(int resolutionIndex)
+    {
+        Resolution resolution = resolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 }
