@@ -6,30 +6,35 @@ public class HealAbility : MonoBehaviour
 {
     [SerializeField] private float timeToHeal;
     [SerializeField] GameObject healingVFX;
-    private PlayerController playerController;
-    private float healTimer;
     private GameObject _healingVFX; // Store a reference to the spawned healing VFX
+    private PlayerController pc;
+    private PlayerHealth ph;
+    private float healTimer;
+
+
 
     private void Start()
     {
-        playerController = GetComponent<PlayerController>();
+        pc = GetComponent<PlayerController>();
+        ph = GetComponent<PlayerHealth>();
 
-        HealAbility healAbility = GetComponent<HealAbility>();
-        if (healAbility != null)
+        if (TryGetComponent<HealAbility>(out var healAbility))
         {
             healAbility.enabled = false;
         }
     }
 
+
+
     private void Update()
     {
         // Check if the healing button is pressed and if health is less than maxHealth
-        if (Input.GetButton("Healing") && playerController.Health < playerController.maxHealth)
+        if (Input.GetButton("Healing") && ph.Health < ph.maxHealth)
         {
             if (_healingVFX == null) // If the VFX is not already spawned, spawn it
             {
-                playerController.pState.healing = true;
-                playerController.anim.SetBool("Healing", true);
+                pc.pState.healing = true;
+                pc.anim.SetBool("Healing", true);
                 _healingVFX = Instantiate(healingVFX, new Vector2(transform.position.x, transform.position.y - 1.2f), Quaternion.identity);
                 Destroy(_healingVFX, timeToHeal);
             }
@@ -39,7 +44,7 @@ public class HealAbility : MonoBehaviour
 
             if (healTimer >= timeToHeal)
             {
-                playerController.Health++;
+                ph.Health++;
                 healTimer = 0;
             }
         }
@@ -50,8 +55,8 @@ public class HealAbility : MonoBehaviour
                 Destroy(_healingVFX);
             }
 
-            playerController.pState.healing = false;
-            playerController.anim.SetBool("Healing", false);
+            pc.pState.healing = false;
+            pc.anim.SetBool("Healing", false);
             healTimer = 0;
         }
     }

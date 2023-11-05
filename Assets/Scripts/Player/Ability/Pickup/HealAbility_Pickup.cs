@@ -4,17 +4,8 @@ using UnityEngine;
 
 public class HealAbility_Pickup : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,8 +13,7 @@ public class HealAbility_Pickup : MonoBehaviour
         {
 
             //Enable the HealAbility Script on the player object
-            HealAbility healAbility = collision.GetComponent<HealAbility>();
-            if (healAbility != null)
+            if (collision.TryGetComponent<HealAbility>(out var healAbility))
             {
                 healAbility.enabled = true;
             }
