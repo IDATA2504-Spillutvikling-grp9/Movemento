@@ -42,8 +42,6 @@ public class PlayerController : MonoBehaviour
     private float xAxis;
     private float yAxis;
 
-
-
     private void Awake()
     {
         if (Instance != null && Instance != this)   // Check if an instance already exists and if it's not the current one

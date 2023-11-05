@@ -50,10 +50,7 @@ public class PlayerHealth : MonoBehaviour
             {
                 health = Mathf.Clamp(value, 0, maxHealth);
 
-                if (onHealthChangedCallback != null)
-                {
-                    onHealthChangedCallback.Invoke();
-                }
+                onHealthChangedCallback?.Invoke();
             }
         }
     }

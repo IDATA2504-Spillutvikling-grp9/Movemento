@@ -32,6 +32,7 @@ public class PlayerAttacks : MonoBehaviour
     [Space(5)]
 
     private PlayerController pc;
+    private PlayerMana pm;
     private Rigidbody2D rb;
     private float xAxis;
     private float yAxis;
@@ -41,6 +42,7 @@ public class PlayerAttacks : MonoBehaviour
     void Start()
     {
         pc = GetComponent<PlayerController>();
+        pm = GetComponent<PlayerMana>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -135,6 +137,11 @@ public class PlayerAttacks : MonoBehaviour
             {
                 objectsToHit[i].GetComponent<Enemy>().EnemyHit
                 (damage, (transform.position - objectsToHit[i].transform.position).normalized, _recoilStrength);
+
+                if(objectsToHit[i].CompareTag("Enemy"))
+                {
+                    pm.Mana += pm.manaGain;
+                }
             }
         }
     }

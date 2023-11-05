@@ -8,6 +8,7 @@ public class HealAbility : MonoBehaviour
     [SerializeField] GameObject healingVFX;
     private GameObject _healingVFX; // Store a reference to the spawned healing VFX
     private PlayerController pc;
+    private PlayerMana pm;
     private PlayerHealth ph;
     private float healTimer;
 
@@ -16,6 +17,7 @@ public class HealAbility : MonoBehaviour
     private void Start()
     {
         pc = GetComponent<PlayerController>();
+        pm = GetComponent<PlayerMana>();
         ph = GetComponent<PlayerHealth>();
 
         if (TryGetComponent<HealAbility>(out var healAbility))
@@ -29,7 +31,7 @@ public class HealAbility : MonoBehaviour
     private void Update()
     {
         // Check if the healing button is pressed and if health is less than maxHealth
-        if (Input.GetButton("Healing") && ph.Health < ph.maxHealth)
+        if (Input.GetButton("Healing") && ph.Health < ph.maxHealth && !pc.pState.jumping && !pc.pState.dashing && pm.Mana >= 0) //pm.mana used to see if the char has enough mana to cast a full heal.
         {
             if (_healingVFX == null) // If the VFX is not already spawned, spawn it
             {
@@ -47,6 +49,8 @@ public class HealAbility : MonoBehaviour
                 ph.Health++;
                 healTimer = 0;
             }
+            //use mana while healing
+            pm.Mana -= Time.deltaTime * pm.manaDrainSpeed;
         }
         else
         {

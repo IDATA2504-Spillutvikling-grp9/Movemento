@@ -15,12 +15,13 @@ GameObject:
   - component: {fileID: 7304046808540524255}
   - component: {fileID: 5963356376004151191}
   - component: {fileID: 109153676061735650}
+  - component: {fileID: 2282785045826783328}
   - component: {fileID: 7896332188109471557}
   - component: {fileID: 4897374496964729822}
   - component: {fileID: 1239094917596198519}
   - component: {fileID: 5793379571031498755}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,6 +241,22 @@ MonoBehaviour:
   - {fileID: 0}
   fullHeart: {fileID: 21300000, guid: 2a7899e98d1185246a33af33b5c894f3, type: 3}
   emptyHeart: {fileID: 21300000, guid: ec85e50b40027f14a8f01cc401abad4b, type: 3}
+--- !u!114 &2282785045826783328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2617397226802405339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1255cbb5bdac245a04832fe6964e2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manaStorage: {fileID: 0}
+  manaDrainSpeed: 0.2
+  manaGain: 0.1
+  mana: 1
 --- !u!114 &7896332188109471557
 MonoBehaviour:
   m_ObjectHideFlags: 0
