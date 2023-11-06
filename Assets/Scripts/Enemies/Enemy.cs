@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
     [SerializeField] protected float health;
     [SerializeField] protected float recoilLength;
     [SerializeField] protected float recoilFactor;
@@ -15,16 +14,22 @@ public class Enemy : MonoBehaviour
     protected float recoilTimer;
     protected Rigidbody2D rb;
 
-    // Start is called before the first frame update
+
+
     protected virtual void Start()
     {
 
     }
+
+
+
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    // Update is called once per frame
+
+
+
     protected virtual void Update()
     {
         if (health <= 0)
@@ -45,6 +50,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
+
+
     public virtual void EnemyHit(float _damageDone, Vector2 _hitDirection, float _hitForce)
     {
         health -= _damageDone;
@@ -53,19 +60,21 @@ public class Enemy : MonoBehaviour
             rb.AddForce(-_hitForce * recoilFactor * _hitDirection);
         }
     }
-    protected void OnTriggerStay2D(Collider2D _other)
+
+
+
+    protected void OnCollisionStay2D(UnityEngine.Collision2D collision)
     {
-        if ( _other.CompareTag("Player") && !PlayerController.Instance.pState.invincible)
+        if (collision.gameObject.CompareTag("Player") && !PlayerController.Instance.pState.invincible)
         {
             Attack();
-            PlayerController.Instance.HitStopTime(0, 5, 0.5f);
+            PlayerDamageController.Instance.HitStopTime(0, 5, 0.5f);
             //Debug.Log("Attack done");
             //add animation for bleed / freezeframe animation
         }
     }
     protected virtual void Attack()
     {
-        PlayerController.Instance.TakeDamage(damage);
+        PlayerDamageController.Instance.TakeDamage(damage);
     }
-
 }
