@@ -160,10 +160,10 @@ public class GameManager : MonoBehaviour
         optionMenuScreen.SetActive(true);
     }
 
-    public void BackButton(GameObject gameObject)
+    public void BackButton()
     {
-        gameObject.SetActive(false);
-        pauseScreen.SetActive(true);
+        optionMenuScreen.SetActive(false);
+
     }
 
     public void SetVolumeMusic(float volume)
