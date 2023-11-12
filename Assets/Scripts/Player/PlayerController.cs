@@ -201,9 +201,7 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        if (!pState.jumping)
-        {
-            if (jumpBufferCounter > 0 && coyoteTimeCounter > 0)
+            if (jumpBufferCounter > 0 && coyoteTimeCounter > 0 && !pState.jumping)
             {
                 rb.velocity = new Vector3(rb.velocity.x, jumpForce);
 
@@ -214,16 +212,15 @@ public class PlayerController : MonoBehaviour
                 pState.jumping = true;
 
                 airJumpCounter++;
-
                 rb.velocity = new Vector3(rb.velocity.x, jumpForce);
+
             }
-        }
 
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0)
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 3)
         {
-            rb.velocity = new Vector2(rb.velocity.x, 0);
-
             pState.jumping = false;
+
+            rb.velocity = new Vector2(rb.velocity.x, 0);
         }
         anim.SetBool("Jumping", !Grounded());
     }
