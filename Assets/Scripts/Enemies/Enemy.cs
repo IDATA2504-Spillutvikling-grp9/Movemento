@@ -18,13 +18,6 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Start()
     {
-
-    }
-
-
-
-    protected virtual void Awake()
-    {
         rb = GetComponent<Rigidbody2D>();
     }
 

@@ -10,14 +10,8 @@ public class Ghost : Enemy
  
     protected override void Start()
     {
+        base.Start();
         rb.gravityScale = 12f;
-    }
-
-
-
-    protected override void Awake()
-    {
-        base.Awake();
     }
 
 
