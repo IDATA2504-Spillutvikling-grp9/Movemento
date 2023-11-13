@@ -13,6 +13,16 @@ public class Enemy : MonoBehaviour
 
     protected float recoilTimer;
     protected Rigidbody2D rb;
+    
+
+    protected enum EnemyStates
+    {
+        //SmallFrog
+    }
+
+
+
+    protected EnemyStates currentEnemyState;
 
 
 

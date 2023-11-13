@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Level2.unity
     guid: aea7cb3df87a4ad4e90d1698c182504c
   - enabled: 1
-    path: Assets/Scenes/Sander_test.unity
+    path: Assets/Scenes/IslandLevel.unity
     guid: 60e0032b34a53e9468448b63a8dc48cd
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
