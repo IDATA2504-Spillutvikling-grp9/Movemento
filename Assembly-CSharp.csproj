@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Menu\QuitGame.cs" />
     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Player\Health\PlayerDeath.cs" />
     <Compile Include="Assets\Scripts\Enemies\Ghost.cs" />
     <Compile Include="Assets\Scripts\Player\SkyFollow.cs" />
     <Compile Include="Assets\Scripts\Menu\Game Manager.cs" />

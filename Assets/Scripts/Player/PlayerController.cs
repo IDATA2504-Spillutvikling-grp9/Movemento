@@ -70,6 +70,8 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
 
         gravity = rb.gravityScale;
+        
+        pState.alive = true;
     }
 
 
@@ -79,14 +81,21 @@ public class PlayerController : MonoBehaviour
     */
     void Update()
     {
-        GetInputs();
+        if(pState.alive)
+        {
+            GetInputs();
+        }
+
         UpdateJumpVariables();
 
         if (pState.dashing) return;
-        Flip();
-        Move();
-        Jump();
-        StartDash();
+        if(pState.alive)
+        {
+            Flip();
+            Move();
+            Jump();
+            StartDash();
+        }
     }
 
 

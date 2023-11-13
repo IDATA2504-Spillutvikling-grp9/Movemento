@@ -63,9 +63,12 @@ public class PlayerAttacks : MonoBehaviour
 
     void Update()
     {
-        if (pc.pState.dashing) return;
-        GetInputs();
-        Attack();
+        if (pc.pState.dashing || pc.pState.healing) return;
+        if(pc.pState.alive)
+        {
+            GetInputs();
+            Attack();
+        }
     }
 
 

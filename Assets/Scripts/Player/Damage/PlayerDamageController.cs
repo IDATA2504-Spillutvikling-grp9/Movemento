@@ -9,6 +9,7 @@ public class PlayerDamageController : MonoBehaviour
     [SerializeField] float hitFlashSpeed;                   // Speed of the black/white flash when hit
     public static PlayerDamageController Instance;
     private PlayerController pc;
+    private PlayerDeath pd;
     private PlayerHealth ph;
     private SpriteRenderer sr;
     private float restoreTimeSpeed;
@@ -34,6 +35,7 @@ public class PlayerDamageController : MonoBehaviour
     {
         pc = GetComponent<PlayerController>();
         sr = GetComponent<SpriteRenderer>();
+        pd = GetComponent<PlayerDeath>();
         ph = GetComponent<PlayerHealth>();
     }
 
@@ -49,9 +51,23 @@ public class PlayerDamageController : MonoBehaviour
 
     public void TakeDamage(float _damage)
     {
-        ph.Health -= Mathf.RoundToInt(_damage);
-        StartCoroutine(StopTakingDamage());
+        if(pc.pState.alive)
+        {
+            ph.Health -= Mathf.RoundToInt(_damage);
+            if(ph.Health <= 0) 
+            {
+                ph.Health = 0;
+                StartCoroutine(pd.Death());
+            }
+            else
+            {
+            StartCoroutine(StopTakingDamage());
+            }
+        }
     }
+
+
+
     IEnumerator StopTakingDamage()
     {
         pc.pState.invincible = true;

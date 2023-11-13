@@ -71,7 +71,10 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !PlayerController.Instance.pState.invincible)
         {
             Attack();
-            PlayerDamageController.Instance.HitStopTime(0, 5, 0.5f);
+            if(PlayerController.Instance.pState.alive)
+            {
+                PlayerDamageController.Instance.HitStopTime(0, 5, 0.5f);
+            }
             //Debug.Log("Attack done");
             //add animation for bleed / freezeframe animation
         }
