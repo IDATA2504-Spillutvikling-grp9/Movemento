@@ -118,6 +118,7 @@ public class GameManager : MonoBehaviour
         {
             pauseScreen.SetActive(false);
         }
+        HideOptionScreen();
     }
 
     /// <summary>
@@ -185,5 +186,9 @@ public class GameManager : MonoBehaviour
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
+    public bool getIsPause() {
+        return isPaused;
     }
 }

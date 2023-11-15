@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -42,6 +43,9 @@ public class PlayerController : MonoBehaviour
     private float xAxis;
     private float yAxis;
 
+    //Game Manager script
+    private GameManager gameManager;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)   // Check if an instance already exists and if it's not the current one
@@ -72,6 +76,8 @@ public class PlayerController : MonoBehaviour
         gravity = rb.gravityScale;
         
         pState.alive = true;
+
+        gameManager = GetComponent<GameManager>();
     }
 
 
@@ -116,6 +122,10 @@ public class PlayerController : MonoBehaviour
     */
     void Flip()
     {
+        if (this.gameManager.getIsPause())
+        {
+            return;
+        }
         if (xAxis < 0)
         {
             transform.localScale = new Vector2(-1, transform.localScale.y);
@@ -137,6 +147,10 @@ public class PlayerController : MonoBehaviour
     */
     private void Move()
     {
+        if (this.gameManager.getIsPause())
+        {
+            return;
+        }
         if (!pState.healing)
         {
             rb.velocity = new Vector2(walkSpeed * xAxis, rb.velocity.y);

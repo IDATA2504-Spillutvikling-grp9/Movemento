@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerAttacks : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class PlayerAttacks : MonoBehaviour
     private float xAxis;
     private float yAxis;
 
+    private GameManager gameManager;
 
 
     void Start()
@@ -44,6 +46,7 @@ public class PlayerAttacks : MonoBehaviour
         pc = GetComponent<PlayerController>();
         pm = GetComponent<PlayerMana>();
         rb = GetComponent<Rigidbody2D>();
+        gameManager = GetComponent<GameManager>();
     }
 
 
@@ -95,6 +98,10 @@ public class PlayerAttacks : MonoBehaviour
 
     void Attack()
     {
+        if (this.gameManager.getIsPause())
+        {
+            return;
+        }
         timeSinceAttack += Time.deltaTime;
         if (attack && timeSinceAttack >= timeBetweenAttack)
         {

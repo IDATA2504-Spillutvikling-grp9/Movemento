@@ -4806,6 +4806,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 293833586770679812, guid: 86e76923975552e48b44976f60e49a63, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.499878
+      objectReference: {fileID: 0}
     - target: {fileID: 1031645212718923564, guid: 86e76923975552e48b44976f60e49a63, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000030517578
@@ -5139,6 +5143,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3794365545567565813, guid: 86e76923975552e48b44976f60e49a63, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3794365545567565813, guid: 86e76923975552e48b44976f60e49a63, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
       objectReference: {fileID: 0}
@@ -5152,7 +5160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794365545567565813, guid: 86e76923975552e48b44976f60e49a63, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3794365545567565813, guid: 86e76923975552e48b44976f60e49a63, type: 3}
       propertyPath: m_SizeDelta.x
@@ -5160,7 +5168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794365545567565813, guid: 86e76923975552e48b44976f60e49a63, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 500
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3794365545567565813, guid: 86e76923975552e48b44976f60e49a63, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -5168,7 +5176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3794365545567565813, guid: 86e76923975552e48b44976f60e49a63, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -197
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 3818639250121128410, guid: 86e76923975552e48b44976f60e49a63, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
