@@ -46,7 +46,7 @@ public class PlayerAttacks : MonoBehaviour
         pc = GetComponent<PlayerController>();
         pm = GetComponent<PlayerMana>();
         rb = GetComponent<Rigidbody2D>();
-        gameManager = GetComponent<GameManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
 
@@ -98,7 +98,7 @@ public class PlayerAttacks : MonoBehaviour
 
     void Attack()
     {
-        if (this.gameManager.getIsPause())
+        if (gameManager.getIsPause())
         {
             return;
         }

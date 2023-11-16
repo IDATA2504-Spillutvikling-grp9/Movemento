@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         
         pState.alive = true;
 
-        gameManager = GetComponent<GameManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
 
@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
     */
     void Flip()
     {
-        if (this.gameManager.getIsPause())
+        if (gameManager.getIsPause())
         {
             return;
         }
@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
     */
     private void Move()
     {
-        if (this.gameManager.getIsPause())
+        if (gameManager.getIsPause())
         {
             return;
         }

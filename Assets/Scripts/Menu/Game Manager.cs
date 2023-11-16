@@ -189,6 +189,6 @@ public class GameManager : MonoBehaviour
     }
 
     public bool getIsPause() {
-        return isPaused;
+        return this.isPaused;
     }
 }
