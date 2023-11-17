@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour
     private Resolution[] resolutions;
 
     public Dropdown resolutionDropdown;
+
+    public Slider musicVolumeSlider;
+    public Slider gameVolumeSlider;
     
 
     void Start()
@@ -62,6 +65,8 @@ public class GameManager : MonoBehaviour
         
         HideOptionScreen();
         setUpResolutions();
+        SetSliderValueMusic();
+        SetSliderValueGame();
     }
 
     private void setUpResolutions()
@@ -190,5 +195,25 @@ public class GameManager : MonoBehaviour
 
     public bool getIsPause() {
         return this.isPaused;
+    }
+
+    void SetSliderValueMusic() {
+        float volumeValue;
+        bool reslut = musicAudioSource.GetFloat("musicVolume", out volumeValue);
+        if(reslut) {
+            float normalizedValue = Mathf.InverseLerp(-80f, 0f, volumeValue);
+            musicVolumeSlider.value = normalizedValue;
+            Debug.Log("Music Volume Set: " + normalizedValue);
+        }
+    }
+
+        void SetSliderValueGame() {
+        float volumeValue;
+        bool reslut = gameAudioSource.GetFloat("gameVolume", out volumeValue);
+        if(reslut) {
+            float normalizedValue = Mathf.InverseLerp(-80f, 0f, volumeValue);
+            gameVolumeSlider.value = normalizedValue;
+            Debug.Log("Game Volume Set: " + normalizedValue);
+        }
     }
 }

@@ -13,6 +13,21 @@ public class MainMenuManager : MonoBehaviour
 
     public Dropdown resolutionDropdown;
 
+    [SerializeField] private AudioSource audioSource;
+
+    /// <summary>
+    /// The audio source component for playing music.
+    /// </summary>
+    [SerializeField] public AudioMixer musicAudioSource;
+
+    /// <summary>
+    /// The Game audio source
+    /// </summary>
+    [SerializeField] public AudioMixer gameAudioSource;
+
+    public AudioClip sound_hover;
+    [SerializeField] private AudioClip sound_click;
+
     
     // Start is called before the first frame update
     void Start()
@@ -56,5 +71,25 @@ public class MainMenuManager : MonoBehaviour
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
+    public void SetVolumeMusic(float volume)
+    {
+        musicAudioSource.SetFloat("mainMenuMusic", volume);
+    }
+
+    public void SetVolumeGame(float volume)
+    {
+        gameAudioSource.SetFloat("gameVolume", volume);
+    }
+
+    public void UIClick()
+    {
+        audioSource.PlayOneShot(sound_click);
+    }
+
+    public void UIHover()
+    {
+        audioSource.PlayOneShot(sound_hover);
     }
 }
