@@ -9002,7 +9002,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5556947667297659621, guid: 8aafe4cda512da347935432cafdfaa4a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000019073486
+      value: 0.0000018775463
       objectReference: {fileID: 0}
     - target: {fileID: 5556947667582019259, guid: 8aafe4cda512da347935432cafdfaa4a, type: 3}
       propertyPath: m_LocalRotation.z
@@ -9038,7 +9038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8483857993369724965, guid: 8aafe4cda512da347935432cafdfaa4a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8887549
+      value: 0.88875496
       objectReference: {fileID: 0}
     - target: {fileID: 8483857993369724965, guid: 8aafe4cda512da347935432cafdfaa4a, type: 3}
       propertyPath: m_LocalRotation.z
@@ -22688,7 +22688,8 @@ GameObject:
   - component: {fileID: 1241917688}
   - component: {fileID: 1241917690}
   - component: {fileID: 1241917689}
-  m_Layer: 0
+  - component: {fileID: 1241917691}
+  m_Layer: 6
   m_Name: Island ground (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22741,15 +22742,31 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: -13.484375, y: 0.022989273, z: 0}
+    - position: {x: 0.92385864, y: 0.022989273, z: 0}
       leftTangent: {x: -3.4230347, y: -0.679224, z: 0}
-      rightTangent: {x: 4.3952026, y: 0.872139, z: 0}
+      rightTangent: {x: 0.6552582, y: 0.130023, z: 0}
       mode: 1
       height: 1
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: -4.8287354, y: -0.7543335, z: 0}
+    - position: {x: 4.274391, y: 0.33993053, z: 0}
+      leftTangent: {x: -1.5423965, y: -0.08317423, z: 0}
+      rightTangent: {x: 8.782021, y: 0.4758451, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 47.692425, y: 0.8659003, z: 0}
+      leftTangent: {x: -13.265354, y: -0.23908186, z: 0}
+      rightTangent: {x: 0, y: 0, z: 0}
+      mode: 2
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 6.2283173, y: -33.390366, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -22757,7 +22774,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: -4.772217, y: -5.294407, z: 0}
+    - position: {x: -0.9947586, y: -28.105555, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -22765,15 +22782,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: -0.69744873, y: -5.361208, z: 0}
-      leftTangent: {x: 0, y: 0, z: 0}
-      rightTangent: {x: 0, y: 0, z: 0}
-      mode: 0
-      height: 1
-      spriteIndex: 0
-      corner: 1
-      m_CornerMode: 1
-    - position: {x: -0.5117798, y: -12.615837, z: 0}
+    - position: {x: -14.931404, y: -30.008574, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -22865,9 +22874,54 @@ SpriteShapeRenderer:
   - {fileID: 0}
   - {fileID: 0}
   m_LocalAABB:
-    m_Center: {x: -12.571483, y: -5.831575, z: 0}
-    m_Extent: {x: 13.006494, y: 7.6201158, z: 0}
+    m_Center: {x: 11.680918, y: -16.135923, z: 0}
+    m_Extent: {x: 37.155437, y: 18.398695, z: 0}
   m_SpriteSortPoint: 0
+--- !u!61 &1241917691
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241917687}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 11.680918, y: -16.135923}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 74.310875, y: 36.79739}
+  m_EdgeRadius: 0
 --- !u!1001 &1242648512
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58544,11 +58598,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8977044914987073716, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -99.52
+      value: -77.1
       objectReference: {fileID: 0}
     - target: {fileID: 8977044914987073716, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 21.78
+      value: 8.1
       objectReference: {fileID: 0}
     - target: {fileID: 8977044914987073716, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
       propertyPath: m_LocalPosition.z
