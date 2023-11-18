@@ -198,22 +198,18 @@ public class GameManager : MonoBehaviour
     }
 
     void SetSliderValueMusic() {
-        float volumeValue;
-        bool reslut = musicAudioSource.GetFloat("musicVolume", out volumeValue);
-        if(reslut) {
-            float normalizedValue = Mathf.InverseLerp(-80f, 0f, volumeValue);
-            musicVolumeSlider.value = normalizedValue;
-            Debug.Log("Music Volume Set: " + normalizedValue);
+        float currentMusicVolume;
+        if (musicAudioSource.GetFloat("musicVolume", out currentMusicVolume))
+        {
+            musicVolumeSlider.value = currentMusicVolume;
         }
     }
 
-        void SetSliderValueGame() {
-        float volumeValue;
-        bool reslut = gameAudioSource.GetFloat("gameVolume", out volumeValue);
-        if(reslut) {
-            float normalizedValue = Mathf.InverseLerp(-80f, 0f, volumeValue);
-            gameVolumeSlider.value = normalizedValue;
-            Debug.Log("Game Volume Set: " + normalizedValue);
+     void SetSliderValueGame() {
+        float currentGameVolume;
+        if (gameAudioSource.GetFloat("gameVolume", out currentGameVolume))
+        {
+            gameVolumeSlider.value = currentGameVolume;
         }
     }
 }
