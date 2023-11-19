@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
 
         gravity = rb.gravityScale;
-        
+
         pState.alive = true;
 
         gameManager = FindObjectOfType<GameManager>();
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
     */
     void Update()
     {
-        if(pState.alive)
+        if (pState.alive)
         {
             GetInputs();
         }
@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
         UpdateJumpVariables();
 
         if (pState.dashing) return;
-        if(pState.alive)
+        if (pState.alive)
         {
             Flip();
             Move();
@@ -209,37 +209,40 @@ public class PlayerController : MonoBehaviour
     public bool Grounded()
     {
         //if raycast finds an object tagged with ground, return true.
-        if
-            (Physics2D.Raycast(groundCheckPoint.position, Vector2.down, groundCheckY, whatIsGround) ||
+        bool isGrounded = Physics2D.Raycast(groundCheckPoint.position, Vector2.down, groundCheckY, whatIsGround) ||
             Physics2D.Raycast(groundCheckPoint.position + new Vector3(groundCheckX, 0, 0), Vector2.down, groundCheckY, whatIsGround) ||
-            Physics2D.Raycast(groundCheckPoint.position + new Vector3(-groundCheckX, 0, 0), Vector2.down, groundCheckY, whatIsGround))
+            Physics2D.Raycast(groundCheckPoint.position + new Vector3(-groundCheckX, 0, 0), Vector2.down, groundCheckY, whatIsGround);
+
+        if (isGrounded)
         {
-            return true;
+            rb.gravityScale = 0; // Set gravity to 0 when grounded
         }
         else
         {
-            return false;
+            rb.gravityScale = gravity; // Reset to default gravity when not grounded
         }
+
+        return isGrounded;
     }
 
 
 
     void Jump()
     {
-            if (jumpBufferCounter > 0 && coyoteTimeCounter > 0 && !pState.jumping)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, jumpForce);
+        if (jumpBufferCounter > 0 && coyoteTimeCounter > 0 && !pState.jumping)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, jumpForce);
 
-                pState.jumping = true;
-            }
-            else if (!Grounded() && airJumpCounter < maxAirJumps && Input.GetButtonDown("Jump"))
-            {
-                pState.jumping = true;
+            pState.jumping = true;
+        }
+        else if (!Grounded() && airJumpCounter < maxAirJumps && Input.GetButtonDown("Jump"))
+        {
+            pState.jumping = true;
 
-                airJumpCounter++;
-                rb.velocity = new Vector3(rb.velocity.x, jumpForce);
+            airJumpCounter++;
+            rb.velocity = new Vector3(rb.velocity.x, jumpForce);
 
-            }
+        }
 
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 3)
         {
