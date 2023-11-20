@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float groundCheckX = 0.5f;     //how far horizontally from ground chekc point to the edge of the player is
     [SerializeField] private float groundCheckY = 0.2f;     //how far down from ground chekc point is Grounded() checked
     [SerializeField] private LayerMask whatIsGround;        //sets the ground layer
+    private readonly float groundAngleCheck = 2;            //Used to check the angle of the surface under the player
     [Space(5)]
 
     [Header("Dash Settings")]
@@ -33,6 +34,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashCooldown;            //amount of time between dashes
     [SerializeField] GameObject dashEffect;                 //Lets us put in an empty game object with an Animation for the dash Effect on the ground.
     [Space(5)]
+
+    [Header("Sound Settings")]
+    [SerializeField] private AudioClip jumpSound;           // Sound for jumping
+    [SerializeField] private AudioClip doubleJumpSound;     // Sound for double jumping
+    [SerializeField] private AudioClip moveSound;           // Sound for moving
+    [SerializeField] private AudioClip dashSound;           // Sound for dashing
+    private AudioSource audioSource;               // Audio source component
 
     [HideInInspector] public PlayerStateList pState;        // State of the Player
     public static PlayerController Instance;                // Singleton instance
@@ -67,17 +75,20 @@ public class PlayerController : MonoBehaviour
     */
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
+
         pState = GetComponent<PlayerStateList>();
 
         rb = GetComponent<Rigidbody2D>();
 
         anim = GetComponent<Animator>();
 
+        audioSource = GetComponent<AudioSource>();
+
         gravity = rb.gravityScale;
-        
+
         pState.alive = true;
 
-        gameManager = FindObjectOfType<GameManager>();
     }
 
 
@@ -87,15 +98,16 @@ public class PlayerController : MonoBehaviour
     */
     void Update()
     {
-        if(pState.alive)
+        if (pState.alive)
         {
             GetInputs();
+            CalculateSlopeDirection();
         }
 
         UpdateJumpVariables();
 
         if (pState.dashing) return;
-        if(pState.alive)
+        if (pState.alive)
         {
             Flip();
             Move();
@@ -155,6 +167,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(walkSpeed * xAxis, rb.velocity.y);
             anim.SetBool("Walking", rb.velocity.x != 0 && Grounded());      //Sets the Walking bool in animator to true, when conditions is met.
+/*             if (rb.velocity.x != 0 && Grounded())
+            {
+                PlaySound(moveSound); // Play move sound when walking
+            } */
         }
         else
         {
@@ -189,6 +205,7 @@ public class PlayerController : MonoBehaviour
         canDash = false;
         pState.dashing = true;
         anim.SetTrigger("Dashing");
+        PlaySound(dashSound);
         rb.gravityScale = 0;
         int _dir = pState.lookingRight ? 1 : -1;
         rb.velocity = new Vector2(_dir * dashSpeed, 0);
@@ -199,7 +216,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
-
+ 
 
 
     /*
@@ -209,37 +226,41 @@ public class PlayerController : MonoBehaviour
     public bool Grounded()
     {
         //if raycast finds an object tagged with ground, return true.
-        if
-            (Physics2D.Raycast(groundCheckPoint.position, Vector2.down, groundCheckY, whatIsGround) ||
+        bool isGrounded = Physics2D.Raycast(groundCheckPoint.position, Vector2.down, groundCheckY, whatIsGround) ||
             Physics2D.Raycast(groundCheckPoint.position + new Vector3(groundCheckX, 0, 0), Vector2.down, groundCheckY, whatIsGround) ||
-            Physics2D.Raycast(groundCheckPoint.position + new Vector3(-groundCheckX, 0, 0), Vector2.down, groundCheckY, whatIsGround))
+            Physics2D.Raycast(groundCheckPoint.position + new Vector3(-groundCheckX, 0, 0), Vector2.down, groundCheckY, whatIsGround);
+
+        if (isGrounded)
         {
-            return true;
+            rb.gravityScale = 0; // Set gravity to 0 when grounded
         }
         else
         {
-            return false;
+            rb.gravityScale = gravity; // Reset to default gravity when not grounded
         }
+
+        return isGrounded;
     }
 
 
 
     void Jump()
     {
-            if (jumpBufferCounter > 0 && coyoteTimeCounter > 0 && !pState.jumping)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, jumpForce);
+        if (jumpBufferCounter > 0 && coyoteTimeCounter > 0 && !pState.jumping)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, jumpForce);
+            pState.jumping = true;
+            PlaySound(jumpSound);
+        }
+        else if (!Grounded() && airJumpCounter < maxAirJumps && Input.GetButtonDown("Jump"))
+        {
+            pState.jumping = true;
+            airJumpCounter++;
+            rb.velocity = new Vector3(rb.velocity.x, jumpForce);
+            PlaySound(doubleJumpSound);
+            Debug.Log("Jump sound play");
 
-                pState.jumping = true;
-            }
-            else if (!Grounded() && airJumpCounter < maxAirJumps && Input.GetButtonDown("Jump"))
-            {
-                pState.jumping = true;
-
-                airJumpCounter++;
-                rb.velocity = new Vector3(rb.velocity.x, jumpForce);
-
-            }
+        }
 
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 3)
         {
@@ -272,6 +293,47 @@ public class PlayerController : MonoBehaviour
         else
         {
             jumpBufferCounter--;
+        }
+    }
+
+
+
+    // Method to calculate the slope direction
+    private Vector2 CalculateSlopeDirection()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(groundCheckPoint.position, Vector2.down, groundAngleCheck, whatIsGround);
+        if (hit)
+        {
+            Vector2 normal = hit.normal;
+            Vector2 slopeDirection = new Vector2(normal.y, -normal.x); // Perpendicular to the normal
+
+            // Calculate the angle in degrees
+            float slopeAngle = Mathf.Atan2(slopeDirection.y, slopeDirection.x) * Mathf.Rad2Deg;
+
+            // Make the angle negative for slopes descending from top right to bottom left
+            if (slopeDirection.x < 0) slopeAngle = -slopeAngle;
+
+            // If the angle is very small, consider it as zero
+            if (Mathf.Abs(slopeAngle) < 0.01f) slopeAngle = 0f;
+
+            // Round the angle to two decimal places
+            slopeAngle = Mathf.Round(slopeAngle * 100f) / 100f;
+
+           /*  Debug.Log("Slope Angle: " + slopeAngle + " degrees"); */ //debug to check angle of slope.
+
+            return slopeDirection;
+        }
+
+        return Vector2.zero; // Return zero if not on a slope
+    }
+
+
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
         }
     }
 }

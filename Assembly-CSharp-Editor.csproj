@@ -59,7 +59,11 @@
     <UnityVersion>2022.3.7f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Analyzer Include="C:\Users\stave\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.3\Analyzers\Microsoft.Unity.Analyzers.dll" />
+=======
+    <Analyzer Include="C:\Users\Viddy\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.3\Analyzers\Microsoft.Unity.Analyzers.dll" />
+>>>>>>> e356de10e05c25419906108387e374f336b9126d
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.7f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.7f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
