@@ -35,6 +35,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject dashEffect;                 //Lets us put in an empty game object with an Animation for the dash Effect on the ground.
     [Space(5)]
 
+    [Header("Sound Settings")]
+    [SerializeField] private AudioClip jumpSound;           // Sound for jumping
+    [SerializeField] private AudioClip doubleJumpSound;     // Sound for double jumping
+    [SerializeField] private AudioClip moveSound;           // Sound for moving
+    [SerializeField] private AudioClip dashSound;           // Sound for dashing
+    private AudioSource audioSource;               // Audio source component
+
     [HideInInspector] public PlayerStateList pState;        // State of the Player
     public static PlayerController Instance;                // Singleton instance
     private Rigidbody2D rb;
@@ -68,17 +75,20 @@ public class PlayerController : MonoBehaviour
     */
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
+
         pState = GetComponent<PlayerStateList>();
 
         rb = GetComponent<Rigidbody2D>();
 
         anim = GetComponent<Animator>();
 
+        audioSource = GetComponent<AudioSource>();
+
         gravity = rb.gravityScale;
 
         pState.alive = true;
 
-        gameManager = FindObjectOfType<GameManager>();
     }
 
 
@@ -157,6 +167,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(walkSpeed * xAxis, rb.velocity.y);
             anim.SetBool("Walking", rb.velocity.x != 0 && Grounded());      //Sets the Walking bool in animator to true, when conditions is met.
+/*             if (rb.velocity.x != 0 && Grounded())
+            {
+                PlaySound(moveSound); // Play move sound when walking
+            } */
         }
         else
         {
@@ -191,6 +205,7 @@ public class PlayerController : MonoBehaviour
         canDash = false;
         pState.dashing = true;
         anim.SetTrigger("Dashing");
+        PlaySound(dashSound);
         rb.gravityScale = 0;
         int _dir = pState.lookingRight ? 1 : -1;
         rb.velocity = new Vector2(_dir * dashSpeed, 0);
@@ -201,7 +216,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
-
+ 
 
 
     /*
@@ -234,15 +249,16 @@ public class PlayerController : MonoBehaviour
         if (jumpBufferCounter > 0 && coyoteTimeCounter > 0 && !pState.jumping)
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpForce);
-
             pState.jumping = true;
+            PlaySound(jumpSound);
         }
         else if (!Grounded() && airJumpCounter < maxAirJumps && Input.GetButtonDown("Jump"))
         {
             pState.jumping = true;
-
             airJumpCounter++;
             rb.velocity = new Vector3(rb.velocity.x, jumpForce);
+            PlaySound(doubleJumpSound);
+            Debug.Log("Jump sound play");
 
         }
 
@@ -303,11 +319,21 @@ public class PlayerController : MonoBehaviour
             // Round the angle to two decimal places
             slopeAngle = Mathf.Round(slopeAngle * 100f) / 100f;
 
-            Debug.Log("Slope Angle: " + slopeAngle + " degrees");
+           /*  Debug.Log("Slope Angle: " + slopeAngle + " degrees"); */ //debug to check angle of slope.
 
             return slopeDirection;
         }
 
         return Vector2.zero; // Return zero if not on a slope
+    }
+
+
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
     }
 }
