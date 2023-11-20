@@ -17,6 +17,7 @@ TagManager:
   - MovePlatform
   - RightWall
   - CheckPoints
+  - Lava
   layers:
   - Default
   - TransparentFX
