@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
         if (pState.alive)
         {
             GetInputs();
-            CalculateSlopeDirection();
+            /* CalculateSlopeDirection(); */
         }
 
         UpdateJumpVariables();
@@ -167,10 +167,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(walkSpeed * xAxis, rb.velocity.y);
             anim.SetBool("Walking", rb.velocity.x != 0 && Grounded());      //Sets the Walking bool in animator to true, when conditions is met.
-/*             if (rb.velocity.x != 0 && Grounded())
-            {
-                PlaySound(moveSound); // Play move sound when walking
-            } */
+            /*             if (rb.velocity.x != 0 && Grounded())
+                        {
+                            PlaySound(moveSound); // Play move sound when walking
+                        } */
         }
         else
         {
@@ -216,7 +216,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
- 
+
 
 
     /*
@@ -258,7 +258,6 @@ public class PlayerController : MonoBehaviour
             airJumpCounter++;
             rb.velocity = new Vector3(rb.velocity.x, jumpForce);
             PlaySound(doubleJumpSound);
-            Debug.Log("Jump sound play");
 
         }
 
@@ -319,7 +318,7 @@ public class PlayerController : MonoBehaviour
             // Round the angle to two decimal places
             slopeAngle = Mathf.Round(slopeAngle * 100f) / 100f;
 
-           /*  Debug.Log("Slope Angle: " + slopeAngle + " degrees"); */ //debug to check angle of slope.
+            /*  Debug.Log("Slope Angle: " + slopeAngle + " degrees"); */ //debug to check angle of slope.
 
             return slopeDirection;
         }
