@@ -47,9 +47,5 @@ public class TimeController : MonoBehaviour
                 endTimerTex.text = "Level Time: " + minutes + ":" + seconds;
             }
         }
-        else
-        {
-            Debug.LogWarning("TextMeshPro component is not assigned. Please assign a TextMeshPro component to the timerText variable.");
-        }
     }
 }

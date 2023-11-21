@@ -6460,7 +6460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4561531623307077778, guid: bb39724750a16d74da405c74a9fc8182, type: 3}
       propertyPath: sceneToLoad
-      value: Level1
+      value: Wox Forest 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4561531623307077778, guid: bb39724750a16d74da405c74a9fc8182, type: 3}
       propertyPath: customSoundtrack

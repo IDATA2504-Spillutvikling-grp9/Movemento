@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -48,12 +49,20 @@ public class GameManager : MonoBehaviour
     /// </summary>
     [SerializeField] public AudioMixer gameAudioSource;
 
+
     private Resolution[] resolutions;
 
     public Dropdown resolutionDropdown;
 
     public Slider musicVolumeSlider;
     public Slider gameVolumeSlider;
+
+    public GameObject endLevelScreen;
+
+    public float timer = 0f;
+    public GameObject timeHolderGameObject;
+    public TMP_Text timerText; // Reference to the TextMeshPro component
+    public TMP_Text endTimerTex; // Reference to the TextMeshPro component
     
 
     void Start()
@@ -67,6 +76,11 @@ public class GameManager : MonoBehaviour
         setUpResolutions();
         SetSliderValueMusic();
         SetSliderValueGame();
+        if (gameObject.tag == "TimeHolder")
+        {
+            DontDestroyOnLoad(timeHolderGameObject);
+        }
+        endLevelScreen.SetActive(false);
     }
 
     private void setUpResolutions()
@@ -92,6 +106,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        LevelTimer();
+        UpdateTimerText();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
@@ -141,13 +157,12 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
-        StartCoroutine(LoadSceneWithDelay(sceneName, 0.5f));
-    }
-
-    IEnumerator LoadSceneWithDelay(string sceneName, float delayTime)
-    {
-        yield return new WaitForSeconds(delayTime);
         SceneManager.LoadScene(sceneName);
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            player.transform.position = Vector3.zero;
+        }
     }
 
     public void GoToMainMenu()
@@ -210,6 +225,39 @@ public class GameManager : MonoBehaviour
         if (gameAudioSource.GetFloat("gameVolume", out currentGameVolume))
         {
             gameVolumeSlider.value = currentGameVolume;
+        }
+    }
+
+    public void EndLevel() {
+        Time.timeScale = 0f;
+        isPaused = true;
+        if (endLevelScreen != null)
+        {
+            endLevelScreen.SetActive(true);
+        }
+    }
+
+    void LevelTimer()
+    {
+        timer += Time.deltaTime;
+    }
+
+    void UpdateTimerText()
+    {
+        if (timerText != null)
+        {
+            string minutes = Mathf.Floor(timer / 60).ToString("00");
+            string seconds = (timer % 60).ToString("00");
+
+            if (gameObject.tag == "TimeHolder")
+            {
+                timerText.text = "Total Time: " + minutes + ":" + seconds;
+            }
+            else
+            {
+                timerText.text = "Level Time: " + minutes + ":" + seconds;
+                endTimerTex.text = "Level Time: " + minutes + ":" + seconds;
+            }
         }
     }
 }
