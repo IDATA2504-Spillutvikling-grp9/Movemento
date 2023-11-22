@@ -232,10 +232,7 @@ public class GameManager : MonoBehaviour
     public void EndLevel() {
         Time.timeScale = 0f;
         isPaused = true;
-        if (endLevelScreen != null)
-        {
-            endLevelScreen.SetActive(true);
-        }
+        endLevelScreen.SetActive(true);
     }
 
     void LevelTimer()

@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
     //Game Manager script
     private GameManager gameManager;
 
+    private bool isPaused;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)   // Check if an instance already exists and if it's not the current one
@@ -89,6 +91,8 @@ public class PlayerController : MonoBehaviour
 
         pState.alive = true;
 
+        this.isPaused = gameManager.getIsPause();
+
     }
 
 
@@ -114,6 +118,8 @@ public class PlayerController : MonoBehaviour
             Jump();
             StartDash();
         }
+
+        this.isPaused = gameManager.getIsPause();
     }
 
 
@@ -134,7 +140,7 @@ public class PlayerController : MonoBehaviour
     */
     void Flip()
     {
-        if (gameManager.getIsPause())
+        if (this.isPaused)
         {
             return;
         }
@@ -159,7 +165,7 @@ public class PlayerController : MonoBehaviour
     */
     private void Move()
     {
-        if (gameManager.getIsPause())
+        if (this.isPaused)
         {
             return;
         }
