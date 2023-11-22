@@ -90,6 +90,7 @@
     <Compile Include="Assets\PlopSaga_v3.0\Scripts\Movement.cs" />
     <Compile Include="Assets\PlopSaga_v3.0\Scripts\RotationalMovement.cs" />
     <Compile Include="Assets\Scripts\Player\Health\PlayerDeath.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Caterpillar.cs" />
     <Compile Include="Assets\Scripts\Enemies\Ghost.cs" />
     <Compile Include="Assets\Scripts\Player\SkyFollow.cs" />
     <Compile Include="Assets\PlopSaga_v3.0\Scripts\DesctroyAfterColliding.cs" />

@@ -67,7 +67,7 @@ public class PlayerAttacks : MonoBehaviour
     void Update()
     {
         if (pc.pState.dashing || pc.pState.healing) return;
-        if(pc.pState.alive)
+        if (pc.pState.alive)
         {
             GetInputs();
             Attack();
@@ -143,18 +143,27 @@ public class PlayerAttacks : MonoBehaviour
         }
         for (int i = 0; i < objectsToHit.Length; i++)
         {
-            if (objectsToHit[i].GetComponent<Enemy>() != null)
+            // Check if the object hit is a Caterpillar
+            Caterpillar caterpillar = objectsToHit[i].GetComponent<Caterpillar>();
+            if (caterpillar != null)
             {
+                // Deal damage to the Caterpillar
+                caterpillar.TakeDamage((int)damage);
+            }
+            else if (objectsToHit[i].GetComponent<Enemy>() != null)
+            {
+                // Existing enemy hit logic
                 objectsToHit[i].GetComponent<Enemy>().EnemyHit
                 (damage, (transform.position - objectsToHit[i].transform.position).normalized, _recoilStrength);
 
-                if(objectsToHit[i].CompareTag("Enemy"))
+                if (objectsToHit[i].CompareTag("Enemy"))
                 {
                     pm.Mana += pm.manaGain;
                 }
             }
         }
     }
+
 
 
 
