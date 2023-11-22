@@ -7,13 +7,15 @@ public class SpawnController : MonoBehaviour
 {
 	private Vector3 respawnPoint;
 	public GameObject fallDetector;
-	public string sceneName;
-	public GameObject endLevelScreen;
+
+    private GameManager gameManager;
+    private GameObject player;
 
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         respawnPoint = transform.position;
-		endLevelScreen.SetActive(false);
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -23,22 +25,13 @@ public class SpawnController : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D collision) {
 		if(collision.tag == "FallDetector") {
-			transform.position = respawnPoint;
+			player.transform.position = respawnPoint;
 		}
 		else if(collision.tag == "CheckPoint") {
 			 respawnPoint = transform.position;
 		}
-		else if(collision.tag == "NextLevelPoint") {
-			PauseGame();
-		}
-	}
-
-    public void PauseGame()
-    {
-        Time.timeScale = 0f;
-        if (endLevelScreen != null)
-        {
-            endLevelScreen.SetActive(true);
+        else if(collision.tag == "NextLevelPoint") {
+            gameManager.EndLevel();
         }
-    }
+	}
 }
