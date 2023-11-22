@@ -11,10 +11,13 @@ public class SpawnController : MonoBehaviour
     private GameManager gameManager;
     private GameObject player;
 
+    private Vector3 firstSpawn;
+
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         respawnPoint = transform.position;
+        firstSpawn = respawnPoint;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -34,4 +37,9 @@ public class SpawnController : MonoBehaviour
             gameManager.EndLevel();
         }
 	}
+
+    public bool dieRespawn() {
+        player.transform.position = firstSpawn;
+        return true;
+    }
 }

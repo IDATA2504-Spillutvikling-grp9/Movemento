@@ -7,12 +7,14 @@ public class PlayerDeath : MonoBehaviour
     private PlayerController pc;
     private PlayerHealth ph;
     
+    private SpawnController sc;
 
 
     void Start()
     {
         pc = GetComponent<PlayerController>();
         ph = GetComponent<PlayerHealth>();
+        sc = GetComponent<SpawnController>();
     }
 
 
@@ -24,8 +26,11 @@ public class PlayerDeath : MonoBehaviour
         Time.timeScale = 1f;
         pc.anim.SetTrigger("Death");
 
-        yield return new WaitForSeconds(0.9f);
-        //Legg til kode som displayer death screen / respawn at last checkpoint?
+        yield return new WaitForSeconds(3f);
+        sc.dieRespawn();
+        ph.health = ph.maxHealth;
+        pc.anim.SetTrigger("Respawn");
+        pc.pState.alive = true;
     }
 }
 
