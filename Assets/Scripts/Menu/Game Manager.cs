@@ -133,11 +133,12 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
-        isPaused = false;
+        //isPaused = false;
         Time.timeScale = 1f;
         if (pauseScreen != null)
         {
             pauseScreen.SetActive(false);
+            isPaused = false;
         }
         HideOptionScreen();
     }
