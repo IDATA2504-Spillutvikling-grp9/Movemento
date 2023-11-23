@@ -19,6 +19,7 @@ TagManager:
   - CheckPoints
   - Lava
   - ground
+  - Spikes
   layers:
   - Default
   - TransparentFX

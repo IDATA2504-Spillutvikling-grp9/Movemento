@@ -13,12 +13,17 @@ public class SpawnController : MonoBehaviour
 
     private Vector3 firstSpawn;
 
+    private PlayerDamageController playerDamageController;
+
+
+
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         respawnPoint = transform.position;
         firstSpawn = respawnPoint;
         player = GameObject.FindGameObjectWithTag("Player");
+        playerDamageController = GetComponent<PlayerDamageController>();
     }
 
     void Update()
@@ -29,17 +34,28 @@ public class SpawnController : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D collision) {
 		if(collision.tag == "FallDetector") {
 			player.transform.position = respawnPoint;
+            playerDamageController.TakeDamage(1f);
 		}
 		else if(collision.tag == "CheckPoint") {
 			 respawnPoint = transform.position;
 		}
+        else if(collision.tag == "Spikes") {
+            playerDamageController.TakeDamage(1f);
+            StartCoroutine(DelayedPlayerRespawn(1f)); 
+            
+        }
         else if(collision.tag == "NextLevelPoint") {
             gameManager.EndLevel();
         }
 	}
 
-    public bool dieRespawn() {
+     IEnumerator DelayedPlayerRespawn(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        player.transform.position = respawnPoint;
+    }
+
+    public void dieRespawn() {
         player.transform.position = firstSpawn;
-        return true;
     }
 }
