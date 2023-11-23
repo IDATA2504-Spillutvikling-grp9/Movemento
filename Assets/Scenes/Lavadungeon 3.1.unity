@@ -25935,7 +25935,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -32575,22 +32575,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1fe5d3d5ecb9a43ab8593d9621cfba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound_click: {fileID: 8300000, guid: e66fa4a223464114b92005f0fe0751f7, type: 3}
   audioSource: {fileID: 1763822726}
   sound_hover: {fileID: 8300000, guid: f0cee066cdd3637459120fbc8a38b953, type: 3}
-  pauseScreen: {fileID: 879851650}
-  sceneName: MainMenu
-  optionMenuScreen: {fileID: 1118589295}
+  sound_click: {fileID: 8300000, guid: e66fa4a223464114b92005f0fe0751f7, type: 3}
   musicAudioSource: {fileID: 24100000, guid: 5b7469f624ff73c469c1b4b1d8b3d954, type: 2}
   gameAudioSource: {fileID: 24100000, guid: 5b7469f624ff73c469c1b4b1d8b3d954, type: 2}
+  pauseScreen: {fileID: 879851650}
+  optionMenuScreen: {fileID: 1118589295}
+  endLevelScreen: {fileID: 427238111}
+  sceneName: MainMenu
   resolutionDropdown: {fileID: 13032502}
   musicVolumeSlider: {fileID: 1422942745}
   gameVolumeSlider: {fileID: 266832217}
-  endLevelScreen: {fileID: 427238111}
-  timer: 0
-  timeHolderGameObject: {fileID: 0}
   timerText: {fileID: 455833515}
   endTimerTex: {fileID: 2068292112}
+  timer: 0
 --- !u!4 &1763822728
 Transform:
   m_ObjectHideFlags: 0

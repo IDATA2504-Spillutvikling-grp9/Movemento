@@ -105,4 +105,8 @@ public class MainMenuManager : MonoBehaviour
             UnityEditor.EditorApplication.isPlaying = false;
         #endif
     }
+
+    public void loadLevel(string sceneName) {
+        SceneManager.LoadScene(sceneName);
+    }
 }
