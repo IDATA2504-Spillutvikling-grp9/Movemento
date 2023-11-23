@@ -49,7 +49,9 @@ public class SpawnController : MonoBehaviour
         else if(collision.tag == "Spikes") {
             playerDamageController.TakeDamage(1f);
             StartCoroutine(DelayedPlayerRespawn(1f)); 
-            
+        }
+        else if(collision.tag == "ObjectDamage") {
+            playerDamageController.TakeDamage(1f);
         }
         else if(collision.tag == "NextLevelPoint") {
             gameManager.EndLevel();
