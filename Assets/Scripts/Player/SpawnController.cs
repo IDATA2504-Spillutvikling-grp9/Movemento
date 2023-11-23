@@ -11,6 +11,7 @@ public class SpawnController : MonoBehaviour
     private GameObject player; // Reference to the player GameObject.
     private Vector3 firstSpawn; // The initial spawn point when the level starts.
     private PlayerDamageController playerDamageController; // Reference to the PlayerDamageController script.
+    private PlayerHealth playerHealth;
 
 
     /// <summary>
@@ -23,6 +24,7 @@ public class SpawnController : MonoBehaviour
         firstSpawn = respawnPoint;
         player = GameObject.FindGameObjectWithTag("Player");
         playerDamageController = GetComponent<PlayerDamageController>();
+        playerHealth = GetComponent<PlayerHealth>();
     }
 
     /// <summary>
@@ -48,7 +50,12 @@ public class SpawnController : MonoBehaviour
 		}
         else if(collision.tag == "Spikes") {
             playerDamageController.TakeDamage(1f);
-            StartCoroutine(DelayedPlayerRespawn(1f)); 
+            if(playerHealth.getHealth() == 0) {
+                StartCoroutine(DelayedPlayerDeathRespawn(1f));
+            }
+            else {
+                StartCoroutine(DelayedPlayerRespawn(1f)); 
+            }
         }
         else if(collision.tag == "ObjectDamage") {
             playerDamageController.TakeDamage(1f);
@@ -67,6 +74,12 @@ public class SpawnController : MonoBehaviour
     {
         yield return new WaitForSeconds(delayTime);
         player.transform.position = respawnPoint;
+    }
+
+         IEnumerator DelayedPlayerDeathRespawn(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        player.transform.position = firstSpawn;
     }
 
     /// <summary>
