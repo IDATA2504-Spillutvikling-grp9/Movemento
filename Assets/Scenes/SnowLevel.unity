@@ -1829,6 +1829,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 353214449048053795, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.499939
+      objectReference: {fileID: 0}
     - target: {fileID: 469444701945377747, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -18581,11 +18585,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2993491477285121632, guid: ea60b893cbd0a4954b327485e65f4345, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.48999953
+      value: 4.26
       objectReference: {fileID: 0}
     - target: {fileID: 2993491477285121632, guid: ea60b893cbd0a4954b327485e65f4345, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.99
+      value: -4.43
       objectReference: {fileID: 0}
     - target: {fileID: 2993491477285121632, guid: ea60b893cbd0a4954b327485e65f4345, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19747,13 +19751,17 @@ PrefabInstance:
       propertyPath: walkSpeed
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 7304046808540524255, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 129624721}
     - target: {fileID: 8977044914987073716, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.49
+      value: 4.26
       objectReference: {fileID: 0}
     - target: {fileID: 8977044914987073716, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.99
+      value: -4.43
       objectReference: {fileID: 0}
     - target: {fileID: 8977044914987073716, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27558,8 +27566,8 @@ Transform:
   m_GameObject: {fileID: 1282889161}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 70.18, y: -46.33, z: 0}
-  m_LocalScale: {x: 0.5375, y: 2.0375, z: 1}
+  m_LocalPosition: {x: 70.18, y: -45.4318, z: 0}
+  m_LocalScale: {x: 0.5375, y: 1.4346037, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 914194606}
@@ -27647,8 +27655,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1551541397
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 1157202514226373704, guid: 5dee8b7e04498c847b17f8630324c012, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -39330,11 +39338,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3192674436989532390, guid: 4fb536f31de5044c593525b89f6cd8b9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.48999953
+      value: 4.26
       objectReference: {fileID: 0}
     - target: {fileID: 3192674436989532390, guid: 4fb536f31de5044c593525b89f6cd8b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.99
+      value: -4.43
       objectReference: {fileID: 0}
     - target: {fileID: 3192674436989532390, guid: 4fb536f31de5044c593525b89f6cd8b9, type: 3}
       propertyPath: m_LocalPosition.z
