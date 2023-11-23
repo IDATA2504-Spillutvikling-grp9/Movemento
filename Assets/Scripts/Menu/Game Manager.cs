@@ -216,11 +216,8 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         SceneManager.LoadScene(sceneName);
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            player.transform.position = Vector3.zero;
-        }
+        isPaused = false;
+        Time.timeScale = 1f;
     }
 
     /*
@@ -325,7 +322,7 @@ public class GameManager : MonoBehaviour
         Shows the end level screen and pauses the game.
     */
     public void EndLevel() {
-        Time.timeScale = 0f;
+        Time.timeScale = 1f;
         isPaused = true;
         endLevelScreen.SetActive(true);
     }

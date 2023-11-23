@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
         {
             Instance = this;                        // Set this instance as the Singleton instance
         }
-        DontDestroyOnLoad(gameObject);
+       // DontDestroyOnLoad(gameObject);
     }
 
 
