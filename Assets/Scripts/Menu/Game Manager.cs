@@ -9,36 +9,23 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    /// <summary>
-    /// The audio clip to be played on click.
-    /// </summary>
-    [SerializeField] private AudioClip sound_click;
 
-    [Space(10)] 
+    [Header("Sound")]
     /// <summary>
     /// The audio source component for playing sounds.
     /// </summary>
     [SerializeField] private AudioSource audioSource;
-
-    public AudioClip sound_hover;
-
+        
     /// <summary>
-    /// The pause screen GameObject.
+    /// The audio clip to be played on hover.
     /// </summary>
-    [SerializeField] private GameObject pauseScreen;
-
+    [SerializeField] public AudioClip sound_hover;
+    
     /// <summary>
-    /// The name of the scene to be loaded.
+    /// The audio clip to be played on click.
     /// </summary>
-    public string sceneName;
-
-    private bool isPaused = false;
-
-    /// <summary>
-    /// The option menu screen GameObject.
-    /// </summary>
-    [SerializeField] private GameObject optionMenuScreen;
-
+    [SerializeField] private AudioClip sound_click;
+    
     /// <summary>
     /// The audio source component for playing music.
     /// </summary>
@@ -49,22 +36,73 @@ public class GameManager : MonoBehaviour
     /// </summary>
     [SerializeField] public AudioMixer gameAudioSource;
 
+    [Space(5)] 
+    
+    [Header("Screens")]
 
-    private Resolution[] resolutions;
+    /// <summary>
+    /// The pause screen GameObject.
+    /// </summary>
+    [SerializeField] private GameObject pauseScreen;
 
+    /// <summary>
+    /// The option menu screen GameObject.
+    /// </summary>
+    [SerializeField] private GameObject optionMenuScreen;
+
+    /// <summary>
+    /// The ende of level screen
+    /// </summary>
+    [SerializeField] public GameObject endLevelScreen;
+
+    /// <summary>
+    /// The name of the scene to be loaded.
+    /// </summary>
+    public string sceneName;
+
+    [Space(5)]
+
+    [Header("UI settings")]
+
+    /// <summary>
+    /// The resolution drop down menu
+    /// </summary>
     public Dropdown resolutionDropdown;
 
+    /// <summary>
+    /// The slider for controlling music volume
+    /// </summary>
     public Slider musicVolumeSlider;
+
+    /// <summary>
+    /// The slider for controlling game volume
+    /// </summary>
     public Slider gameVolumeSlider;
 
-    public GameObject endLevelScreen;
+    /// <summary>
+    /// Reference to the TextMeshPro component that show the timer in the level
+    /// </summary>
+    public TMP_Text timerText;
 
+    /// <summary>
+    ///  Reference to the TextMeshPro component that shows the end time for the level
+    /// </summary>
+    public TMP_Text endTimerTex;
+
+    /// <summary>
+    ///  The timer
+    /// </summary>
     public float timer = 0f;
-    public GameObject timeHolderGameObject;
-    public TMP_Text timerText; // Reference to the TextMeshPro component
-    public TMP_Text endTimerTex; // Reference to the TextMeshPro component
+
+    private Resolution[] resolutions; //List of resolutions.
+
+    private bool isPaused = false; // Bool that holds the value if the game is paused or not.
     
 
+    /*
+        Start is called before the first frame update.
+        Sets up the requierd UI elements.
+    */
     void Start()
     {
         if (pauseScreen != null)
@@ -76,13 +114,14 @@ public class GameManager : MonoBehaviour
         setUpResolutions();
         SetSliderValueMusic();
         SetSliderValueGame();
-        if (gameObject.tag == "TimeHolder")
-        {
-            DontDestroyOnLoad(timeHolderGameObject);
-        }
         endLevelScreen.SetActive(false);
     }
 
+    /*
+        Set up the resolution drop down.
+        Populates the dropw down with the resolution that the user pc have.
+        Also set the resolution tho what he user have on the pc.
+    */
     private void setUpResolutions()
     {
         resolutions = Screen.resolutions;
@@ -104,6 +143,9 @@ public class GameManager : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
     }
 
+    /*
+        Update is called once per frame
+    */
     void Update()
     {
         LevelTimer();
@@ -121,6 +163,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /*
+        Pauses the game
+    */
     public void PauseGame()
     {
         isPaused = true;
@@ -131,6 +176,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /*
+        Resume the game
+    */
     public void ResumeGame()
     {
         //isPaused = false;
@@ -143,19 +191,25 @@ public class GameManager : MonoBehaviour
         HideOptionScreen();
     }
 
-    /// <summary>
-    /// Plays the click sound.
-    /// </summary>
+    /*
+        Play the click sound
+    */
     public void UIClick()
     {
         audioSource.PlayOneShot(sound_click);
     }
 
+    /*
+        Play the hover sound
+    */
     public void UIHover()
     {
         audioSource.PlayOneShot(sound_hover);
     }
 
+    /*
+        Metod goes to next scene that are given in sceneName
+    */
     public void NextLevel()
     {
         SceneManager.LoadScene(sceneName);
@@ -166,53 +220,84 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /*
+        Returns to the main menu
+    */
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
 
+    /*
+        Hides the option screen
+    */
     public void HideOptionScreen()
     {
         optionMenuScreen.SetActive(false);
     }
 
+    /*
+        Shows the option screen
+    */
     public void OpenOptionScreen()
     {
         optionMenuScreen.SetActive(true);
     }
 
+    /*
+        Back button that goes back from option screen to pause screen
+    */
     public void BackButton()
     {
         optionMenuScreen.SetActive(false);
 
     }
 
+    /*
+       Set the audio mixer music to the value of the slider music
+    */
     public void SetVolumeMusic(float volume)
     {
         musicAudioSource.SetFloat("musicVolume", volume);
     }
 
+    /*
+        Set the audio mixer game to the value of the slider game
+    */
     public void SetVolumeGame(float volume)
     {
         gameAudioSource.SetFloat("gameVolume", volume);
     }
 
+    /*
+        turn on and of full screen
+    */
     public void SetFullScreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
     }
 
+    /*
+        When this method is called the resolution on the game changes
+    */
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
+    /*
+        Return the value if the game is paused or not.
+        True if game is paused, false if it is not.
+    */
     public bool getIsPause() {
         return this.isPaused;
     }
 
+    /*
+        Sets up the music slider to what the the audio mixer music value has.
+    */
     void SetSliderValueMusic() {
         float currentMusicVolume;
         if (musicAudioSource.GetFloat("musicVolume", out currentMusicVolume))
@@ -221,6 +306,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /*
+        Sets up the game slider to what the the audio mixer game value has.
+    */
      void SetSliderValueGame() {
         float currentGameVolume;
         if (gameAudioSource.GetFloat("gameVolume", out currentGameVolume))
@@ -229,33 +317,35 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /*
+        Gets called in the end of the level.
+        Shows the end level screen and pauses the game.
+    */
     public void EndLevel() {
         Time.timeScale = 0f;
         isPaused = true;
         endLevelScreen.SetActive(true);
     }
 
+    /*
+       Calculate the timer on the level
+    */
     void LevelTimer()
     {
         timer += Time.deltaTime;
     }
 
+    /*
+        Update the UI elements that holds the timer
+    */
     void UpdateTimerText()
     {
         if (timerText != null)
         {
             string minutes = Mathf.Floor(timer / 60).ToString("00");
             string seconds = (timer % 60).ToString("00");
-
-            if (gameObject.tag == "TimeHolder")
-            {
-                timerText.text = "Total Time: " + minutes + ":" + seconds;
-            }
-            else
-            {
-                timerText.text = "Level Time: " + minutes + ":" + seconds;
-                endTimerTex.text = "Level Time: " + minutes + ":" + seconds;
-            }
+            timerText.text = "Level Time: " + minutes + ":" + seconds;
+            endTimerTex.text = "Level Time: " + minutes + ":" + seconds;
         }
     }
 }
