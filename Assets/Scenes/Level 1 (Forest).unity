@@ -43133,22 +43133,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1fe5d3d5ecb9a43ab8593d9621cfba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound_click: {fileID: 8300000, guid: e66fa4a223464114b92005f0fe0751f7, type: 3}
   audioSource: {fileID: 2095613530}
   sound_hover: {fileID: 8300000, guid: f0cee066cdd3637459120fbc8a38b953, type: 3}
-  pauseScreen: {fileID: 61953447}
-  sceneName: SnowLevel
-  optionMenuScreen: {fileID: 61953443}
+  sound_click: {fileID: 8300000, guid: e66fa4a223464114b92005f0fe0751f7, type: 3}
   musicAudioSource: {fileID: 24100000, guid: 5b7469f624ff73c469c1b4b1d8b3d954, type: 2}
   gameAudioSource: {fileID: 24100000, guid: 5b7469f624ff73c469c1b4b1d8b3d954, type: 2}
+  pauseScreen: {fileID: 61953447}
+  optionMenuScreen: {fileID: 61953443}
+  endLevelScreen: {fileID: 1118755451}
+  sceneName: SnowLevel
   resolutionDropdown: {fileID: 61953446}
   musicVolumeSlider: {fileID: 61953445}
   gameVolumeSlider: {fileID: 61953444}
-  endLevelScreen: {fileID: 1118755451}
-  timer: 0
-  timeHolderGameObject: {fileID: 0}
   timerText: {fileID: 1031508411}
   endTimerTex: {fileID: 290966713}
+  timer: 0
 --- !u!82 &2095613530
 AudioSource:
   m_ObjectHideFlags: 0
