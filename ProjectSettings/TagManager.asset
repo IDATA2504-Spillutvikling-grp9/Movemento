@@ -18,6 +18,7 @@ TagManager:
   - RightWall
   - CheckPoints
   - Lava
+  - ground
   layers:
   - Default
   - TransparentFX
@@ -63,4 +64,10 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 2493333051
+    locked: 0
+  - name: Enemy
+    uniqueID: 2523691783
+    locked: 0
+  - name: Player
+    uniqueID: 819542729
     locked: 0
