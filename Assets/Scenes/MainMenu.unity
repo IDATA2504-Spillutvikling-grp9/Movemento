@@ -2495,7 +2495,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc17f610da55c24cbbdd0da66fa95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBeforeLoading: 3
 --- !u!1 &853698640
 GameObject:
   m_ObjectHideFlags: 0
@@ -3336,7 +3335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc17f610da55c24cbbdd0da66fa95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBeforeLoading: 3
 --- !u!1 &1086021193
 GameObject:
   m_ObjectHideFlags: 0
@@ -3967,7 +3965,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc17f610da55c24cbbdd0da66fa95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBeforeLoading: 3
 --- !u!1001 &1188493716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4258,7 +4255,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc17f610da55c24cbbdd0da66fa95b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBeforeLoading: 3
 --- !u!1 &1193463699
 GameObject:
   m_ObjectHideFlags: 0
@@ -7349,6 +7345,18 @@ PrefabInstance:
     - target: {fileID: 7800355224183610935, guid: bb39724750a16d74da405c74a9fc8182, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -285
+      objectReference: {fileID: 0}
+    - target: {fileID: 7800355225904563038, guid: bb39724750a16d74da405c74a9fc8182, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1569815768}
+    - target: {fileID: 7800355225904563038, guid: bb39724750a16d74da405c74a9fc8182, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7800355225904563038, guid: bb39724750a16d74da405c74a9fc8182, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenuManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7800355225904563039, guid: bb39724750a16d74da405c74a9fc8182, type: 3}
       propertyPath: m_AnchoredPosition.y

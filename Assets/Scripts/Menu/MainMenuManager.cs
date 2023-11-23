@@ -92,4 +92,17 @@ public class MainMenuManager : MonoBehaviour
     {
         audioSource.PlayOneShot(sound_hover);
     }
+
+    public void QuitGame()
+    {
+        // This will only work in standalone builds (Windows, Mac, Linux)
+        #if UNITY_STANDALONE
+            Application.Quit();
+        #endif
+
+        // This will work in the editor play mode
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+    }
 }
