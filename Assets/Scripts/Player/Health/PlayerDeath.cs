@@ -6,7 +6,7 @@ public class PlayerDeath : MonoBehaviour
 {
     private PlayerController pc;
     private PlayerHealth ph;
-    
+    private Rigidbody2D rb;
     private SpawnController sc;
 
 
@@ -15,6 +15,7 @@ public class PlayerDeath : MonoBehaviour
         pc = GetComponent<PlayerController>();
         ph = GetComponent<PlayerHealth>();
         sc = GetComponent<SpawnController>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
 
@@ -22,12 +23,14 @@ public class PlayerDeath : MonoBehaviour
     public IEnumerator Death()
     {
         pc.pState.alive = false;
-        //Ditta gjør du vell i klassen din?
         Time.timeScale = 1f;
+        rb.velocity = Vector3.zero;
+        rb.isKinematic = true;
         pc.anim.SetTrigger("Death");
 
         yield return new WaitForSeconds(3f);
         sc.dieRespawn();
+        rb.isKinematic = false;
         ph.health = ph.maxHealth;
         pc.anim.SetTrigger("Respawn");
         pc.pState.alive = true;

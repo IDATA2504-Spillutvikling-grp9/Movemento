@@ -67,16 +67,13 @@
     <Compile Include="Assets\Scripts\Player\Ability\Pickup\HealAbility_Pickup.cs" />
     <Compile Include="Assets\_GabrielBissonnette\Sad - Main Menu Pack\_essentials\Demo Resources\_returnToMainMenu.cs" />
     <Compile Include="Assets\Scripts\PlatformController.cs" />
-    <Compile Include="Assets\Scripts\Player\TimeController.cs" />
     <Compile Include="Assets\Scripts\Player\Attacking\PlayerAttacks.cs" />
     <Compile Include="Assets\Scripts\Player\Mana\PlayerMana.cs" />
     <Compile Include="Assets\Scripts\Menu\MainMenuManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\Menu\ButtonScript.cs" />
     <Compile Include="Assets\Scripts\Player\Health\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Player\Ability\HealAbility.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\Menu\QuitGame.cs" />
     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
     <Compile Include="Assets\Scripts\Player\Health\PlayerDeath.cs" />
     <Compile Include="Assets\Scripts\Enemies\Caterpillar.cs" />
@@ -87,7 +84,6 @@
     <Compile Include="Assets\Scripts\Colliders\PolygonColliderOptimizer.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStateList.cs" />
     <Compile Include="Assets\Scripts\Player\Damage\PlayerDamageController.cs" />
-    <Compile Include="Assets\Scripts\Menu\LevelSelector.cs" />
     <Compile Include="Assets\_Particles &amp; Images\Heals &amp; Attacks\Example\Example Scene\HAAOE_Example.cs" />
     <Compile Include="Assets\_GabrielBissonnette\Sad - Main Menu Pack\Scripts\MainMenuManager.cs" />
     <Compile Include="Assets\Scripts\Player\SpawnController.cs" />
