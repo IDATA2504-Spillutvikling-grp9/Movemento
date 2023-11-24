@@ -1647,6 +1647,14 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetVolumeMusic
       objectReference: {fileID: 0}
+    - target: {fileID: 2068827281512865701, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2095613529}
+    - target: {fileID: 2068827281512865701, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 2221841189867510179, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1708,6 +1716,22 @@ PrefabInstance:
       value: UIHover
       objectReference: {fileID: 0}
     - target: {fileID: 3350932213304761828, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UIClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3372096431802907811, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2095613529}
+    - target: {fileID: 3372096431802907811, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2095613529}
+    - target: {fileID: 3372096431802907811, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UIHover
+      objectReference: {fileID: 0}
+    - target: {fileID: 3372096431802907811, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UIClick
       objectReference: {fileID: 0}
@@ -1792,15 +1816,13 @@ PrefabInstance:
       value: BackButton
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 5729327704659233304, guid: 50bafea95b20502428b2a71084925b17, type: 3}
-    - {fileID: 3854262448074486925, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+    - {fileID: 0}
     - {fileID: 236289056020723538, guid: 50bafea95b20502428b2a71084925b17, type: 3}
-    m_RemovedGameObjects: []
+    - {fileID: 5729327704659233304, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 2693832311031512120, guid: 50bafea95b20502428b2a71084925b17, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 819526503302201515, guid: 50bafea95b20502428b2a71084925b17, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 717837474}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50bafea95b20502428b2a71084925b17, type: 3}
 --- !u!1 &61953443 stripped
 GameObject:
@@ -6555,17 +6577,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &290966713 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 853038165093490637, guid: 50bafea95b20502428b2a71084925b17, type: 3}
-  m_PrefabInstance: {fileID: 61953442}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &291981029
 GameObject:
   m_ObjectHideFlags: 0
@@ -14079,56 +14090,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1874881502}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &717837467 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 819526503302201515, guid: 50bafea95b20502428b2a71084925b17, type: 3}
-  m_PrefabInstance: {fileID: 61953442}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &717837474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 717837467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2095613529}
-          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-          m_MethodName: UIHover
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2095613529}
-          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-          m_MethodName: UIClick
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &727132746
 GameObject:
   m_ObjectHideFlags: 0
@@ -19295,6 +19256,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1008029481 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9147159438131875166, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+  m_PrefabInstance: {fileID: 61953442}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1008029482 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 248518035615592938, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+  m_PrefabInstance: {fileID: 61953442}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1008029483 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 982702852974676151, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+  m_PrefabInstance: {fileID: 61953442}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1012017762
 GameObject:
   m_ObjectHideFlags: 0
@@ -22261,11 +22249,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.43, y: 1.43}
   m_EdgeRadius: 0
---- !u!1 &1118755451 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2693832311031512120, guid: 50bafea95b20502428b2a71084925b17, type: 3}
-  m_PrefabInstance: {fileID: 61953442}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1121294093
 GameObject:
   m_ObjectHideFlags: 0
@@ -42840,6 +42823,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6356674792238723590, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 5b7469f624ff73c469c1b4b1d8b3d954, type: 2}
     - target: {fileID: 7304046808540524255, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
       propertyPath: dashSpeed
       value: 30
@@ -43575,13 +43562,14 @@ MonoBehaviour:
   gameAudioSource: {fileID: 24100000, guid: 5b7469f624ff73c469c1b4b1d8b3d954, type: 2}
   pauseScreen: {fileID: 61953447}
   optionMenuScreen: {fileID: 61953443}
-  endLevelScreen: {fileID: 1118755451}
+  endLevelScreen: {fileID: 1008029483}
   sceneName: SnowLevel
   resolutionDropdown: {fileID: 61953446}
   musicVolumeSlider: {fileID: 61953445}
   gameVolumeSlider: {fileID: 61953444}
   timerText: {fileID: 1031508411}
-  endTimerTex: {fileID: 290966713}
+  endTimerTex: {fileID: 1008029482}
+  nextLevelText: {fileID: 1008029481}
   timer: 0
 --- !u!82 &2095613530
 AudioSource:
@@ -44334,6 +44322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  maxHealth: 0
   recoilLength: 1
   recoilFactor: 1
   isRecoiling: 1

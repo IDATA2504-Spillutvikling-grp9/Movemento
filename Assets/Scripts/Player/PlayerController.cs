@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip doubleJumpSound;     // Sound for double jumping
     [SerializeField] private AudioClip moveSound;           // Sound for moving
     [SerializeField] private AudioClip dashSound;           // Sound for dashing
-    public AudioSource audioSource;               // Audio source component
+    [SerializeField] private AudioSource audioSource;               // Audio source component
 
     [HideInInspector] public PlayerStateList pState;        // State of the Player
     public static PlayerController Instance;                // Singleton instance

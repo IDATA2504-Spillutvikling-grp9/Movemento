@@ -42,8 +42,14 @@ public class SpawnController : MonoBehaviour
     /// <param name="collision">The Collider2D that enters the trigger zone.</param>
 	void OnTriggerEnter2D(Collider2D collision) {
 		if(collision.tag == "FallDetector") {
-			player.transform.position = respawnPoint;
             playerDamageController.TakeDamage(1f);
+            if(playerHealth.getHealth() == 0) {
+                DelayedPlayerDeathRespawn(1f);
+            }
+            else {
+                player.transform.position = respawnPoint;
+            }
+            
 		}
 		else if(collision.tag == "CheckPoint") {
 			 respawnPoint = transform.position;
@@ -76,7 +82,7 @@ public class SpawnController : MonoBehaviour
         player.transform.position = respawnPoint;
     }
 
-         IEnumerator DelayedPlayerDeathRespawn(float delayTime)
+    IEnumerator DelayedPlayerDeathRespawn(float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
         player.transform.position = firstSpawn;

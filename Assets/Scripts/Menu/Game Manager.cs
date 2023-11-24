@@ -91,6 +91,11 @@ public class GameManager : MonoBehaviour
     public TMP_Text endTimerTex;
 
     /// <summary>
+    ///  Reference to the TextMeshPro component that shows the next level name
+    /// </summary>
+    public TMP_Text nextLevelText;
+
+    /// <summary>
     ///  The timer
     /// </summary>
     public float timer = 0f;
@@ -322,9 +327,10 @@ public class GameManager : MonoBehaviour
         Shows the end level screen and pauses the game.
     */
     public void EndLevel() {
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
         isPaused = true;
         endLevelScreen.SetActive(true);
+        UpdateNexLevelText();
     }
 
     /*
@@ -347,6 +353,10 @@ public class GameManager : MonoBehaviour
             timerText.text = "Level Time: " + minutes + ":" + seconds;
             endTimerTex.text = "Level Time: " + minutes + ":" + seconds;
         }
+    }
+
+    void UpdateNexLevelText() {
+        nextLevelText.text = "Next level is: " + sceneName;
     }
 
     /*

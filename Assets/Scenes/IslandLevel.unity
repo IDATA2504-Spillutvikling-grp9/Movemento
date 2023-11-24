@@ -231,11 +231,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &7844181 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2693832311031512120, guid: 50bafea95b20502428b2a71084925b17, type: 3}
-  m_PrefabInstance: {fileID: 1384060513}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &18597420
 GameObject:
   m_ObjectHideFlags: 0
@@ -36834,6 +36829,14 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetVolumeMusic
       objectReference: {fileID: 0}
+    - target: {fileID: 2068827281512865701, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1625809793}
+    - target: {fileID: 2068827281512865701, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 2221841189867510179, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -36883,6 +36886,22 @@ PrefabInstance:
       value: UIHover
       objectReference: {fileID: 0}
     - target: {fileID: 3350932213304761828, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UIClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3372096431802907811, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1625809793}
+    - target: {fileID: 3372096431802907811, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1625809793}
+    - target: {fileID: 3372096431802907811, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UIHover
+      objectReference: {fileID: 0}
+    - target: {fileID: 3372096431802907811, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UIClick
       objectReference: {fileID: 0}
@@ -36967,16 +36986,41 @@ PrefabInstance:
       value: BackButton
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 5729327704659233304, guid: 50bafea95b20502428b2a71084925b17, type: 3}
-    - {fileID: 3854262448074486925, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+    - {fileID: 0}
     - {fileID: 236289056020723538, guid: 50bafea95b20502428b2a71084925b17, type: 3}
-    m_RemovedGameObjects: []
+    - {fileID: 5729327704659233304, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 2693832311031512120, guid: 50bafea95b20502428b2a71084925b17, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 819526503302201515, guid: 50bafea95b20502428b2a71084925b17, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1707697793}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+--- !u!114 &1384060514 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9147159438131875166, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+  m_PrefabInstance: {fileID: 1384060513}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1384060515 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 248518035615592938, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+  m_PrefabInstance: {fileID: 1384060513}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1384060516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 982702852974676151, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+  m_PrefabInstance: {fileID: 1384060513}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1395302563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50095,13 +50139,14 @@ MonoBehaviour:
   gameAudioSource: {fileID: 24100000, guid: 5b7469f624ff73c469c1b4b1d8b3d954, type: 2}
   pauseScreen: {fileID: 1799344319}
   optionMenuScreen: {fileID: 1173073123}
-  endLevelScreen: {fileID: 7844181}
+  endLevelScreen: {fileID: 1384060516}
   sceneName: Level 4 (Lava)
   resolutionDropdown: {fileID: 1826175284}
   musicVolumeSlider: {fileID: 1474404297}
   gameVolumeSlider: {fileID: 1017793426}
   timerText: {fileID: 1240388814}
-  endTimerTex: {fileID: 2124498977}
+  endTimerTex: {fileID: 1384060515}
+  nextLevelText: {fileID: 1384060514}
   timer: 0
 --- !u!4 &1625809794
 Transform:
@@ -51081,56 +51126,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3f21850d02f8374d8b4695eff258001, type: 3}
---- !u!1 &1707697791 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 819526503302201515, guid: 50bafea95b20502428b2a71084925b17, type: 3}
-  m_PrefabInstance: {fileID: 1384060513}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1707697793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707697791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1625809793}
-          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-          m_MethodName: UIHover
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1625809793}
-          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-          m_MethodName: UIClick
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1727984283
 GameObject:
   m_ObjectHideFlags: 0
@@ -61770,17 +61765,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &2124498977 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 853038165093490637, guid: 50bafea95b20502428b2a71084925b17, type: 3}
-  m_PrefabInstance: {fileID: 1384060513}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2125037755
 GameObject:
   m_ObjectHideFlags: 0
@@ -62489,6 +62473,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6356674792238723590, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 5b7469f624ff73c469c1b4b1d8b3d954, type: 2}
     - target: {fileID: 7304046808540524255, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
       propertyPath: dashSound
       value: 
