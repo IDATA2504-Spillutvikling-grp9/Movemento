@@ -75,7 +75,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void SetVolumeMusic(float volume)
     {
-        musicAudioSource.SetFloat("mainMenuMusic", volume);
+        musicAudioSource.SetFloat("musicVolume", volume);
     }
 
     public void SetVolumeGame(float volume)

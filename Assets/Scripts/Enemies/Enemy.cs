@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] protected float health;
+    [SerializeField] protected float maxHealth;
     [SerializeField] protected float recoilLength;
     [SerializeField] protected float recoilFactor;
     [SerializeField] protected bool isRecoiling = false;
     [SerializeField] protected float speed;
     [SerializeField] protected float damage;
+    private HealthBar healthBar;
 
     protected float recoilTimer;
     protected SpriteRenderer sr;
@@ -39,6 +42,8 @@ public class Enemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        maxHealth = health;
+        healthBar = GetComponentInChildren<HealthBar>();
     }
 
 
@@ -71,6 +76,7 @@ public class Enemy : MonoBehaviour
     public virtual void EnemyHit(float _damageDone, Vector2 _hitDirection, float _hitForce)
     {
         health -= _damageDone;
+        healthBar.UpdateHealthBar(health, maxHealth);
         if (!isRecoiling)
         {
             rb.AddForce(-_hitForce * recoilFactor * _hitDirection);
