@@ -50096,7 +50096,7 @@ MonoBehaviour:
   pauseScreen: {fileID: 1799344319}
   optionMenuScreen: {fileID: 1173073123}
   endLevelScreen: {fileID: 7844181}
-  sceneName: Lavadungeon 3.1
+  sceneName: Level 4 (Lava)
   resolutionDropdown: {fileID: 1826175284}
   musicVolumeSlider: {fileID: 1474404297}
   gameVolumeSlider: {fileID: 1017793426}
