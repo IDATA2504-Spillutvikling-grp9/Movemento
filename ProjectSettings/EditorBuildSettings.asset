@@ -30,6 +30,6 @@ EditorBuildSettings:
     path: Assets/Scenes/trash.unity
     guid: 7dea021ce556c444a948624cc6f08e43
   - enabled: 1
-    path: Assets/Scenes/Lavadungeon 3.1.unity
+    path: Assets/Scenes/Level 4 (Lava).unity
     guid: 6d67b94c22a7e5946acd70e0c6a4e225
   m_configObjects: {}
