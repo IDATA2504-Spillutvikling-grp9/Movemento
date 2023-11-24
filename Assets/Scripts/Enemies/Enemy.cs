@@ -12,12 +12,21 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float damage;
 
     protected float recoilTimer;
+    protected SpriteRenderer sr;
     protected Rigidbody2D rb;
-    
+
 
     protected enum EnemyStates
     {
-        //SmallFrog
+        //small Frog
+        SmallFrog_Idle,
+        SmallFrog_Flip,
+
+        //Bee Hive
+        BeeHive_Idle,
+        BeeHive_Chase,
+        BeeHive_Stunned,
+        BeeHive_Death,
     }
 
 
@@ -29,12 +38,16 @@ public class Enemy : MonoBehaviour
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
 
 
     protected virtual void Update()
     {
+        UpdateEnemyStates();
+
+
         if (health <= 0)
         {
             Destroy(gameObject);
@@ -71,13 +84,31 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !PlayerController.Instance.pState.invincible)
         {
             Attack();
-            if(PlayerController.Instance.pState.alive)
+            if (PlayerController.Instance.pState.alive)
             {
                 PlayerDamageController.Instance.HitStopTime(0, 5, 0.5f);
             }
             //Debug.Log("Attack done");
             //add animation for bleed / freezeframe animation
         }
+    }
+
+
+    protected virtual void Death(float _destroyTime)
+    {
+        Destroy(gameObject, _destroyTime);
+    }
+
+
+    protected virtual void UpdateEnemyStates() 
+    {
+        
+    }
+
+    
+    protected virtual void ChangeState(EnemyStates _newState)
+    {
+        currentEnemyState = _newState;
     }
     protected virtual void Attack()
     {

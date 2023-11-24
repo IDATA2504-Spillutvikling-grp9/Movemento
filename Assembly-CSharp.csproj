@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Player\Mana\PlayerMana.cs" />
     <Compile Include="Assets\Scripts\Menu\MainMenuManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Hive\BeeHive.cs" />
     <Compile Include="Assets\Scripts\Player\Health\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Player\Ability\HealAbility.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
