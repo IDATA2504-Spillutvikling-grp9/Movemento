@@ -50,9 +50,6 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Update()
     {
-        UpdateEnemyStates();
-
-
         if (health <= 0)
         {
             Destroy(gameObject);
@@ -69,6 +66,10 @@ public class Enemy : MonoBehaviour
                 recoilTimer = 0;
             }
         }
+        else
+        {
+            UpdateEnemyStates();
+        }
     }
 
 
@@ -79,7 +80,7 @@ public class Enemy : MonoBehaviour
         healthBar.UpdateHealthBar(health, maxHealth);
         if (!isRecoiling)
         {
-            rb.AddForce(-_hitForce * recoilFactor * _hitDirection);
+            rb.velocity = _hitForce * recoilFactor * _hitDirection;
         }
     }
 

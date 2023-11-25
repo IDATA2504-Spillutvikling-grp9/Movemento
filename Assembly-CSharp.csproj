@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\PlatformController.cs" />
     <Compile Include="Assets\Scripts\Player\Attacking\PlayerAttacks.cs" />
     <Compile Include="Assets\Scripts\Player\Mana\PlayerMana.cs" />
+    <Compile Include="Assets\Scripts\Enemies\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Menu\MainMenuManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Enemies\Hive\BeeHive.cs" />

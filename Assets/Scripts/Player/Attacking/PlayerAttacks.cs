@@ -110,17 +110,19 @@ public class PlayerAttacks : MonoBehaviour
 
             if (yAxis == 0 || yAxis < 0 && pc.Grounded())
             {
-                Hit(SideAttackTransform, SideAttackArea, ref pc.pState.recoilingX, recoilXSpeed);
+                int _recoilLeftOrRight = pc.pState.lookingRight ? 1 : -1;
+
+                Hit(SideAttackTransform, SideAttackArea, ref pc.pState.recoilingX, Vector2.right * _recoilLeftOrRight, recoilXSpeed);
                 Instantiate(slashEffect, SideAttackTransform);
             }
             else if (yAxis > 0)
             {
-                Hit(UpAttackTransform, UpAttackArea, ref pc.pState.recoilingY, recoilYSpeed);
+                Hit(UpAttackTransform, UpAttackArea, ref pc.pState.recoilingY, Vector2.up, recoilYSpeed);
                 SlashEffectAtAngle(slashEffect, 60, UpAttackTransform);
             }
             else if (yAxis < 0 && !pc.Grounded())
             {
-                Hit(DownAttackTransform, DownAttackArea, ref pc.pState.recoilingY, recoilYSpeed);
+                Hit(DownAttackTransform, DownAttackArea, ref pc.pState.recoilingY, Vector2.down , recoilYSpeed);
                 SlashEffectAtAngle(slashEffect, -90, DownAttackTransform);
             }
         }
@@ -133,13 +135,13 @@ public class PlayerAttacks : MonoBehaviour
         The functions collects an array of objects that are within the position and area of the parameters passed in. Also checks if the attackable layer is added in.
         Loops through the array to check if it has hit something, if it has, do damage. 
     */
-    private void Hit(Transform _attackTransform, Vector2 _attackArea, ref bool _recoilDir, float _recoilStrength)
+    private void Hit(Transform _attackTransform, Vector2 _attackArea, ref bool _recoilBool, Vector2 _recoilDir, float _recoilStrength)
     {
         Collider2D[] objectsToHit = Physics2D.OverlapBoxAll(_attackTransform.position, _attackArea, 0, attackableLayer);
 
         if (objectsToHit.Length > 0)
         {
-            _recoilDir = true;
+            _recoilBool = true;
         }
         for (int i = 0; i < objectsToHit.Length; i++)
         {
@@ -153,9 +155,7 @@ public class PlayerAttacks : MonoBehaviour
             else if (objectsToHit[i].GetComponent<Enemy>() != null)
             {
                 // Existing enemy hit logic
-                objectsToHit[i].GetComponent<Enemy>().EnemyHit
-                (damage, (transform.position - objectsToHit[i].transform.position).normalized, _recoilStrength);
-
+                objectsToHit[i].GetComponent<Enemy>().EnemyHit(damage, _recoilDir, _recoilStrength);
                 if (objectsToHit[i].CompareTag("Enemy"))
                 {
                     pm.Mana += pm.manaGain;
