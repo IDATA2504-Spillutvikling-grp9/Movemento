@@ -30,6 +30,11 @@ public class Enemy : MonoBehaviour
         BeeHive_Chase,
         BeeHive_Stunned,
         BeeHive_Death,
+
+        //Level2 Boss
+        Boss_Idle,
+        Boss_Chase,
+        Boss_Death
     }
 
 
