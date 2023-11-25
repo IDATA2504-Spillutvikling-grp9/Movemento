@@ -4,71 +4,78 @@ using UnityEngine;
 
 public class BeeHive : Enemy
 {
-    [SerializeField] private float chaseDistance;
-    [SerializeField] private float stunDuration;
+    [SerializeField] private float chaseDistance;       // Distance at which the BeeHive starts chasing the player.
+    [SerializeField] private float stunDuration;        // Duration for which the BeeHive remains stunned.
+    private float timer;                                // General purpose timer used for different states.
 
-    float timer;
 
-    // Start is called before the first frame update
+
     protected override void Start()
     {
-        base.Start();
-        ChangeState(EnemyStates.BeeHive_Idle);
+        base.Start(); // Call the Start method of the base class (Enemy).
+        ChangeState(EnemyStates.BeeHive_Idle); // Initialize state to Idle.
     }
+
+
 
     protected override void UpdateEnemyStates()
     {
-        float _dist = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
+        // Calculate distance between BeeHive and Player.
+        float dist = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
 
         switch (GetCurrentEnemyState)
         {
             case EnemyStates.BeeHive_Idle:
-                if (_dist < chaseDistance)
+                // Transition to Chase state if player is within chase distance.
+                if (dist < chaseDistance)
                 {
                     ChangeState(EnemyStates.BeeHive_Chase);
                 }
                 break;
 
             case EnemyStates.BeeHive_Chase:
+                // Move towards the player.
                 rb.MovePosition(Vector2.MoveTowards(transform.position, PlayerController.Instance.transform.position, Time.deltaTime * speed));
-
-                //FlipBeeHive();
+                // FlipBeeHive(); // Currently unused logic for flipping the BeeHive.
                 break;
 
             case EnemyStates.BeeHive_Stunned:
+                // Increment timer and check if stun duration has passed.
                 timer += Time.deltaTime;
-
                 if (timer > stunDuration)
                 {
-                    ChangeState(EnemyStates.BeeHive_Idle);
+                    ChangeState(EnemyStates.BeeHive_Idle); // Reset to Idle state after stun.
                     timer = 0;
                 }
                 break;
 
             case EnemyStates.BeeHive_Death:
+                // Handle death with a random delay.
                 Death(Random.Range(5, 10));
                 break;
         }
     }
 
 
-    protected override void Death(float _destroyTime)
+
+    protected override void Death(float destroyTime)
     {
-        rb.gravityScale = 12;
-        base.Death(_destroyTime);
+        rb.gravityScale = 12; // Increase gravity upon death.
+        base.Death(destroyTime); // Call the Death method of the base class.
     }
 
-    public override void EnemyHit(float _damageDone, Vector2 _hitDirection, float _hitForce)
+    public override void EnemyHit(float damageDone, Vector2 hitDirection, float hitForce)
     {
-        base.EnemyHit(_damageDone, _hitDirection, _hitForce);
+        base.EnemyHit(damageDone, hitDirection, hitForce); // Call the EnemyHit method of the base class.
 
+        // Change state based on health.
         if (health > 0)
         {
-            ChangeState(EnemyStates.BeeHive_Stunned);
+            ChangeState(EnemyStates.BeeHive_Stunned); // If still alive, become stunned.
         }
         else
         {
-            ChangeState(EnemyStates.BeeHive_Death);
+            ChangeState(EnemyStates.BeeHive_Death); // If no health left, transition to Death state.
         }
     }
 
@@ -76,20 +83,22 @@ public class BeeHive : Enemy
 
     protected override void ChangeCurrentAnimation()
     {
+        // Update animation parameters based on current state.
         anim.SetBool("Idle", GetCurrentEnemyState == EnemyStates.BeeHive_Idle);
-
         anim.SetBool("Chase", GetCurrentEnemyState == EnemyStates.BeeHive_Chase);
-
         anim.SetBool("Stunned", GetCurrentEnemyState == EnemyStates.BeeHive_Stunned);
 
+        // Trigger death animation if in Death state.
         if(GetCurrentEnemyState == EnemyStates.BeeHive_Death)
         {
-        anim.SetTrigger("Death");
+            anim.SetTrigger("Death");
         }
     }
 
-//Logic to turn the sprites, but sprite is not on object, so idk how to fix this atm.
-/*     void FlipBeeHive()
+
+
+    // Logic to turn the sprites, but sprite is not on object, so idk how to fix this atm.
+    /* void FlipBeeHive()
     {
         sr.flipX = PlayerController.Instance.transform.position.x < transform.position.x;
     } */
