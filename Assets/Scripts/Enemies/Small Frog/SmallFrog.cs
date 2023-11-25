@@ -26,7 +26,7 @@ public class SmallFrog : Enemy
         {
             Death(0.05f);
         }
-        switch (currentEnemyState)
+        switch (GetCurrentEnemyState)
         {
             case EnemyStates.SmallFrog_Idle:
 

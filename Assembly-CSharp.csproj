@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\Player\Health\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Player\Ability\HealAbility.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
+    <Compile Include="Assets\Onion.cs" />
     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
     <Compile Include="Assets\Scripts\Player\Health\PlayerDeath.cs" />
     <Compile Include="Assets\Scripts\Enemies\Caterpillar.cs" />

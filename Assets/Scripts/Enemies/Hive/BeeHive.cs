@@ -20,7 +20,7 @@ public class BeeHive : Enemy
     {
         float _dist = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
 
-        switch (currentEnemyState)
+        switch (GetCurrentEnemyState)
         {
             case EnemyStates.BeeHive_Idle:
                 if (_dist < chaseDistance)
@@ -44,7 +44,18 @@ public class BeeHive : Enemy
                     timer = 0;
                 }
                 break;
+
+            case EnemyStates.BeeHive_Death:
+                Death(Random.Range(5, 10));
+                break;
         }
+    }
+
+
+    protected override void Death(float _destroyTime)
+    {
+        rb.gravityScale = 12;
+        base.Death(_destroyTime);
     }
 
     public override void EnemyHit(float _damageDone, Vector2 _hitDirection, float _hitForce)
@@ -61,6 +72,21 @@ public class BeeHive : Enemy
         }
     }
 
+
+
+    protected override void ChangeCurrentAnimation()
+    {
+        anim.SetBool("Idle", GetCurrentEnemyState == EnemyStates.BeeHive_Idle);
+
+        anim.SetBool("Chase", GetCurrentEnemyState == EnemyStates.BeeHive_Chase);
+
+        anim.SetBool("Stunned", GetCurrentEnemyState == EnemyStates.BeeHive_Stunned);
+
+        if(GetCurrentEnemyState == EnemyStates.BeeHive_Death)
+        {
+        anim.SetTrigger("Death");
+        }
+    }
 
 //Logic to turn the sprites, but sprite is not on object, so idk how to fix this atm.
 /*     void FlipBeeHive()
