@@ -14,6 +14,9 @@ public class BeeHive : Enemy
     {
         base.Start(); // Call the Start method of the base class (Enemy).
         ChangeState(EnemyStates.BeeHive_Idle); // Initialize state to Idle.
+        anim = GetComponentInChildren<Animator>();
+        sr = GetComponentInChildren<SpriteRenderer>();
+        rb = GetComponentInChildren<Rigidbody2D>();
     }
 
 
@@ -36,7 +39,7 @@ public class BeeHive : Enemy
             case EnemyStates.BeeHive_Chase:
                 // Move towards the player.
                 rb.MovePosition(Vector2.MoveTowards(transform.position, PlayerController.Instance.transform.position, Time.deltaTime * speed));
-                // FlipBeeHive(); // Currently unused logic for flipping the BeeHive.
+                FlipBeeHive(); // Currently unused logic for flipping the BeeHive.
                 break;
 
             case EnemyStates.BeeHive_Stunned:
@@ -98,8 +101,8 @@ public class BeeHive : Enemy
 
 
     // Logic to turn the sprites, but sprite is not on object, so idk how to fix this atm.
-    /* void FlipBeeHive()
+    void FlipBeeHive()
     {
         sr.flipX = PlayerController.Instance.transform.position.x < transform.position.x;
-    } */
+    } 
 }

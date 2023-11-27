@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Player\Ability\Pickup\HealAbility_Pickup.cs" />
     <Compile Include="Assets\_GabrielBissonnette\Sad - Main Menu Pack\_essentials\Demo Resources\_returnToMainMenu.cs" />
     <Compile Include="Assets\Scripts\PlatformController.cs" />
+    <Compile Include="Assets\Scripts\Enemies\IslandBoss\BossDragonKnight.cs" />
     <Compile Include="Assets\Scripts\Enemies\Onion\Onion.cs" />
     <Compile Include="Assets\Scripts\Player\Attacking\PlayerAttacks.cs" />
     <Compile Include="Assets\Scripts\Player\Mana\PlayerMana.cs" />
@@ -88,7 +89,9 @@
     <Compile Include="Assets\Scripts\Colliders\PolygonColliderOptimizer.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStateList.cs" />
     <Compile Include="Assets\Scripts\Player\Damage\PlayerDamageController.cs" />
+    <Compile Include="Assets\Scripts\Enemies\IslandBoss\StateMachine\Boss_Run.cs" />
     <Compile Include="Assets\_Particles &amp; Images\Heals &amp; Attacks\Example\Example Scene\HAAOE_Example.cs" />
+    <Compile Include="Assets\Scripts\Enemies\IslandBoss\StateMachine\Boss_Idle.cs" />
     <Compile Include="Assets\_GabrielBissonnette\Sad - Main Menu Pack\Scripts\MainMenuManager.cs" />
     <Compile Include="Assets\Scripts\Player\SpawnController.cs" />
     <Compile Include="Assets\Scripts\UI\HeartController.cs" />

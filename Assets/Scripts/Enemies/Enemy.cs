@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float recoilLength;                  // Duration of the recoil effect after being hit.
     [SerializeField] protected float recoilFactor;                  // Factor by which the enemy recoils when hit.
     [SerializeField] protected bool isRecoiling = false;            // Flag to check if the enemy is currently recoiling.
-    [SerializeField] protected float speed;                         // Movement speed of the enemy.
+    [SerializeField] public float speed;                            // Movement speed of the enemy.
     [SerializeField] protected float damage;                        // Damage dealt by the enemy.
 
     [Header("Blood Effect")]
@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
     protected float recoilTimer;                                    // Timer to track the duration of recoil.
     protected Animator anim;                                        // Reference to the animator component.
     protected SpriteRenderer sr;                                    // Reference to the sprite renderer component.
-    protected Rigidbody2D rb;                                       // Reference to the Rigidbody2D component.
+    [SerializeField] protected Rigidbody2D rb;                                       // Reference to the Rigidbody2D component.
     protected EnemyStates currentEnemyState;                        // Current state of the enemy.
 
 
@@ -33,10 +33,11 @@ public class Enemy : MonoBehaviour
     // Enumeration of possible enemy states.
     protected enum EnemyStates
     {
-        Onion_Idle, Onion_Charge, Onion_Spot,                               // States for the Onion enemy.
-        SmallFrog_Idle, SmallFrog_Flip,                                     // States for the Small Frog enemy.
-        BeeHive_Idle, BeeHive_Chase, BeeHive_Stunned, BeeHive_Death,        // States for the Bee Hive enemy.
-        Boss_Idle, Boss_Chase, Boss_Death                                   // States for the Level 2 Boss enemy.
+        Onion_Idle, Onion_Charge, Onion_Spot,                                                   // States for the Onion enemy.
+        SmallFrog_Idle, SmallFrog_Flip,                                                         // States for the Small Frog enemy.
+        BeeHive_Idle, BeeHive_Chase, BeeHive_Stunned, BeeHive_Death,                            // States for the Bee Hive enemy.
+        Boss_Idle, Boss_Chase, Boss_Death,                                                      // States for the Level 2 Boss enemy.
+        DragonKnight_Stage1, DragonKnight_Stage2, DragonKnight_Stage3,DragonKnight_Stage4,      // States for the dragonknight boss stages.
     }
 
 
@@ -111,7 +112,7 @@ public class Enemy : MonoBehaviour
 
 
     // Method called when the enemy stays in collision.
-    protected void OnCollisionStay2D(Collision2D collision)
+    protected virtual void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && !PlayerController.Instance.pState.invincible && health > 0)
         {
