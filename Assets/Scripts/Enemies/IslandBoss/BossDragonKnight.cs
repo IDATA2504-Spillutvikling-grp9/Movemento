@@ -86,7 +86,7 @@ public class BossDragonKnight : Enemy
     protected override void Update()
     {
         base.Update();  // Call the base class Update method
-        
+
         // Decrement attack countdown if not currently attacking
         if(!attacking)
         {
@@ -213,19 +213,49 @@ public class BossDragonKnight : Enemy
 
         // Perform three slashes with delays in between
         anim.SetTrigger("Slash");
+        SlashAngle();
         yield return new WaitForSeconds(0.3f);
         anim.ResetTrigger("Slash");
 
         anim.SetTrigger("Slash");
+        SlashAngle();
         yield return new WaitForSeconds(0.5f);
         anim.ResetTrigger("Slash");
 
         anim.SetTrigger("Slash");
+        SlashAngle();
         yield return new WaitForSeconds(0.2f);
         anim.ResetTrigger("Slash");
 
         // Reset attack state
         ResetAllAttacks();
+    }
+
+
+    void SlashAngle()
+    {
+        if(PlayerController.Instance.transform.position.x > transform.position.x ||
+            PlayerController.Instance.transform.position.x < transform.position.x)
+            {
+                Instantiate(slashEffect, SideAttackTransform);
+            }
+            if(PlayerController.Instance.transform.position.y > transform.position.y)
+            {
+                SlashEffectAtAngle(slashEffect, 80, UpAttackTransform);
+            }
+            if(PlayerController.Instance.transform.position.y < transform.position.y)
+            {
+                SlashEffectAtAngle(slashEffect,-90, DownAttackTransform);
+            }
+    }
+
+
+
+    void SlashEffectAtAngle(GameObject _slashEffect, int _effectAngle, Transform _attackTransform)
+    {
+        _slashEffect = Instantiate(_slashEffect, _attackTransform);
+        _slashEffect.transform.eulerAngles = new Vector3(0, 0, _effectAngle);
+        _slashEffect.transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y);
     }
 
     #endregion
