@@ -9183,15 +9183,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 203842665025739321, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 203842665025739321, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 203842665025739321, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 323481969285476543, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_Pivot.x
@@ -9283,15 +9283,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 583002293792285254, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 583002293792285254, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 583002293792285254, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 872899021102826921, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -9347,19 +9347,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2434906421258798062, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2434906421258798062, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3014466893553179044, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3014466893553179044, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3282655853908221443, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -9431,7 +9431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7482558760430307271, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8745524437840118779, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -43110,7 +43110,7 @@ MonoBehaviour:
   m_WorldSpaceUV: 0
   m_CornerAngleThreshold: 30
   m_ColliderDetail: 16
-  m_ColliderOffset: 0.5
+  m_ColliderOffset: 0.1
   m_UpdateCollider: 1
   m_EnableTangents: 0
   m_GeometryCached: 0
@@ -43118,24 +43118,24 @@ MonoBehaviour:
   m_Creator: {fileID: 0}
   m_Modifiers: []
   m_ColliderSegment:
-  - {x: -10.062685, y: 5.166916}
-  - {x: -4.239957, y: 3.1815479}
-  - {x: 0.13898489, y: 2.7948475}
-  - {x: 0.39352638, y: 2.8317072}
-  - {x: 4.0553684, y: 3.1478283}
-  - {x: 4.9840016, y: 2.1428957}
-  - {x: 4.3107505, y: -17.757172}
-  - {x: 3.370119, y: -18.567719}
-  - {x: 0.71781576, y: -18.263355}
-  - {x: 0.27448836, y: -18.074837}
-  - {x: -1.7430553, y: -16.529482}
-  - {x: -1.9717464, y: -16.506449}
-  - {x: -3.6839464, y: -14.543685}
-  - {x: -9.872192, y: -13.322184}
-  - {x: -10.692375, y: -12.5432205}
-  - {x: -10.938696, y: -7.6627913}
-  - {x: -11.363321, y: 4.2041273}
-  - {x: -10.062685, y: 5.166916}
+  - {x: -10.315697, y: 4.424864}
+  - {x: -4.3808823, y: 2.4012775}
+  - {x: 0.07002033, y: 2.0138865}
+  - {x: 4.1228, y: 2.3667338}
+  - {x: 4.308388, y: 2.165752}
+  - {x: 3.635137, y: -17.734314}
+  - {x: 3.447184, y: -17.896126}
+  - {x: 0.7948804, y: -17.591763}
+  - {x: 0.49903768, y: -17.395315}
+  - {x: -1.332005, y: -15.992812}
+  - {x: -1.4645523, y: -15.88915}
+  - {x: -3.1606236, y: -13.944872}
+  - {x: -3.3702216, y: -13.916568}
+  - {x: -9.741282, y: -12.65898}
+  - {x: -9.905377, y: -12.503487}
+  - {x: -10.151198, y: -7.634612}
+  - {x: -10.575824, y: 4.2323065}
+  - {x: -10.315697, y: 4.424864}
 --- !u!1971053207 &2033144153
 SpriteShapeRenderer:
   m_ObjectHideFlags: 0
@@ -43242,24 +43242,24 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -10.062685, y: 5.166916}
-      - {x: -4.239957, y: 3.1815479}
-      - {x: 0.13898489, y: 2.7948475}
-      - {x: 0.39352638, y: 2.8317072}
-      - {x: 4.0553684, y: 3.1478283}
-      - {x: 4.9840016, y: 2.1428957}
-      - {x: 4.3107505, y: -17.757172}
-      - {x: 3.370119, y: -18.567719}
-      - {x: 0.71781576, y: -18.263355}
-      - {x: 0.27448836, y: -18.074837}
-      - {x: -1.7430553, y: -16.529482}
-      - {x: -1.9717464, y: -16.506449}
-      - {x: -3.6839464, y: -14.543685}
-      - {x: -9.872192, y: -13.322184}
-      - {x: -10.692375, y: -12.5432205}
-      - {x: -10.938696, y: -7.6627913}
-      - {x: -11.363321, y: 4.2041273}
-      - {x: -10.062685, y: 5.166916}
+    - - {x: -10.315697, y: 4.424864}
+      - {x: -4.3808823, y: 2.4012775}
+      - {x: 0.07002033, y: 2.0138865}
+      - {x: 4.1228, y: 2.3667338}
+      - {x: 4.308388, y: 2.165752}
+      - {x: 3.635137, y: -17.734314}
+      - {x: 3.447184, y: -17.896126}
+      - {x: 0.7948804, y: -17.591763}
+      - {x: 0.49903768, y: -17.395315}
+      - {x: -1.332005, y: -15.992812}
+      - {x: -1.4645523, y: -15.88915}
+      - {x: -3.1606236, y: -13.944872}
+      - {x: -3.3702216, y: -13.916568}
+      - {x: -9.741282, y: -12.65898}
+      - {x: -9.905377, y: -12.503487}
+      - {x: -10.151198, y: -7.634612}
+      - {x: -10.575824, y: 4.2323065}
+      - {x: -10.315697, y: 4.424864}
   m_UseDelaunayMesh: 0
 --- !u!1 &2038214803
 GameObject:
