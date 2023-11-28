@@ -6,27 +6,37 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     // Serialized fields for enemy attributes
+    [Header("Health Settings")]
     [SerializeField] protected float health;                        // Current health of the enemy.
     [SerializeField] protected float maxHealth;                     // Maximum health of the enemy.
+    private HealthBar healthBar;                                    // Reference to the health bar UI component.
+    [Space(2)]
+
+    [Header("Speed Settings")]
+    [SerializeField] public float speed;                            // Movement speed of the enemy.
+    [Space(2)]
+
+    [Header("Damage Settings")]
+    [SerializeField] public float damage;                           // Damage dealt by the enemy.
+    [Space(2)]
+
+    [Header("Blood Splatter Effect")]
+    [SerializeField] protected GameObject enemyBloodSpatter;        // Prefab for the blood spatter effect.
+    [SerializeField] private float removeBloodVFX = 1f;             // Time after which the blood effect is removed.
+    [Space(2)]
+
+    [Header("Components")]
+    [SerializeField] protected Animator anim;                       // Reference to the animator component.
+    [SerializeField] protected Rigidbody2D rb;                      // Reference to the Rigidbody2D component.
+    protected EnemyStates currentEnemyState;                        // Current state of the enemy.
+    protected SpriteRenderer sr;                                    // Reference to the sprite renderer component.
+
+    [Header("Recoil Settings")]
     [SerializeField] protected float recoilLength;                  // Duration of the recoil effect after being hit.
     [SerializeField] protected float recoilFactor;                  // Factor by which the enemy recoils when hit.
     [SerializeField] protected bool isRecoiling = false;            // Flag to check if the enemy is currently recoiling.
-    [SerializeField] public float speed;                            // Movement speed of the enemy.
-    [SerializeField] public float damage;                        // Damage dealt by the enemy.
-
-    [Header("Blood Effect")]
-    [SerializeField] protected GameObject enemyBloodSpatter;        // Prefab for the blood spatter effect.
-    [SerializeField] private float removeBloodVFX = 5.5f;           // Time after which the blood effect is removed.
-    [Space(5)]
-
-    private HealthBar healthBar;                                    // Reference to the health bar UI component.
-
-    // Internal variables
     protected float recoilTimer;                                    // Timer to track the duration of recoil.
-    protected Animator anim;                                        // Reference to the animator component.
-    protected SpriteRenderer sr;                                    // Reference to the sprite renderer component.
-    [SerializeField] protected Rigidbody2D rb;                                       // Reference to the Rigidbody2D component.
-    protected EnemyStates currentEnemyState;                        // Current state of the enemy.
+    
 
 
 

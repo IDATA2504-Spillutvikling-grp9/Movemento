@@ -6,6 +6,8 @@ public class BeeHive : Enemy
 {
     [SerializeField] private float chaseDistance;       // Distance at which the BeeHive starts chasing the player.
     [SerializeField] private float stunDuration;        // Duration for which the BeeHive remains stunned.
+    [SerializeField] private SpriteRenderer[] sra;
+    [SerializeField] private Animator anim2;
     private float timer;                                // General purpose timer used for different states.
 
 
@@ -14,9 +16,9 @@ public class BeeHive : Enemy
     {
         base.Start(); // Call the Start method of the base class (Enemy).
         ChangeState(EnemyStates.BeeHive_Idle); // Initialize state to Idle.
-        anim = GetComponentInChildren<Animator>();
-        sr = GetComponentInChildren<SpriteRenderer>();
-        rb = GetComponentInChildren<Rigidbody2D>();
+        SpriteRenderer[] sra = GetComponentsInChildren<SpriteRenderer>();
+        anim2 = GetComponentInParent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
 
@@ -87,22 +89,36 @@ public class BeeHive : Enemy
     protected override void ChangeCurrentAnimation()
     {
         // Update animation parameters based on current state.
-        anim.SetBool("Idle", GetCurrentEnemyState == EnemyStates.BeeHive_Idle);
-        anim.SetBool("Chase", GetCurrentEnemyState == EnemyStates.BeeHive_Chase);
-        anim.SetBool("Stunned", GetCurrentEnemyState == EnemyStates.BeeHive_Stunned);
+        anim2.SetBool("Idle", GetCurrentEnemyState == EnemyStates.BeeHive_Idle);
+        anim2.SetBool("Chase", GetCurrentEnemyState == EnemyStates.BeeHive_Chase);
+        anim2.SetBool("Stunned", GetCurrentEnemyState == EnemyStates.BeeHive_Stunned);
 
         // Trigger death animation if in Death state.
         if(GetCurrentEnemyState == EnemyStates.BeeHive_Death)
         {
-            anim.SetTrigger("Death");
+            anim2.SetTrigger("Death");
         }
     }
 
 
 
     // Logic to turn the sprites, but sprite is not on object, so idk how to fix this atm.
-    void FlipBeeHive()
+ void FlipBeeHive()
+{
+    foreach (SpriteRenderer sr in sra)
     {
-        sr.flipX = PlayerController.Instance.transform.position.x < transform.position.x;
-    } 
+        // Determine if the player is to the left or right of the beehive
+        bool shouldFlip = PlayerController.Instance.transform.position.x < transform.position.x;
+
+        // Get the current scale
+        Vector3 currentScale = sr.transform.localScale;
+
+        // Set the x component of the scale to 1 or -1 based on the player's position
+        currentScale.x = shouldFlip ? -1 : 1;
+
+        // Apply the new scale
+        sr.transform.localScale = currentScale;
+    }
+}
+
 }

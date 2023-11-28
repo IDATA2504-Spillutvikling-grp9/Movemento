@@ -1145,6 +1145,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 568847739062170122, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1516098930168864526, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
       propertyPath: m_Name
       value: Bee Enemy
@@ -1157,6 +1161,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 8485212730150192521, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8642115171454756621, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -1164,6 +1172,10 @@ PrefabInstance:
     - target: {fileID: 8642115171454756621, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 9001990983131467016, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -1174,50 +1186,26 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1800098750}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1516098930168864526, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 48014249}
     - targetCorrespondingSourceObject: {fileID: 8642115171454756621, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2049135951}
     - targetCorrespondingSourceObject: {fileID: 8642115171454756621, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2049135950}
+    - targetCorrespondingSourceObject: {fileID: 8642115171454756621, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2049135953}
   m_SourcePrefab: {fileID: 100100000, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
 --- !u!4 &48014243 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 414993230994327405, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
   m_PrefabInstance: {fileID: 48014242}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &48014244 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1516098930168864526, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
+--- !u!95 &48014245 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1363900391553384113, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
   m_PrefabInstance: {fileID: 48014242}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &48014249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 48014244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c6091e3f257ad746b2cec4e9eb6f214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 5
-  maxHealth: 0
-  recoilLength: 0.3
-  recoilFactor: 0.3
-  isRecoiling: 1
-  speed: 15
-  damage: 0.75
-  enemyBloodSpatter: {fileID: 2873071832872826962, guid: ba94b020166eb7446b67aad75af3b46a, type: 3}
-  removeBloodVFX: 2
-  rb: {fileID: 0}
-  chaseDistance: 15
-  stunDuration: 1.5
 --- !u!1 &49113642
 GameObject:
   m_ObjectHideFlags: 0
@@ -5585,6 +5573,11 @@ Transform:
   - {fileID: 129704296}
   m_Father: {fileID: 797486342}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &316380119 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5991777981545633377, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
+  m_PrefabInstance: {fileID: 48014242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &320757552
 GameObject:
   m_ObjectHideFlags: 0
@@ -23748,6 +23741,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!212 &830535982 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5217551491238433994, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
+  m_PrefabInstance: {fileID: 48014242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &844139715
 GameObject:
   m_ObjectHideFlags: 0
@@ -24019,6 +24017,11 @@ PolygonCollider2D:
       - {x: 6.758545, y: -1.6438828}
       - {x: 7.171412, y: 0.15732193}
   m_UseDelaunayMesh: 0
+--- !u!212 &862631430 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2962262256839121978, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
+  m_PrefabInstance: {fileID: 48014242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &870655296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24893,6 +24896,7 @@ MonoBehaviour:
   damage: 1
   enemyBloodSpatter: {fileID: 2873071832872826962, guid: ba94b020166eb7446b67aad75af3b46a, type: 3}
   removeBloodVFX: 1
+  anim: {fileID: 0}
   rb: {fileID: 0}
   groundCheckPoint: {fileID: 1517329790}
   groundCheckX: 1
@@ -24906,12 +24910,13 @@ MonoBehaviour:
   SideAttackArea: {x: 5.86, y: 3.25}
   UpAttackArea: {x: 3.25, y: 5.68}
   DownAttackArea: {x: 3.25, y: 5.68}
+  runSpeed: 0
+  LungeSpeed: 20
   facingRight: 0
   attackRange: 5
   attackTimer: 5
   slashEffect: {fileID: 0}
   fireEffect: {fileID: 0}
-  runSpeed: 0
   damagedPlayer: 0
   attacking: 0
   attackCountDown: 0
@@ -26580,6 +26585,7 @@ MonoBehaviour:
   damage: 1
   enemyBloodSpatter: {fileID: 2873071832872826962, guid: ba94b020166eb7446b67aad75af3b46a, type: 3}
   removeBloodVFX: 0.75
+  anim: {fileID: 0}
   rb: {fileID: 0}
   flipWaitTime: 1
   ledgeCheckX: 2
@@ -26976,6 +26982,11 @@ PolygonCollider2D:
       - {x: 0.53499997, y: -1.515}
       - {x: 0.49499997, y: -1.475}
   m_UseDelaunayMesh: 0
+--- !u!212 &1043260866 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3226871633551633480, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
+  m_PrefabInstance: {fileID: 48014242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1047206731
 GameObject:
   m_ObjectHideFlags: 0
@@ -33298,11 +33309,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2993491477285121632, guid: ea60b893cbd0a4954b327485e65f4345, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 183.3
+      value: 30.1
       objectReference: {fileID: 0}
     - target: {fileID: 2993491477285121632, guid: ea60b893cbd0a4954b327485e65f4345, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 51
+      value: 7.1
       objectReference: {fileID: 0}
     - target: {fileID: 2993491477285121632, guid: ea60b893cbd0a4954b327485e65f4345, type: 3}
       propertyPath: m_LocalPosition.z
@@ -45777,6 +45788,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3192674436989532390, guid: 4fb536f31de5044c593525b89f6cd8b9, type: 3}
   m_PrefabInstance: {fileID: 69429207144531083}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1497708931 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1151742310547581508, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
+  m_PrefabInstance: {fileID: 48014242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1500914492
 GameObject:
   m_ObjectHideFlags: 0
@@ -53907,6 +53923,7 @@ MonoBehaviour:
   damage: 1
   enemyBloodSpatter: {fileID: 2873071832872826962, guid: ba94b020166eb7446b67aad75af3b46a, type: 3}
   removeBloodVFX: 0.75
+  anim: {fileID: 0}
   rb: {fileID: 0}
   ledgeCheckX: 2
   ledgeCheckY: 3
@@ -54721,6 +54738,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!212 &1804951082 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6571603450285685041, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
+  m_PrefabInstance: {fileID: 48014242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1816364785
 GameObject:
   m_ObjectHideFlags: 0
@@ -55506,6 +55528,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &1874522654 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5114049517716117841, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
+  m_PrefabInstance: {fileID: 48014242}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1881511212 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4420684778757016782, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
+  m_PrefabInstance: {fileID: 48014242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1883959540
 GameObject:
   m_ObjectHideFlags: 0
@@ -56044,6 +56076,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!212 &1911738325 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5685074659322288994, guid: 79c05f82137f6a24c80668a9ccb7e270, type: 3}
+  m_PrefabInstance: {fileID: 48014242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1912298448
 GameObject:
   m_ObjectHideFlags: 0
@@ -58252,6 +58289,42 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &2049135953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049135948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6091e3f257ad746b2cec4e9eb6f214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  maxHealth: 0
+  recoilLength: 0
+  recoilFactor: 0
+  isRecoiling: 0
+  speed: 5
+  damage: 1
+  enemyBloodSpatter: {fileID: 2873071832872826962, guid: ba94b020166eb7446b67aad75af3b46a, type: 3}
+  removeBloodVFX: 5.5
+  anim: {fileID: 48014245}
+  rb: {fileID: 2049135951}
+  chaseDistance: 5
+  stunDuration: 1
+  sra:
+  - {fileID: 862631430}
+  - {fileID: 1874522654}
+  - {fileID: 1497708931}
+  - {fileID: 1043260866}
+  - {fileID: 1881511212}
+  - {fileID: 830535982}
+  - {fileID: 1911738325}
+  - {fileID: 316380119}
+  - {fileID: 1804951082}
+  anim2: {fileID: 48014245}
 --- !u!1 &2056075855
 GameObject:
   m_ObjectHideFlags: 0
@@ -65477,11 +65550,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3192674436989532390, guid: 4fb536f31de5044c593525b89f6cd8b9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 183.3
+      value: 30.1
       objectReference: {fileID: 0}
     - target: {fileID: 3192674436989532390, guid: 4fb536f31de5044c593525b89f6cd8b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 51
+      value: 7.1
       objectReference: {fileID: 0}
     - target: {fileID: 3192674436989532390, guid: 4fb536f31de5044c593525b89f6cd8b9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -65643,6 +65716,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4897374496964729822, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
+      propertyPath: slashEffect
+      value: 
+      objectReference: {fileID: 36238126882103250, guid: ccaae003cb7c8e540b6493d140fa4d56, type: 3}
     - target: {fileID: 6356674792238723590, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
@@ -65680,12 +65757,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8977044914987073716, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977044914987073716, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 183.3
+      value: 30.1
       objectReference: {fileID: 0}
     - target: {fileID: 8977044914987073716, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 51
+      value: 7.1
       objectReference: {fileID: 0}
     - target: {fileID: 8977044914987073716, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
       propertyPath: m_LocalPosition.z

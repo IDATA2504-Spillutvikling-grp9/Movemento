@@ -16,7 +16,7 @@ public class Boss_Lunge : StateMachineBehaviour
     {
         rb.gravityScale = 0;
         int _dir = BossDragonKnight.Instance.facingRight ? 1 : -1;
-        rb.velocity = new Vector2(_dir * (BossDragonKnight.Instance.speed * 5), 0f);
+        rb.velocity = new Vector2(_dir * (BossDragonKnight.Instance.LungeSpeed * 1), 0f);
 
         if(Vector2.Distance(PlayerController.Instance.transform.position, rb.position) <= BossDragonKnight.Instance.attackRange && 
             !BossDragonKnight.Instance.damagedPlayer)

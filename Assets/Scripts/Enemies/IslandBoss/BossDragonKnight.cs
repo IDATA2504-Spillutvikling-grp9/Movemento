@@ -21,16 +21,22 @@ public class BossDragonKnight : Enemy
     [SerializeField] public Vector2 UpAttackArea;                  //Size - of the up attack area 
     [SerializeField] public Vector2 DownAttackArea;                //Size - of the down attack are
     [Space(3)]
+
+    [Header("Running Settings")]
+    [SerializeField] public float runSpeed;                // Runspeed of player used for run state.
+    [Space(5)]
+    
+    [Header("Lunge Settings")]
+    [SerializeField] public float LungeSpeed;
+    [Space(3)]
+
     [HideInInspector] public bool facingRight;              // used to check which way the boss is facing
     public float attackRange;                               // range of the boss attacks
     public float attackTimer;                               // timer for boss attacks
-    [Space(3)]
-
+    [Header("Particle Settings")]
     [SerializeField] GameObject slashEffect;                // sprite / effect used for the attack of the boss
     [SerializeField] GameObject fireEffect;                 // sprite / effect, not used atm
     [Space(3)]
-
-    [HideInInspector] public float runSpeed;                //
     [HideInInspector] public bool damagedPlayer = false;    // checks for damage to player
     public static BossDragonKnight Instance;                // Setting up a singleton instance of the Boss.
 
