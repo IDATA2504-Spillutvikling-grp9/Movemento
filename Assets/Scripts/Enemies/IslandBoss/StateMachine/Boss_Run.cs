@@ -22,12 +22,12 @@ public class Boss_Run : StateMachineBehaviour
         // Call the TargetPlayerPosition function to handle boss movement and orientation
         TargetPlayerPosition(animator);
 
-        // Check if the boss's attack cooldown is finished
+        // Check if the boss is ready to attack (based on a countdown timer reaching zero)
         if(BossDragonKnight.Instance.attackCountDown <= 0)
         {
             // Trigger the boss's attack and reset the attack countdown timer
             BossDragonKnight.Instance.AttackHandler();
-            BossDragonKnight.Instance.attackCountDown = BossDragonKnight.Instance.attackTimer;
+            BossDragonKnight.Instance.attackCountDown = Random.Range(BossDragonKnight.Instance.attackTimer - 1, BossDragonKnight.Instance.attackTimer + 1);
         }
     }
 
@@ -58,7 +58,7 @@ public class Boss_Run : StateMachineBehaviour
             //Debug.Log("Falling");
 
             // Set the boss's running speed
-            BossDragonKnight.Instance.runSpeed = BossDragonKnight.Instance.speed;
+            //BossDragonKnight.Instance.runSpeed = BossDragonKnight.Instance.speed;
             //Debug.Log("Set run speed");
 
             // Move the Rigidbody to the new position

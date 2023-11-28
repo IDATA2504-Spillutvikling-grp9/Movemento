@@ -30,7 +30,7 @@ public class Boss_Idle : StateMachineBehaviour
         {
             // Trigger the boss's attack and reset the attack countdown timer
             BossDragonKnight.Instance.AttackHandler();
-            BossDragonKnight.Instance.attackCountDown = BossDragonKnight.Instance.attackTimer;
+            BossDragonKnight.Instance.attackCountDown = Random.Range(BossDragonKnight.Instance.attackTimer - 1, BossDragonKnight.Instance.attackTimer + 1);
         }
     }
 

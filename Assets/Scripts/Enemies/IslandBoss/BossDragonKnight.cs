@@ -12,14 +12,14 @@ public class BossDragonKnight : Enemy
     [Space(5)]
 
     [Header("Attack Settings")]
-    [SerializeField] Transform SideAttackTransform;         //position - the middle of the side attack area
-    [SerializeField] Transform UpAttackTransform;           //position - the middle of the up attack area
-    [SerializeField] Transform DownAttackTransform;         //position - the middle of the down attack area
+    [SerializeField] public Transform SideAttackTransform;         //position - the middle of the side attack area
+    [SerializeField] public Transform UpAttackTransform;           //position - the middle of the up attack area
+    [SerializeField] public Transform DownAttackTransform;         //position - the middle of the down attack area
     [Space(3)]
 
-    [SerializeField] Vector2 SideAttackArea;                //Size - of the side attack area
-    [SerializeField] Vector2 UpAttackArea;                  //Size - of the up attack area 
-    [SerializeField] Vector2 DownAttackArea;                //Size - of the down attack are
+    [SerializeField] public Vector2 SideAttackArea;                //Size - of the side attack area
+    [SerializeField] public Vector2 UpAttackArea;                  //Size - of the up attack area 
+    [SerializeField] public Vector2 DownAttackArea;                //Size - of the down attack are
     [Space(3)]
     [HideInInspector] public bool facingRight;              // used to check which way the boss is facing
     public float attackRange;                               // range of the boss attacks
@@ -31,6 +31,7 @@ public class BossDragonKnight : Enemy
     [Space(3)]
 
     [HideInInspector] public float runSpeed;                //
+    [HideInInspector] public bool damagedPlayer = false;    // checks for damage to player
     public static BossDragonKnight Instance;                // Setting up a singleton instance of the Boss.
 
     int hitCounter;
@@ -88,7 +89,7 @@ public class BossDragonKnight : Enemy
         base.Update();  // Call the base class Update method
 
         // Decrement attack countdown if not currently attacking
-        if(!attacking)
+        if (!attacking)
         {
             attackCountDown -= Time.deltaTime;
         }
@@ -176,27 +177,37 @@ public class BossDragonKnight : Enemy
     public void AttackHandler()
     {
         // Check if the current state is DragonKnight Stage 1 and if the player is within attack range
-        if(currentEnemyState == EnemyStates.DragonKnight_Stage1)
+        if (currentEnemyState == EnemyStates.DragonKnight_Stage1)
         {
-            if(Vector2.Distance(PlayerController.Instance.transform.position, rb.position) <= attackRange)
+            if (Vector2.Distance(PlayerController.Instance.transform.position, rb.position) <= attackRange)
             {
                 // Start the TripleSlash attack coroutine
                 StartCoroutine(TripleSlash());
             }
             else
             {
-                return;
+                StartCoroutine(Lunge());
             }
         }
     }
 
 
-     // Reset all attack states and stop the TripleSlash coroutine
+    // Reset all attack states and stop the TripleSlash coroutine
     public void ResetAllAttacks()
     {
         attacking = false;
 
         StopCoroutine(TripleSlash());
+        StopCoroutine(Lunge());
+        /*     StopCoroutine(Parry());
+               StopCoroutine(Slash());
+
+               diveAttack = false;
+               barrageAttack = false;
+               outbreakAttack = false;
+               bounceAttack = false; */
+
+        //Stopping / reset all attacks when implemented.
     }
 
 
@@ -234,19 +245,19 @@ public class BossDragonKnight : Enemy
 
     void SlashAngle()
     {
-        if(PlayerController.Instance.transform.position.x > transform.position.x ||
+        if (PlayerController.Instance.transform.position.x > transform.position.x ||
             PlayerController.Instance.transform.position.x < transform.position.x)
-            {
-                Instantiate(slashEffect, SideAttackTransform);
-            }
-            if(PlayerController.Instance.transform.position.y > transform.position.y)
-            {
-                SlashEffectAtAngle(slashEffect, 80, UpAttackTransform);
-            }
-            if(PlayerController.Instance.transform.position.y < transform.position.y)
-            {
-                SlashEffectAtAngle(slashEffect,-90, DownAttackTransform);
-            }
+        {
+            Instantiate(slashEffect, SideAttackTransform);
+        }
+        if (PlayerController.Instance.transform.position.y > transform.position.y)
+        {
+            SlashEffectAtAngle(slashEffect, 80, UpAttackTransform);
+        }
+        if (PlayerController.Instance.transform.position.y < transform.position.y)
+        {
+            SlashEffectAtAngle(slashEffect, -90, DownAttackTransform);
+        }
     }
 
 
@@ -256,6 +267,19 @@ public class BossDragonKnight : Enemy
         _slashEffect = Instantiate(_slashEffect, _attackTransform);
         _slashEffect.transform.eulerAngles = new Vector3(0, 0, _effectAngle);
         _slashEffect.transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y);
+    }
+
+
+    IEnumerator Lunge()
+    {
+        Flip();
+        attacking = true;
+
+        anim.SetBool("Lunge", true);
+        yield return new WaitForSeconds(1f);
+        anim.SetBool("Lunge", false);
+        damagedPlayer = false;
+        ResetAllAttacks();
     }
 
     #endregion

@@ -24859,7 +24859,7 @@ Transform:
   m_GameObject: {fileID: 909631055}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 209.77, y: 53.3, z: 0}
+  m_LocalPosition: {x: 204.8, y: 47.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24910,6 +24910,7 @@ MonoBehaviour:
   slashEffect: {fileID: 0}
   fireEffect: {fileID: 0}
   runSpeed: 0
+  damagedPlayer: 0
   attacking: 0
   attackCountDown: 0
 --- !u!1 &924605956

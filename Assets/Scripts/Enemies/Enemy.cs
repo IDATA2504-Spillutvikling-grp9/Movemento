@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float recoilFactor;                  // Factor by which the enemy recoils when hit.
     [SerializeField] protected bool isRecoiling = false;            // Flag to check if the enemy is currently recoiling.
     [SerializeField] public float speed;                            // Movement speed of the enemy.
-    [SerializeField] protected float damage;                        // Damage dealt by the enemy.
+    [SerializeField] public float damage;                        // Damage dealt by the enemy.
 
     [Header("Blood Effect")]
     [SerializeField] protected GameObject enemyBloodSpatter;        // Prefab for the blood spatter effect.

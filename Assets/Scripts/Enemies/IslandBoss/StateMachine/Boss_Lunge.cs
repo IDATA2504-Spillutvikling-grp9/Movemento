@@ -14,7 +14,16 @@ public class Boss_Lunge : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        rb.gravityScale = 0;
+        int _dir = BossDragonKnight.Instance.facingRight ? 1 : -1;
+        rb.velocity = new Vector2(_dir * (BossDragonKnight.Instance.speed * 5), 0f);
 
+        if(Vector2.Distance(PlayerController.Instance.transform.position, rb.position) <= BossDragonKnight.Instance.attackRange && 
+            !BossDragonKnight.Instance.damagedPlayer)
+        {
+            PlayerDamageController.Instance.TakeDamage(BossDragonKnight.Instance.damage);
+            BossDragonKnight.Instance.damagedPlayer = true;
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
