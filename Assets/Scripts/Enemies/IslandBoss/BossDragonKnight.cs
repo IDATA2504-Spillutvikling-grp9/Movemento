@@ -76,7 +76,7 @@ public class BossDragonKnight : Enemy
         // Grab components from child objects
         sr = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
-        rb = GetComponentInChildren<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
 
         ChangeState(EnemyStates.DragonKnight_Stage1);       // Set initial enemy state
         alive = true;

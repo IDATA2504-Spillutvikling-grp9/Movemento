@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Boss_Idle : StateMachineBehaviour
 {
-    Rigidbody2D rb;
+    [SerializeField] Rigidbody2D rb;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        rb = animator.GetComponent<Rigidbody2D>();
+        rb = animator.GetComponentInParent<Rigidbody2D>();
     }
 
 
@@ -20,6 +20,7 @@ public class Boss_Idle : StateMachineBehaviour
 
         // Reset the GameObject's velocity to zero to stop any ongoing movement
         rb.velocity = Vector2.zero;
+        /* rb.AddForce(Vector2.left * 0.1f, ForceMode2D.Impulse); */
 
         // Call the RunToPlayer function to potentially move towards the player
         RunToPlayer(animator);
@@ -33,16 +34,6 @@ public class Boss_Idle : StateMachineBehaviour
             BossDragonKnight.Instance.attackCountDown = Random.Range(BossDragonKnight.Instance.attackTimer - 1, BossDragonKnight.Instance.attackTimer + 1);
         }
     }
-
-
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-
-    }
-
-
 
     void RunToPlayer(Animator animator)
     {
@@ -58,6 +49,16 @@ public class Boss_Idle : StateMachineBehaviour
             return;
         }
     }
+
+
+    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+
+    }
+
+
+
 
 
 
