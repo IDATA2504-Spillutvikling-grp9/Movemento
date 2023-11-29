@@ -690,7 +690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90c5e0aa10eaf8840947922843a09b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 300
+  health: 10
   maxHealth: 0
   speed: 10
   damage: 1
@@ -704,6 +704,7 @@ MonoBehaviour:
   chargStopTime: 2
   timeBetweenCharges: 2
   chaseDistance: 10
+  doorAnimator: {fileID: 0}
 --- !u!114 &1164469466948352535
 MonoBehaviour:
   m_ObjectHideFlags: 0
