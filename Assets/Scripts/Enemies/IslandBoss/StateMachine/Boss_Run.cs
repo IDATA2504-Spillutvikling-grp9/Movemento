@@ -55,10 +55,9 @@ public class Boss_Run : StateMachineBehaviour
 
             // Calculate the new position to move towards the player at the boss's run speed
             Vector2 _newPos = Vector2.MoveTowards(rb.position, _target, BossDragonKnight.Instance.runSpeed * Time.fixedDeltaTime);
-            //Debug.Log("Falling");
 
             // Set the boss's running speed
-            //BossDragonKnight.Instance.runSpeed = BossDragonKnight.Instance.speed;
+            BossDragonKnight.Instance.runSpeed = BossDragonKnight.Instance.speed;
             //Debug.Log("Set run speed");
 
             // Move the Rigidbody to the new position
@@ -69,6 +68,7 @@ public class Boss_Run : StateMachineBehaviour
         {
             // If not grounded, apply a downward velocity to simulate falling
             rb.velocity = new Vector2(rb.velocity.x, -25);
+            //Debug.Log("Falling");
         }
 
 

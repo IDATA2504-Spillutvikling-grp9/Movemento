@@ -21,6 +21,9 @@ public class Boss_Idle : StateMachineBehaviour
         // Reset the GameObject's velocity to zero to stop any ongoing movement
         rb.velocity = Vector2.zero;
 
+        // Correct the boss's orientation to face the player
+        BossDragonKnight.Instance.Flip();
+
         // Call the RunToPlayer function to potentially move towards the player
         RunToPlayer(animator);
 

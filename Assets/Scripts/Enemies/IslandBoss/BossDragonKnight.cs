@@ -225,23 +225,26 @@ public class BossDragonKnight : Enemy
     {
         attacking = true;                       // Set attacking flag to true
         rb.velocity = Vector2.zero;             // Stop movement
-        Debug.Log("Stopped Movement because of attack");
+        float RandonValueUnder1 = UnityEngine.Random.Range(0.5f, 0.8f);
 
 
         // Perform three slashes with delays in between
         anim.SetTrigger("Slash");
-        SlashAngle();
-        yield return new WaitForSeconds(0.3f);
+        //SlashAngle();
+        yield return new WaitForSeconds(RandonValueUnder1);
+        Debug.Log("Attack 1");
         anim.ResetTrigger("Slash");
 
         anim.SetTrigger("Slash");
-        SlashAngle();
-        yield return new WaitForSeconds(0.5f);
+        //SlashAngle();
+        yield return new WaitForSeconds(RandonValueUnder1);
+        Debug.Log("Attack 2");
         anim.ResetTrigger("Slash");
 
         anim.SetTrigger("Slash");
-        SlashAngle();
-        yield return new WaitForSeconds(0.2f);
+        //SlashAngle();
+        yield return new WaitForSeconds(RandonValueUnder1);
+        Debug.Log("Attack 3");
         anim.ResetTrigger("Slash");
 
         // Reset attack state
@@ -249,7 +252,7 @@ public class BossDragonKnight : Enemy
     }
 
 
-    void SlashAngle()
+/*     void SlashAngle()
     {
         if (PlayerController.Instance.transform.position.x > transform.position.x ||
             PlayerController.Instance.transform.position.x < transform.position.x)
@@ -264,7 +267,7 @@ public class BossDragonKnight : Enemy
         {
             SlashEffectAtAngle(slashEffect, -90, DownAttackTransform);
         }
-    }
+    } */
 
 
 
