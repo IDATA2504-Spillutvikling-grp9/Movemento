@@ -44,4 +44,10 @@ public class DragonKnightEvents : MonoBehaviour
         }
     }
 
+
+    
+    void Parrying()
+    {
+        BossDragonKnight.Instance.parrying = true;
+    }
 }

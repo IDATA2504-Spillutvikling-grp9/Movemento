@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +26,7 @@ public class BossDragonKnight : Enemy
     [Header("Running Settings")]
     [SerializeField] public float runSpeed;                // Runspeed of player used for run state.
     [Space(2)]
-    
+
     [Header("Lunge Settings")]
     [SerializeField] public float LungeSpeed;
     [Space(2)]
@@ -33,7 +34,7 @@ public class BossDragonKnight : Enemy
     [HideInInspector] public bool facingRight;              // used to check which way the boss is facing
     public float attackRange;                               // range of the boss attacks
     public float attackTimer;                               // timer for boss attacks
-    
+
     [Header("Particle Settings")]
     [SerializeField] GameObject slashEffect;                // sprite / effect used for the attack of the boss
     [Space(3)]
@@ -175,6 +176,7 @@ public class BossDragonKnight : Enemy
     #region variables
     [HideInInspector] public bool attacking;                    // Flag for if the boss is currently attacking
     [HideInInspector] public float attackCountDown;             // Countdown timer for attacks
+    [HideInInspector] public bool parrying;
     #endregion
 
     #region Control
@@ -205,10 +207,10 @@ public class BossDragonKnight : Enemy
 
         StopCoroutine(TripleSlash());
         StopCoroutine(Lunge());
-        /*     StopCoroutine(Parry());
-               StopCoroutine(Slash());
+        StopCoroutine(Parry());
+        StopCoroutine(Slash());
 
-               diveAttack = false;
+        /*     diveAttack = false;
                barrageAttack = false;
                outbreakAttack = false;
                bounceAttack = false; */
@@ -232,19 +234,16 @@ public class BossDragonKnight : Enemy
         anim.SetTrigger("Slash");
         //SlashAngle();
         yield return new WaitForSeconds(RandonValueUnder1);
-        Debug.Log("Attack 1");
         anim.ResetTrigger("Slash");
 
         anim.SetTrigger("Slash");
         //SlashAngle();
         yield return new WaitForSeconds(RandonValueUnder1);
-        Debug.Log("Attack 2");
         anim.ResetTrigger("Slash");
 
         anim.SetTrigger("Slash");
         //SlashAngle();
         yield return new WaitForSeconds(RandonValueUnder1);
-        Debug.Log("Attack 3");
         anim.ResetTrigger("Slash");
 
         // Reset attack state
@@ -252,22 +251,22 @@ public class BossDragonKnight : Enemy
     }
 
 
-/*     void SlashAngle()
-    {
-        if (PlayerController.Instance.transform.position.x > transform.position.x ||
-            PlayerController.Instance.transform.position.x < transform.position.x)
+    /*     void SlashAngle()
         {
-            Instantiate(slashEffect, SideAttackTransform);
-        }
-        if (PlayerController.Instance.transform.position.y > transform.position.y)
-        {
-            SlashEffectAtAngle(slashEffect, 80, UpAttackTransform);
-        }
-        if (PlayerController.Instance.transform.position.y < transform.position.y)
-        {
-            SlashEffectAtAngle(slashEffect, -90, DownAttackTransform);
-        }
-    } */
+            if (PlayerController.Instance.transform.position.x > transform.position.x ||
+                PlayerController.Instance.transform.position.x < transform.position.x)
+            {
+                Instantiate(slashEffect, SideAttackTransform);
+            }
+            if (PlayerController.Instance.transform.position.y > transform.position.y)
+            {
+                SlashEffectAtAngle(slashEffect, 80, UpAttackTransform);
+            }
+            if (PlayerController.Instance.transform.position.y < transform.position.y)
+            {
+                SlashEffectAtAngle(slashEffect, -90, DownAttackTransform);
+            }
+        } */
 
 
 
@@ -291,6 +290,57 @@ public class BossDragonKnight : Enemy
         ResetAllAttacks();
     }
 
+    IEnumerator Parry()
+    {
+        attacking = true;
+        rb.velocity = Vector2.zero;
+        anim.SetBool("Parry", true);
+        Debug.Log("pARRYYY");
+        yield return new WaitForSeconds(0.8f);
+        anim.SetBool("Parry", false);
+        parrying = false;
+        ResetAllAttacks();
+    }
+
+    IEnumerator Slash()
+    {
+        attacking = true;                       // Set attacking flag to true
+        rb.velocity = Vector2.zero;             // Stop movement
+
+        // Perform the slash / reposte
+        anim.SetTrigger("Slash");
+        //SlashAngle();
+        yield return new WaitForSeconds(0.5f);
+        anim.ResetTrigger("Slash");
+
+        ResetAllAttacks();
+    }
+
+    public override void EnemyHit(float _damageDone, Vector2 _hitDirection, float _hitForce)
+    {
+        if (!stunned)
+        {
+            if (!parrying)
+            {
+                ResetAllAttacks();
+                base.EnemyHit(_damageDone, _hitDirection, _hitForce);
+
+                if (currentEnemyState != EnemyStates.DragonKnight_Stage4)
+                {
+                    ResetAllAttacks(); //cancel any current attack to avoid bugs 
+                    StartCoroutine(Parry());
+                }
+
+            }
+            else
+            {
+                StopCoroutine(Parry());
+                parrying = false;
+                ResetAllAttacks();
+                StartCoroutine(Slash());  //riposte
+            }
+        }
+    }
     #endregion
     #endregion
 }
