@@ -496,13 +496,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   maxHealth: 0
+  speed: 12
+  damage: 1
+  enemyBloodSpatter: {fileID: 2873071832872826962, guid: ba94b020166eb7446b67aad75af3b46a, type: 3}
+  removeBloodVFX: 1
+  anim: {fileID: 0}
+  rb: {fileID: 0}
   recoilLength: 0.3
   recoilFactor: 0.3
   isRecoiling: 0
-  speed: 12
-  damage: 1
   chaseDistance: 15
   stunDuration: 5
+  sra: []
+  anim2: {fileID: 0}
 --- !u!1 &8298118850062425385
 GameObject:
   m_ObjectHideFlags: 0
