@@ -13429,7 +13429,7 @@ Transform:
   m_GameObject: {fileID: 492701861}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.92, z: 0}
+  m_LocalPosition: {x: 0, y: -1.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25031,7 +25031,7 @@ Transform:
   m_GameObject: {fileID: 909631055}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 206.4, y: 50.6, z: 0}
+  m_LocalPosition: {x: 220.1, y: 49.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -25056,7 +25056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 50
   maxHealth: 0
-  speed: 10
+  speed: 3
   damage: 1
   enemyBloodSpatter: {fileID: 2873071832872826962, guid: ba94b020166eb7446b67aad75af3b46a, type: 3}
   removeBloodVFX: 1
@@ -25087,6 +25087,10 @@ MonoBehaviour:
   attacking: 0
   attackCountDown: 0
   parrying: 0
+  moveToPosition: {x: 0, y: 0}
+  diveAttack: 0
+  divingCollider: {fileID: 0}
+  pillar: {fileID: 0}
 --- !u!50 &909631058
 Rigidbody2D:
   serializedVersion: 4
@@ -58530,7 +58534,7 @@ Transform:
   m_GameObject: {fileID: 2056075855}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -6.01, z: 0}
+  m_LocalPosition: {x: 0, y: -4.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -65730,7 +65734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2894659131642449370, guid: 4fb536f31de5044c593525b89f6cd8b9, type: 3}
       propertyPath: orthographic size
-      value: 6.5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3192674436989532390, guid: 4fb536f31de5044c593525b89f6cd8b9, type: 3}
       propertyPath: m_LocalPosition.x

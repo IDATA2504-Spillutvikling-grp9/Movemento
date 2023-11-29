@@ -50,4 +50,10 @@ public class DragonKnightEvents : MonoBehaviour
     {
         BossDragonKnight.Instance.parrying = true;
     }
+
+
+    void DestroyAfterDeath()
+    {
+        BossDragonKnight.Instance.DestroyAfterDeath();
+    }
 }
