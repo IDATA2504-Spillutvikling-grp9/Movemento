@@ -47,40 +47,32 @@ public class TerritorialEnemy : Enemy
     }
 
     private void ChasePlayer()
-{
-    if (Vector2.Distance(transform.position, playerTransform.position) <= attackRange)
     {
-        AttackPlayer(); // Perform attack logic
-    }
-    else
-    {
-        // Chase the player
-        Vector2 direction = (playerTransform.position - transform.position).normalized;
-        rb.velocity = new Vector2(direction.x * chaseSpeed, rb.velocity.y);
-
-        // Check if the enemy's direction is opposite to that of the player's position
-        // Flip the enemy to face the player if necessary
-        if ((direction.x > 0 && transform.localScale.x > 0) || (direction.x < 0 && transform.localScale.x < 0))
+        if (Vector2.Distance(transform.position, playerTransform.position) <= attackRange)
         {
-            Flip();
+            AttackPlayer(); // Perform attack logic
+        }
+        else
+        {
+            // Chase the player
+            Vector2 direction = (playerTransform.position - transform.position).normalized;
+            rb.velocity = new Vector2(direction.x * chaseSpeed, rb.velocity.y);
+
+            // Check if the enemy's direction is opposite to that of the player's position
+            // Flip the enemy to face the player if necessary
+            if ((direction.x > 0 && transform.localScale.x > 0) || (direction.x < 0 && transform.localScale.x < 0))
+            {
+                Flip();
+            }
         }
     }
-}
 
-private void Flip()
-{
-    // Flip the sprite by scaling in the X direction
-    Vector3 theScale = transform.localScale;
-    theScale.x *= -1;
-    transform.localScale = theScale;
-}
-
-
-
-
-    protected override void Attack()
+    private void Flip()
     {
-        // Implement attack logic here
+        // Flip the sprite by scaling in the X direction
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 
     // Optional: Implement the logic for attacking the player
