@@ -21,6 +21,7 @@ TagManager:
   - ground
   - Spikes
   - ObjectDamage
+  - BossCheckPoint
   layers:
   - Default
   - TransparentFX
