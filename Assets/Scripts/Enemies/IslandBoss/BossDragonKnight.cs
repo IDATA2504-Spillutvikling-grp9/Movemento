@@ -40,10 +40,7 @@ public class BossDragonKnight : Enemy
     [Space(3)]
     [HideInInspector] public bool damagedPlayer = false;    // checks for damage to player
     public static BossDragonKnight Instance;                // Setting up a singleton instance of the Boss.
-
-    int hitCounter;
-    bool stunned;
-    bool canStun;
+    private bool isDeathTriggered = true;
     bool alive;
 
 
@@ -93,8 +90,12 @@ public class BossDragonKnight : Enemy
 
     protected override void Update()
     {
-        base.Update();  // Call the base class Update method
+        if (health <= 0 && isDeathTriggered)
+        {
+            Death(0);
+            Debug.Log("Death TRiggerd Update");
 
+        }
         // Decrement attack countdown if not currently attacking
         if (!attacking)
         {
@@ -176,7 +177,14 @@ public class BossDragonKnight : Enemy
     #region variables
     [HideInInspector] public bool attacking;                    // Flag for if the boss is currently attacking
     [HideInInspector] public float attackCountDown;             // Countdown timer for attacks
-    [HideInInspector] public bool parrying;
+    [HideInInspector] public bool parrying;                     // Parry bool
+    [HideInInspector] public Vector2 moveToPosition;
+    [HideInInspector] public bool diveAttack;
+    public GameObject divingCollider;
+    private bool isFlashing = false;
+    public GameObject pillar;
+    private float hitFlashSpeed;
+
     #endregion
 
     #region Control
@@ -195,6 +203,7 @@ public class BossDragonKnight : Enemy
             else
             {
                 StartCoroutine(Lunge());
+                //DiveAttackJump();
             }
         }
     }
@@ -209,13 +218,6 @@ public class BossDragonKnight : Enemy
         StopCoroutine(Lunge());
         StopCoroutine(Parry());
         StopCoroutine(Slash());
-
-        /*     diveAttack = false;
-               barrageAttack = false;
-               outbreakAttack = false;
-               bounceAttack = false; */
-
-        //Stopping / reset all attacks when implemented.
     }
 
 
@@ -229,20 +231,20 @@ public class BossDragonKnight : Enemy
         rb.velocity = Vector2.zero;             // Stop movement
         float RandonValueUnder1 = UnityEngine.Random.Range(0.5f, 0.8f);
 
-
         // Perform three slashes with delays in between
         anim.SetTrigger("Slash");
-        //SlashAngle();
+        
+        SlashAngle();
         yield return new WaitForSeconds(RandonValueUnder1);
         anim.ResetTrigger("Slash");
 
         anim.SetTrigger("Slash");
-        //SlashAngle();
+        SlashAngle();
         yield return new WaitForSeconds(RandonValueUnder1);
         anim.ResetTrigger("Slash");
 
         anim.SetTrigger("Slash");
-        //SlashAngle();
+        SlashAngle();
         yield return new WaitForSeconds(RandonValueUnder1);
         anim.ResetTrigger("Slash");
 
@@ -251,7 +253,7 @@ public class BossDragonKnight : Enemy
     }
 
 
-    /*     void SlashAngle()
+        void SlashAngle()
         {
             if (PlayerController.Instance.transform.position.x > transform.position.x ||
                 PlayerController.Instance.transform.position.x < transform.position.x)
@@ -266,7 +268,7 @@ public class BossDragonKnight : Enemy
             {
                 SlashEffectAtAngle(slashEffect, -90, DownAttackTransform);
             }
-        } */
+        } 
 
 
 
@@ -295,7 +297,6 @@ public class BossDragonKnight : Enemy
         attacking = true;
         rb.velocity = Vector2.zero;
         anim.SetBool("Parry", true);
-        Debug.Log("pARRYYY");
         yield return new WaitForSeconds(0.8f);
         anim.SetBool("Parry", false);
         parrying = false;
@@ -318,30 +319,99 @@ public class BossDragonKnight : Enemy
 
     public override void EnemyHit(float _damageDone, Vector2 _hitDirection, float _hitForce)
     {
-        if (!stunned)
+        if (!parrying)
         {
-            if (!parrying)
-            {
-                ResetAllAttacks();
-                base.EnemyHit(_damageDone, _hitDirection, _hitForce);
+            base.EnemyHit(_damageDone, _hitDirection, _hitForce);
+            ResetAllAttacks();
+            anim.SetTrigger("TookDamage");
 
-                if (currentEnemyState != EnemyStates.DragonKnight_Stage4)
-                {
-                    ResetAllAttacks(); //cancel any current attack to avoid bugs 
-                    StartCoroutine(Parry());
-                }
+                        
+                ResetAllAttacks(); //cancel any current attack to avoid bugs 
+                StartCoroutine(Parry());
+            
 
-            }
-            else
-            {
-                StopCoroutine(Parry());
-                parrying = false;
-                ResetAllAttacks();
-                StartCoroutine(Slash());  //riposte
-            }
+        }
+        else
+        {
+            StopCoroutine(Parry());
+            parrying = false;
+            ResetAllAttacks();
+            StartCoroutine(Slash());  //riposte
         }
     }
+
     #endregion
+
+    #region DEATH
+
+    protected override void Death(float _destroyTime)
+    {
+        ResetAllAttacks();
+        rb.velocity = new Vector2(rb.velocity.x, -25);
+        anim.SetTrigger("Die");
+        Debug.Log("Enemy Die trigger hit");
+        isDeathTriggered = false;
+
+    }
+
+    public void DestroyAfterDeath()
+    {
+        Destroy(gameObject);
+    }
+
+
+    #endregion
+
+
+
+
+    /* #region Stage 2
+
+    void DiveAttackJump()
+    {
+        attacking = true;
+        moveToPosition = new Vector2(PlayerController.Instance.transform.position.x, rb.position.y + 10);
+        Debug.Log("Dive attack jump called");
+        diveAttack = true;
+        anim.SetBool("Jump", true);
+    }
+
+
+    public void Dive()
+    {
+        anim.SetBool("Dive", true);
+        anim.SetBool("Dive", false);
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D _other)
+    {
+        if(_other.GetComponent<PlayerController>() != null && diveAttack)
+        {
+            _other.GetComponent<PlayerDamageController>().TakeDamage(damage * 2);
+            PlayerController.Instance.pState.recoilingX = true;
+        }
+    }
+
+    public void DivingPillars()
+    {
+        Vector2 _impactPoint = groundCheckPoint.position;
+        float _spawnDistance = 5;
+
+        for(int i = 0; i < 10; i++)
+        {
+            Vector2 _pillarSpawnPointRight = _impactPoint + new Vector2(_spawnDistance, 0);
+            Vector2 _pillarSpawnPointLeft = _impactPoint - new Vector2(_spawnDistance, 0);
+            Instantiate(pillar, _pillarSpawnPointRight, Quaternion.Euler(0, 0, -90));
+            Instantiate(pillar, _pillarSpawnPointLeft, Quaternion.Euler(0, 0, -90));
+
+            _spawnDistance += 5;
+        }
+        ResetAllAttacks();
+    }
+
+
+    #endregion */
     #endregion
 }
 

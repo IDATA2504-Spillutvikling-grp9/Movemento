@@ -68,7 +68,11 @@
     <Compile Include="Assets\Scripts\Player\Ability\Pickup\HealAbility_Pickup.cs" />
     <Compile Include="Assets\_GabrielBissonnette\Sad - Main Menu Pack\_essentials\Demo Resources\_returnToMainMenu.cs" />
     <Compile Include="Assets\Scripts\Enemies\Boss level 1.cs" />
+<<<<<<< HEAD
     <Compile Include="Assets\Scripts\Enemies\Lavaboss2.cs" />
+=======
+    <Compile Include="Assets\RandomSpawner.cs" />
+>>>>>>> 5c3ba25590a095a2d23d5db8331fbb01dbafb405
     <Compile Include="Assets\Scripts\PlatformController.cs" />
     <Compile Include="Assets\Scripts\Enemies\IslandBoss\BossDragonKnight.cs" />
     <Compile Include="Assets\Scripts\Enemies\Onion\Onion.cs" />
@@ -80,22 +84,28 @@
     <Compile Include="Assets\Scripts\Menu\MainMenuManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Enemies\Hive\BeeHive.cs" />
+<<<<<<< HEAD
     <Compile Include="Assets\Scripts\Enemies\Lavaboss.cs" />
+=======
+    <Compile Include="Assets\BigSpawner.cs" />
+    <Compile Include="Assets\Scripts\Player\Attacking\PlayerAttakingUI.cs" />
+>>>>>>> 5c3ba25590a095a2d23d5db8331fbb01dbafb405
     <Compile Include="Assets\Scripts\Player\Health\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Player\Ability\HealAbility.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
-    <Compile Include="Assets\Scripts\Enemies\IslandBoss\StateMachine\Boss_Bounce1.cs" />
     <Compile Include="Assets\Scripts\Enemies\IslandBoss\StateMachine\Boss_Lunge.cs" />
+<<<<<<< HEAD
     <Compile Include="Assets\Scripts\Enemies\Lavadamage.cs" />
+=======
+    <Compile Include="Assets\Scripts\Enemies\IslandBoss\Ability\DivingPillar.cs" />
+>>>>>>> 5c3ba25590a095a2d23d5db8331fbb01dbafb405
     <Compile Include="Assets\Scripts\Player\Health\PlayerDeath.cs" />
     <Compile Include="Assets\Scripts\Enemies\IslandBoss\DragonKnightEvents.cs" />
     <Compile Include="Assets\Scripts\Enemies\IslandBoss\StateMachine\Boss_Dive.cs" />
     <Compile Include="Assets\Scripts\Enemies\Caterpillar.cs" />
     <Compile Include="Assets\Scripts\Enemies\Ghost.cs" />
     <Compile Include="Assets\Scripts\Player\SkyFollow.cs" />
-    <Compile Include="Assets\Scripts\Enemies\IslandBoss\StateMachine\Boss_BendDown.cs" />
-    <Compile Include="Assets\Scripts\Enemies\IslandBoss\StateMachine\Boss_Bounce2.cs" />
     <Compile Include="Assets\Scripts\Menu\Game Manager.cs" />
     <Compile Include="Assets\Scripts\Player\DestroyAfterAnimation.cs" />
     <Compile Include="Assets\Scripts\Enemies\Spawner.cs" />

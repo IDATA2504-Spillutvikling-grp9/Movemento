@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 1239094917596198519}
   - component: {fileID: 5793379571031498755}
   - component: {fileID: 6356674792238723590}
+  - component: {fileID: 5226324959099764346}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -205,6 +206,7 @@ MonoBehaviour:
   doubleJumpSound: {fileID: 8300000, guid: aced718f1e91dec46a98f73c9865a588, type: 3}
   moveSound: {fileID: 0}
   dashSound: {fileID: 8300000, guid: 71e02d5d48fdab24fbaa668c2319dfc5, type: 3}
+  audioSource: {fileID: 0}
   pState: {fileID: 0}
   anim: {fileID: 0}
 --- !u!114 &5963356376004151191
@@ -313,6 +315,7 @@ MonoBehaviour:
   attackableLayer:
     serializedVersion: 2
     m_Bits: 128
+  playerAttakingUI: {fileID: 0}
   recoilXSteps: 1
   recoilYSteps: 1
   recoilXSpeed: 20
@@ -448,6 +451,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5226324959099764346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2617397226802405339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bdd2bf180cd71c4bbf064fe65ffde76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordImage: {fileID: 0}
+  cooldownDuration: 1
 --- !u!1 &3899630945891371396
 GameObject:
   m_ObjectHideFlags: 0

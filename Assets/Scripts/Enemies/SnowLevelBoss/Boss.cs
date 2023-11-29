@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Boss : Enemy
 {
@@ -8,6 +10,7 @@ public class Boss : Enemy
    [SerializeField] private float chargStopTime;
    [SerializeField] private float timeBetweenCharges;
    [SerializeField] private float chaseDistance;
+   [SerializeField] private Animator doorAnimator;
 
    private bool isCharging = false;
    private float chargeTimer = 0f;
@@ -16,6 +19,20 @@ public class Boss : Enemy
    protected override void Start() {
     base.Start();
     currentEnemyState = EnemyStates.Boss_Idle;
+   }
+
+   protected override void Update() {
+    if(health <= 0) {
+        OpenDoor();
+        base.Death(0.1f);
+    }
+    UpdateEnemyStates();
+   }
+
+   private void OpenDoor() {
+    if(doorAnimator != null) {
+        doorAnimator.SetTrigger("Open");
+    }
    }
 
    protected override void UpdateEnemyStates() {

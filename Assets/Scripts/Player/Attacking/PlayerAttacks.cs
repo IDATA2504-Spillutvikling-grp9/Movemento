@@ -23,6 +23,7 @@ public class PlayerAttacks : MonoBehaviour
     bool attack = false;
     [Space(5)]
 
+    [SerializeField] PlayerAttakingUI playerAttakingUI;
 
     [Header("Recoil Settings:")]
     [SerializeField] private int recoilXSteps = 5;          //how many FixedUpdates() the player recoils horizontally for
@@ -38,6 +39,9 @@ public class PlayerAttacks : MonoBehaviour
     private float xAxis;
     private float yAxis;
 
+    private float attackCooldown = 0.5f;
+    private bool canAttack = true;
+
     private GameManager gameManager;
 
 
@@ -47,6 +51,7 @@ public class PlayerAttacks : MonoBehaviour
         pm = GetComponent<PlayerMana>();
         rb = GetComponent<Rigidbody2D>();
         gameManager = FindObjectOfType<GameManager>();
+        playerAttakingUI = GetComponent<PlayerAttakingUI>();
     }
 
 
@@ -68,9 +73,12 @@ public class PlayerAttacks : MonoBehaviour
     {
         if (pc.pState.dashing || pc.pState.healing) return;
         if (pc.pState.alive)
+        if (canAttack) // Check if the player can attack based on cooldown
+        {
+            Attack();
+        }
         {
             GetInputs();
-            Attack();
         }
     }
 
@@ -107,12 +115,14 @@ public class PlayerAttacks : MonoBehaviour
         {
             timeSinceAttack = 0;
             pc.anim.SetTrigger("Attacking");
+            StartCoroutine(AttackCooldown());
+            playerAttakingUI.UpdateSliderValue(1f, 0f);
 
             if (yAxis == 0 || yAxis < 0 && pc.Grounded())
             {
                 int _recoilLeftOrRight = pc.pState.lookingRight ? 1 : -1;
 
-                Hit(SideAttackTransform, SideAttackArea, ref pc.pState.recoilingX, Vector2.right * _recoilLeftOrRight, recoilXSpeed);
+                Hit(SideAttackTransform, SideAttackArea, ref pc.pState.recoilingX, Vector2.right, recoilXSpeed);
                 Instantiate(slashEffect, SideAttackTransform);
             }
             else if (yAxis > 0)
@@ -127,6 +137,13 @@ public class PlayerAttacks : MonoBehaviour
             }
         }
     }
+
+    IEnumerator AttackCooldown()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(attackCooldown);
+        canAttack = true;
+    }   
 
 
 
