@@ -82,16 +82,14 @@
     <Compile Include="Assets\Scripts\Player\Ability\HealAbility.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
-    <Compile Include="Assets\Scripts\Enemies\IslandBoss\StateMachine\Boss_Bounce1.cs" />
     <Compile Include="Assets\Scripts\Enemies\IslandBoss\StateMachine\Boss_Lunge.cs" />
+    <Compile Include="Assets\Scripts\Enemies\IslandBoss\Ability\DivingPillar.cs" />
     <Compile Include="Assets\Scripts\Player\Health\PlayerDeath.cs" />
     <Compile Include="Assets\Scripts\Enemies\IslandBoss\DragonKnightEvents.cs" />
     <Compile Include="Assets\Scripts\Enemies\IslandBoss\StateMachine\Boss_Dive.cs" />
     <Compile Include="Assets\Scripts\Enemies\Caterpillar.cs" />
     <Compile Include="Assets\Scripts\Enemies\Ghost.cs" />
     <Compile Include="Assets\Scripts\Player\SkyFollow.cs" />
-    <Compile Include="Assets\Scripts\Enemies\IslandBoss\StateMachine\Boss_BendDown.cs" />
-    <Compile Include="Assets\Scripts\Enemies\IslandBoss\StateMachine\Boss_Bounce2.cs" />
     <Compile Include="Assets\Scripts\Menu\Game Manager.cs" />
     <Compile Include="Assets\Scripts\Player\DestroyAfterAnimation.cs" />
     <Compile Include="Assets\Scripts\Enemies\Spawner.cs" />
