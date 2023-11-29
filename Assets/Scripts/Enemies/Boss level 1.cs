@@ -1,58 +1,164 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Bosslevel1 : Enemy // Inherit from the Enemy class
+public class BossLevel1 : Enemy
 {
-    [Header("Boss Specific Settings")]
-    // Add boss-specific attributes here
-    [SerializeField] private float attackCooldown;  // Time between attacks
-    private float attackTimer;                     // Timer to track attack cooldown
+    [Header("Boss Phase Settings")]
+    [SerializeField] private float phaseTwoThreshold = 0.66f; // Two-thirds health
+    [SerializeField] private float phaseThreeThreshold = 0.33f; // One-third health
+    [SerializeField] private GameObject minionPrefab; // The prefab for spawned minions
 
-    // Use the Start method to initialize boss-specific attributes
+    [Header("Movement Settings")]
+    [SerializeField] private float speed = 2.0f; // Speed of the boss
+    private bool isMovingLeft = true; // Initial movement direction
+
+    [Header("Player Tracking Settings")]
+    [SerializeField] private Transform playerTransform; // Assign the player's transform in the inspector
+
+    [Header("Attack Settings")]
+    [SerializeField] private float attackCooldown = 2f; // Cooldown time between attacks
+    private float attackTimer; // Timer to track attack cooldown
+
+    private int currentPhase = 1;
+
     protected override void Start()
     {
-        base.Start(); // Call the base class Start method
+        base.Start();
         // Initialize boss-specific attributes here
+        attackTimer = attackCooldown;
+        if (playerTransform == null)
+        {
+            // Automatically find the player by tag if not set in the inspector
+            playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        }
     }
 
-    // Override the Update method if the boss has specific behavior patterns
     protected override void Update()
     {
-        base.Update(); // Call the base class Update method
+        base.Update();
 
-        // Boss-specific update logic here
-        if (health <= 0)
+        // Check and update the boss phase based on current health
+        if (health / maxHealth <= phaseThreeThreshold && currentPhase < 3)
         {
-            // You might want a different death behavior for the boss
-            Death(0.5f); // Call the death method with a delay
+            EnterPhaseThree();
+        }
+        else if (health / maxHealth <= phaseTwoThreshold && currentPhase < 2)
+        {
+            EnterPhaseTwo();
         }
 
-        // Handle attack cooldown
-        if (attackTimer > 0)
+        FollowPlayer(); // Add this line to handle movement
+
+        // Attack logic
+        if (attackTimer <= 0)
         {
-            attackTimer -= Time.deltaTime;
+            Attack();
+            attackTimer = attackCooldown;
         }
         else
         {
-            // Perform an attack
-            Attack();
-            attackTimer = attackCooldown; // Reset the attack timer
+            attackTimer -= Time.deltaTime;
         }
     }
 
-    // You can override the Attack method to implement boss-specific attacks
-    protected override void Attack()
+    private void FollowPlayer()
     {
-        base.Attack(); // Call the base class Attack method if you want the boss to deal damage in the same way
-        // Additional boss-specific attack logic here
+        if (playerTransform != null)
+        {
+            // Determine the direction to the player
+            float directionToPlayer = playerTransform.position.x - transform.position.x;
+
+            // Move towards the player
+            rb.velocity = new Vector2(Mathf.Sign(directionToPlayer) * speed, rb.velocity.y);
+
+            // If the direction to the player is different from the moving direction, flip the boss
+            if ((isMovingLeft && directionToPlayer > 0) || (!isMovingLeft && directionToPlayer < 0))
+            {
+                Flip();
+            }
+        }
     }
 
-    // Override any other methods as needed to provide specific boss behaviors
-    protected override void Death(float _destroyTime)
+    private void Flip()
     {
-        // Boss-specific death logic here
-        base.Death(_destroyTime); // Optionally call the base class Death method
-        // For example, trigger a cutscene or an explosion effect
+        // Flip the moving direction
+        isMovingLeft = !isMovingLeft;
+
+        // Flip the sprite by scaling in the X direction
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+    }
+
+    public override void EnemyHit(float _damageDone, Vector2 _hitDirection, float _hitForce)
+    {
+        base.EnemyHit(_damageDone, _hitDirection, _hitForce);
+
+        // Boss-specific hit logic
+        if (health <= maxHealth * phaseTwoThreshold && currentPhase == 1)
+        {
+            EnterPhaseTwo();
+        }
+        else if (health <= maxHealth * phaseThreeThreshold && currentPhase == 2)
+        {
+            EnterPhaseThree();
+        }
+
+        // Boss-specific hit reactions
+        StartCoroutine(FlashSprite());
+    }
+
+    private IEnumerator FlashSprite()
+    {
+        sr.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sr.color = Color.white;
+    }
+
+    private void EnterPhaseTwo()
+    {
+        currentPhase = 2;
+        speed *= 1.5f; // Increase speed for phase two
+        // Any other changes for phase two, e.g., jump height, aggression level
+    }
+
+    private void EnterPhaseThree()
+    {
+        currentPhase = 3;
+        speed *= 2; // Increase speed further for phase three
+        SpawnMinions();
+    }
+
+    private void SpawnMinions()
+    {
+        Instantiate(minionPrefab, transform.position, Quaternion.identity);
+        Instantiate(minionPrefab, transform.position, Quaternion.identity);
+    }
+
+    protected override void Attack()
+    {
+        // Implement attack patterns based on the current phase
+        switch (currentPhase)
+        {
+            case 1:
+                // Phase 1 attack pattern
+                break;
+            case 2:
+                // Phase 2 attack pattern
+                break;
+            case 3:
+                // Phase 3 attack pattern
+                break;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Replace with your player damage logic
+            // Make sure your player object has a tag of "Player" and a method to handle damage
+            collision.gameObject.SendMessage("TakeDamage", damage);
+        }
     }
 }
