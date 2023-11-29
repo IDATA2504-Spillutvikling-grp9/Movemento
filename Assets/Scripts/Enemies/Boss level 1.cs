@@ -146,9 +146,28 @@ public class BossLevel1 : Enemy
 
     private void SpawnMinions()
     {
-        Instantiate(minionPrefab, transform.position, Quaternion.identity);
-        Instantiate(minionPrefab, transform.position, Quaternion.identity);
+        if (minionPrefab != null)
+        {
+            // Offset values to space out the minions
+            float xOffset = 1.0f; // Horizontal offset
+            float yOffset = 3.0f; // Vertical offset (adjust this to spawn minions higher)
+
+            // Position for the first minion (to the left and a bit higher)
+            Vector3 spawnPosition1 = new Vector3(transform.position.x - xOffset, transform.position.y + yOffset, transform.position.z);
+            Instantiate(minionPrefab, spawnPosition1, Quaternion.identity);
+
+            // Position for the second minion (to the right and a bit higher)
+            Vector3 spawnPosition2 = new Vector3(transform.position.x + xOffset, transform.position.y + yOffset, transform.position.z);
+            Instantiate(minionPrefab, spawnPosition2, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogError("Minion prefab is not assigned or has been destroyed.");
+        }
     }
+
+
+
 
     protected override void Attack()
     {
@@ -167,13 +186,5 @@ public class BossLevel1 : Enemy
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            // Replace with your player damage logic
-            // Make sure your player object has a tag of "Player" and a method to handle damage
-            collision.gameObject.SendMessage("TakeDamage", damage);
-        }
-    }
+
 }
