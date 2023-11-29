@@ -20,7 +20,6 @@ public class Boss_Idle : StateMachineBehaviour
 
         // Reset the GameObject's velocity to zero to stop any ongoing movement
         rb.velocity = Vector2.zero;
-        /* rb.AddForce(Vector2.left * 0.1f, ForceMode2D.Impulse); */
 
         // Call the RunToPlayer function to potentially move towards the player
         RunToPlayer(animator);

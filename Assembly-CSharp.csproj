@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Enemies\IslandBoss\BossDragonKnight.cs" />
     <Compile Include="Assets\Scripts\Enemies\Onion\Onion.cs" />
     <Compile Include="Assets\Scripts\Player\Attacking\PlayerAttacks.cs" />
+    <Compile Include="Assets\Scripts\Camera\CameraSwitcher.cs" />
     <Compile Include="Assets\Scripts\Player\Mana\PlayerMana.cs" />
     <Compile Include="Assets\Scripts\Enemies\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Menu\MainMenuManager.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Assets\Scripts\Enemies\IslandBoss\StateMachine\Boss_Bounce2.cs" />
     <Compile Include="Assets\Scripts\Menu\Game Manager.cs" />
     <Compile Include="Assets\Scripts\Player\DestroyAfterAnimation.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Spawner.cs" />
     <Compile Include="Assets\Scripts\Colliders\PolygonColliderOptimizer.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStateList.cs" />
     <Compile Include="Assets\Scripts\Player\Damage\PlayerDamageController.cs" />

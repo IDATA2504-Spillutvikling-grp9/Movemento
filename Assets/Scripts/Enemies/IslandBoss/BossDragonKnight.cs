@@ -9,33 +9,33 @@ public class BossDragonKnight : Enemy
     [SerializeField] private float groundCheckX = 0.5f;     //how far horizontally from ground chekc point to the edge of the player is
     [SerializeField] private float groundCheckY = 0.2f;     //how far down from ground chekc point is Grounded() checked
     [SerializeField] private LayerMask whatIsGround;        //sets the ground layer
-    [Space(5)]
+    [Space(2)]
 
     [Header("Attack Settings")]
     [SerializeField] public Transform SideAttackTransform;         //position - the middle of the side attack area
     [SerializeField] public Transform UpAttackTransform;           //position - the middle of the up attack area
     [SerializeField] public Transform DownAttackTransform;         //position - the middle of the down attack area
-    [Space(3)]
+    [Space(2)]
 
     [SerializeField] public Vector2 SideAttackArea;                //Size - of the side attack area
     [SerializeField] public Vector2 UpAttackArea;                  //Size - of the up attack area 
     [SerializeField] public Vector2 DownAttackArea;                //Size - of the down attack are
-    [Space(3)]
+    [Space(2)]
 
     [Header("Running Settings")]
     [SerializeField] public float runSpeed;                // Runspeed of player used for run state.
-    [Space(5)]
+    [Space(2)]
     
     [Header("Lunge Settings")]
     [SerializeField] public float LungeSpeed;
-    [Space(3)]
+    [Space(2)]
 
     [HideInInspector] public bool facingRight;              // used to check which way the boss is facing
     public float attackRange;                               // range of the boss attacks
     public float attackTimer;                               // timer for boss attacks
+    
     [Header("Particle Settings")]
     [SerializeField] GameObject slashEffect;                // sprite / effect used for the attack of the boss
-    [SerializeField] GameObject fireEffect;                 // sprite / effect, not used atm
     [Space(3)]
     [HideInInspector] public bool damagedPlayer = false;    // checks for damage to player
     public static BossDragonKnight Instance;                // Setting up a singleton instance of the Boss.
@@ -76,7 +76,7 @@ public class BossDragonKnight : Enemy
 
 
     // Initialize the BossDragonKnight
-    void Start()
+    protected override void Start()
     {
         base.Start();
         // Grab components from child objects
