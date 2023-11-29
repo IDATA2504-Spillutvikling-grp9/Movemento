@@ -18,6 +18,7 @@ public class BossLevel1 : Enemy
     [Header("Attack Settings")]
     [SerializeField] private float attackCooldown = 2f; // Cooldown time between attacks
     private float attackTimer; // Timer to track attack cooldown
+    [Header("Door Settings")]
     [SerializeField] private Animator doorAnimator; // Drag the door's Animator component here in the inspector
 
 
