@@ -38,6 +38,7 @@ public class BossDragonKnight : Enemy
     [Header("Particle Settings")]
     [SerializeField] GameObject slashEffect;                // sprite / effect used for the attack of the boss
     [Space(3)]
+    [SerializeField] private Animator doorAnimator;
     [HideInInspector] public bool damagedPlayer = false;    // checks for damage to player
     public static BossDragonKnight Instance;                // Setting up a singleton instance of the Boss.
     private bool isDeathTriggered = true;
@@ -55,6 +56,14 @@ public class BossDragonKnight : Enemy
             Instance = this;                        // Set this instance as the Singleton instance
         }
         // DontDestroyOnLoad(gameObject);
+    }
+
+    private void OpenDoor()
+    {
+        if (doorAnimator != null)
+        {
+            doorAnimator.SetTrigger("Open");
+        }
     }
 
 
@@ -318,6 +327,11 @@ public class BossDragonKnight : Enemy
 
     public override void EnemyHit(float _damageDone, Vector2 _hitDirection, float _hitForce)
     {
+
+        if(health <= -1)
+        {
+            base.Death(0);
+        }
         if (!parrying)
         {
             base.EnemyHit(_damageDone, _hitDirection, _hitForce);
@@ -350,7 +364,7 @@ public class BossDragonKnight : Enemy
         anim.SetBool("Parry", false);
         anim.SetBool("Lunge", false);
         anim.SetTrigger("Die");
-        Debug.Log("Enemy Die trigger hit");
+        OpenDoor();
 
         isDeathTriggered = false;
 
