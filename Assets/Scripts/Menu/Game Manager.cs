@@ -56,8 +56,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     [SerializeField] public GameObject endLevelScreen;
 
-    [SerializeField] public GameObject bossHealtBar;
-
     /// <summary>
     /// The name of the scene to be loaded.
     /// </summary>
@@ -125,7 +123,6 @@ public class GameManager : MonoBehaviour
         SetSliderValueMusic();
         SetSliderValueGame();
         endLevelScreen.SetActive(false);
-        bossHealtBar.SetActive(false);
     }
 
     /*
@@ -397,9 +394,5 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("Level data not found for scene: " + sceneName);
             return 0f;
         }
-    }
-
-    public void SetBossHealtbarTrue() {
-        bossHealtBar.SetActive(true);
     }
 }

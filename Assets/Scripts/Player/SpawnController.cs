@@ -70,7 +70,6 @@ public class SpawnController : MonoBehaviour
             gameManager.EndLevel();
         }
         else if(collision.tag == "BossCheckPoint") {
-            gameManager.SetBossHealtbarTrue();
             firstSpawn = transform.position;
         }
 	}
