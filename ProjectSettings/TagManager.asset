@@ -21,6 +21,7 @@ TagManager:
   - ground
   - Spikes
   - ObjectDamage
+  - BossCheckPoint
   layers:
   - Default
   - TransparentFX
@@ -64,12 +65,12 @@ TagManager:
   - name: Ground
     uniqueID: 2743425899
     locked: 0
+  - name: Player
+    uniqueID: 819542729
+    locked: 0
   - name: Foreground
     uniqueID: 2493333051
     locked: 0
   - name: Enemy
     uniqueID: 2523691783
-    locked: 0
-  - name: Player
-    uniqueID: 819542729
     locked: 0

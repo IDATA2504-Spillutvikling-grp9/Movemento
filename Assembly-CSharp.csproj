@@ -59,7 +59,7 @@
     <UnityVersion>2022.3.7f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\Viddy\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.3\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\stave\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.3\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.7f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.7f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
@@ -68,22 +68,30 @@
     <Compile Include="Assets\Scripts\Player\Ability\Pickup\HealAbility_Pickup.cs" />
     <Compile Include="Assets\_GabrielBissonnette\Sad - Main Menu Pack\_essentials\Demo Resources\_returnToMainMenu.cs" />
     <Compile Include="Assets\Scripts\Enemies\Boss level 1.cs" />
+    <Compile Include="Assets\RandomSpawner.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Lavaboss2.cs" />
     <Compile Include="Assets\Scripts\PlatformController.cs" />
     <Compile Include="Assets\Scripts\Enemies\IslandBoss\BossDragonKnight.cs" />
     <Compile Include="Assets\Scripts\Enemies\Onion\Onion.cs" />
     <Compile Include="Assets\Scripts\Player\Attacking\PlayerAttacks.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Lavabossbullet.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraSwitcher.cs" />
     <Compile Include="Assets\Scripts\Player\Mana\PlayerMana.cs" />
     <Compile Include="Assets\Scripts\Enemies\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Menu\MainMenuManager.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Reusable patterns\Territorial Enemy.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Enemies\Hive\BeeHive.cs" />
+    <Compile Include="Assets\BigSpawner.cs" />
+    <Compile Include="Assets\Scripts\Player\Attacking\PlayerAttakingUI.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Lavaboss.cs" />
     <Compile Include="Assets\Scripts\Player\Health\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Player\Ability\HealAbility.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemies\IslandBoss\StateMachine\Boss_Lunge.cs" />
     <Compile Include="Assets\Scripts\Enemies\IslandBoss\Ability\DivingPillar.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Lavadamage.cs" />
     <Compile Include="Assets\Scripts\Player\Health\PlayerDeath.cs" />
     <Compile Include="Assets\Scripts\Enemies\IslandBoss\DragonKnightEvents.cs" />
     <Compile Include="Assets\Scripts\Enemies\IslandBoss\StateMachine\Boss_Dive.cs" />
@@ -92,6 +100,7 @@
     <Compile Include="Assets\Scripts\Player\SkyFollow.cs" />
     <Compile Include="Assets\Scripts\Menu\Game Manager.cs" />
     <Compile Include="Assets\Scripts\Player\DestroyAfterAnimation.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Reusable patterns\Patroling Enemies.cs" />
     <Compile Include="Assets\Scripts\Enemies\Spawner.cs" />
     <Compile Include="Assets\Scripts\Colliders\PolygonColliderOptimizer.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStateList.cs" />

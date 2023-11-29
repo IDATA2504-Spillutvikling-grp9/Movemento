@@ -90,12 +90,11 @@ public class BossDragonKnight : Enemy
 
     protected override void Update()
     {
-        if(health <= 0 && isDeathTriggered)
-            {
-                Death(0);
-                Debug.Log("Death TRiggerd Update");
+        if (health <= 0 && isDeathTriggered)
+        {
+            Death(0);
 
-            }
+        }
         // Decrement attack countdown if not currently attacking
         if (!attacking)
         {
@@ -181,7 +180,9 @@ public class BossDragonKnight : Enemy
     [HideInInspector] public Vector2 moveToPosition;
     [HideInInspector] public bool diveAttack;
     public GameObject divingCollider;
+    private bool isFlashing = false;
     public GameObject pillar;
+    private float hitFlashSpeed;
 
     #endregion
 
@@ -231,17 +232,18 @@ public class BossDragonKnight : Enemy
 
         // Perform three slashes with delays in between
         anim.SetTrigger("Slash");
-        //SlashAngle();
+
+        SlashAngle();
         yield return new WaitForSeconds(RandonValueUnder1);
         anim.ResetTrigger("Slash");
 
         anim.SetTrigger("Slash");
-        //SlashAngle();
+        SlashAngle();
         yield return new WaitForSeconds(RandonValueUnder1);
         anim.ResetTrigger("Slash");
 
         anim.SetTrigger("Slash");
-        //SlashAngle();
+        SlashAngle();
         yield return new WaitForSeconds(RandonValueUnder1);
         anim.ResetTrigger("Slash");
 
@@ -250,22 +252,22 @@ public class BossDragonKnight : Enemy
     }
 
 
-    /*     void SlashAngle()
+    void SlashAngle()
+    {
+        if (PlayerController.Instance.transform.position.x > transform.position.x ||
+            PlayerController.Instance.transform.position.x < transform.position.x)
         {
-            if (PlayerController.Instance.transform.position.x > transform.position.x ||
-                PlayerController.Instance.transform.position.x < transform.position.x)
-            {
-                Instantiate(slashEffect, SideAttackTransform);
-            }
-            if (PlayerController.Instance.transform.position.y > transform.position.y)
-            {
-                SlashEffectAtAngle(slashEffect, 80, UpAttackTransform);
-            }
-            if (PlayerController.Instance.transform.position.y < transform.position.y)
-            {
-                SlashEffectAtAngle(slashEffect, -90, DownAttackTransform);
-            }
-        } */
+            Instantiate(slashEffect, SideAttackTransform);
+        }
+        if (PlayerController.Instance.transform.position.y > transform.position.y)
+        {
+            SlashEffectAtAngle(slashEffect, 80, UpAttackTransform);
+        }
+        if (PlayerController.Instance.transform.position.y < transform.position.y)
+        {
+            SlashEffectAtAngle(slashEffect, -90, DownAttackTransform);
+        }
+    }
 
 
 
@@ -294,7 +296,6 @@ public class BossDragonKnight : Enemy
         attacking = true;
         rb.velocity = Vector2.zero;
         anim.SetBool("Parry", true);
-        Debug.Log("pARRYYY");
         yield return new WaitForSeconds(0.8f);
         anim.SetBool("Parry", false);
         parrying = false;
@@ -319,14 +320,14 @@ public class BossDragonKnight : Enemy
     {
         if (!parrying)
         {
-            ResetAllAttacks();
             base.EnemyHit(_damageDone, _hitDirection, _hitForce);
+            ResetAllAttacks();
+            anim.SetTrigger("TookDamage");
 
-            if (currentEnemyState != EnemyStates.DragonKnight_Stage4)
-            {
-                ResetAllAttacks(); //cancel any current attack to avoid bugs 
-                StartCoroutine(Parry());
-            }
+
+            ResetAllAttacks(); //cancel any current attack to avoid bugs 
+            StartCoroutine(Parry());
+
 
         }
         else
@@ -337,6 +338,7 @@ public class BossDragonKnight : Enemy
             StartCoroutine(Slash());  //riposte
         }
     }
+
     #endregion
 
     #region DEATH
@@ -345,10 +347,13 @@ public class BossDragonKnight : Enemy
     {
         ResetAllAttacks();
         rb.velocity = new Vector2(rb.velocity.x, -25);
+        anim.SetBool("Parry", false);
+        anim.SetBool("Lunge", false);
         anim.SetTrigger("Die");
         Debug.Log("Enemy Die trigger hit");
+
         isDeathTriggered = false;
-        
+
     }
 
     public void DestroyAfterDeath()
