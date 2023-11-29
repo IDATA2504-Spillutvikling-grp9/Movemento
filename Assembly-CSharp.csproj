@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Player\Ability\Pickup\HealAbility_Pickup.cs" />
     <Compile Include="Assets\_GabrielBissonnette\Sad - Main Menu Pack\_essentials\Demo Resources\_returnToMainMenu.cs" />
     <Compile Include="Assets\Scripts\Enemies\Boss level 1.cs" />
+    <Compile Include="Assets\RandomSpawner.cs" />
     <Compile Include="Assets\Scripts\PlatformController.cs" />
     <Compile Include="Assets\Scripts\Enemies\IslandBoss\BossDragonKnight.cs" />
     <Compile Include="Assets\Scripts\Enemies\Onion\Onion.cs" />
@@ -78,6 +79,8 @@
     <Compile Include="Assets\Scripts\Menu\MainMenuManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Enemies\Hive\BeeHive.cs" />
+    <Compile Include="Assets\BigSpawner.cs" />
+    <Compile Include="Assets\Scripts\Player\Attacking\PlayerAttakingUI.cs" />
     <Compile Include="Assets\Scripts\Player\Health\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Player\Ability\HealAbility.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />

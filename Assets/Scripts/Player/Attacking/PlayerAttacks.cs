@@ -39,7 +39,7 @@ public class PlayerAttacks : MonoBehaviour
     private float xAxis;
     private float yAxis;
 
-    private float attackCooldown = 1f;
+    private float attackCooldown = 0.5f;
     private bool canAttack = true;
 
     private GameManager gameManager;
@@ -122,7 +122,7 @@ public class PlayerAttacks : MonoBehaviour
             {
                 int _recoilLeftOrRight = pc.pState.lookingRight ? 1 : -1;
 
-                Hit(SideAttackTransform, SideAttackArea, ref pc.pState.recoilingX, Vector2.right * _recoilLeftOrRight, recoilXSpeed);
+                Hit(SideAttackTransform, SideAttackArea, ref pc.pState.recoilingX, Vector2.right, recoilXSpeed);
                 Instantiate(slashEffect, SideAttackTransform);
             }
             else if (yAxis > 0)
