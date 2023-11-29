@@ -4428,7 +4428,7 @@ Transform:
   m_GameObject: {fileID: 280091124}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 214.4, y: 50.2, z: 0}
+  m_LocalPosition: {x: 214.4, y: 49.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24023,7 +24023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fc6d4d9bd7fcb418242c57c6540e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 5
   maxHealth: 0
   speed: 5
   damage: 1
@@ -50181,7 +50181,7 @@ Transform:
   m_GameObject: {fileID: 1763280307}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 186.16, y: 50.01, z: 0}
+  m_LocalPosition: {x: 188.56, y: 48.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -60314,7 +60314,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1771275513
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 20daa800a641d9e4cae18a06630db1ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -60353,7 +60353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4499139069309737650, guid: ecd99294c409c684aac8df8555648fb7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 54.3
+      value: 51.45
       objectReference: {fileID: 0}
     - target: {fileID: 4499139069309737650, guid: ecd99294c409c684aac8df8555648fb7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -60831,7 +60831,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2894659131642449370, guid: 4fb536f31de5044c593525b89f6cd8b9, type: 3}
       propertyPath: orthographic size
-      value: 14
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 3192674436989532390, guid: 4fb536f31de5044c593525b89f6cd8b9, type: 3}
       propertyPath: m_LocalPosition.x
