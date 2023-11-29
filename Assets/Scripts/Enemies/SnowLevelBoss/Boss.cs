@@ -33,46 +33,25 @@ public class Boss : Enemy
     }
    }
 
-   void update() {
-     float chargeStopTime = 2f;
-        
-        //if (!isCharging)
-        //{
-            Debug.Log("Moving");
-            Vector2 directionToPlayer = (PlayerController.Instance.transform.position - transform.position).normalized;
-            rb.velocity = directionToPlayer * speed;
-
-            if (stopTimer < chargeStopTime)
-            {
-                stopTimer += Time.deltaTime;
-            }
-            else
-            {
-                stopTimer = 0f;
-                isCharging = true;
-                rb.velocity = Vector2.zero;
-            }
-        }
-
-    private void BossIdleState()
+private void BossIdleState()
+{
+    if (chargeTimer >= timeBetweenCharges)
     {
-        if (chargeTimer >= timeBetweenCharges)
-        {
-            chargeTimer = 0f;
-            currentEnemyState = EnemyStates.BeeHive_Chase;
-        }
-        else
-        {
-            chargeTimer += Time.deltaTime;
-        }
+        chargeTimer = 0f;
+        currentEnemyState = EnemyStates.Boss_Chase;
     }
+    else
+    {
+        chargeTimer += Time.deltaTime;
+    }
+}
 
     private void BossChaseState()
     {
         float chargeStopTime = 2f;
         
-        //if (!isCharging)
-        //{
+        if (!isCharging)
+        {
             Debug.Log("Moving");
             Vector2 directionToPlayer = (PlayerController.Instance.transform.position - transform.position).normalized;
             rb.velocity = directionToPlayer * speed;
@@ -88,12 +67,12 @@ public class Boss : Enemy
                 rb.velocity = Vector2.zero;
             }
         }
-       // else
-       // {
-        //    float timeBetweenCharges = 5f;
-        //    if (stopTimer < timeBetweenCharges)
-        //    {
-/*                 stopTimer += Time.deltaTime;
+        else
+        {
+            float timeBetweenCharges = 5f;
+            if (stopTimer < timeBetweenCharges)
+            {
+                stopTimer += Time.deltaTime;
             }
             else
             {
@@ -102,5 +81,5 @@ public class Boss : Enemy
                 currentEnemyState = EnemyStates.Boss_Idle;
             }
         }
-    } */
+    }
 }

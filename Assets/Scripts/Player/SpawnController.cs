@@ -52,7 +52,7 @@ public class SpawnController : MonoBehaviour
             
 		}
 		else if(collision.tag == "CheckPoint") {
-			 respawnPoint = transform.position;
+            respawnPoint = transform.position;
 		}
         else if(collision.tag == "Spikes") {
             playerDamageController.TakeDamage(1f);
@@ -68,6 +68,9 @@ public class SpawnController : MonoBehaviour
         }
         else if(collision.tag == "NextLevelPoint") {
             gameManager.EndLevel();
+        }
+        else if(collision.tag == "BossCheckPoint") {
+            firstSpawn = transform.position;
         }
 	}
 

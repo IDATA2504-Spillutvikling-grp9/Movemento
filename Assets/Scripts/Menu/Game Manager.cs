@@ -392,7 +392,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.LogWarning("Level data not found for scene: " + sceneName);
-            return 0f; // or any default value
+            return 0f;
         }
     }
 }
