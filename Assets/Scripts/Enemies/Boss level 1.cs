@@ -17,6 +17,10 @@ public class BossLevel1 : Enemy
 
     [Header("Attack Settings")]
     [SerializeField] private float attackCooldown = 2f; // Cooldown time between attacks
+
+    [Header("Proximity Attack Settings")]
+    [SerializeField] private float attackRange = 5f; // Range within which the boss will attack the player
+
     private float attackTimer; // Timer to track attack cooldown
     [Header("Door Settings")]
     [SerializeField] private Animator doorAnimator; // Drag the door's Animator component here in the inspector
@@ -40,7 +44,7 @@ public class BossLevel1 : Enemy
     {
         base.Update();
 
-        // Check and update the boss phase based on current health
+        // Phase logic
         if (health / maxHealth <= phaseThreeThreshold && currentPhase < 3)
         {
             EnterPhaseThree();
@@ -50,23 +54,26 @@ public class BossLevel1 : Enemy
             EnterPhaseTwo();
         }
 
-        FollowPlayer(); // Add this line to handle movement
+        FollowPlayer();
 
-        // Attack logic
-        if (attackTimer <= 0)
+        // Proximity attack logic
+        if (IsPlayerInRange())
         {
-            Attack();
-            attackTimer = attackCooldown;
+            anim.SetTrigger("Attack");
         }
-        else
+        else { anim.SetTrigger("StopAttack"); }
+
+        if (attackTimer > 0)
         {
-            attackTimer -= Time.deltaTime;
+            attackTimer -= Time.deltaTime; // Decrease timer only if an attack is not happening
         }
+
         if (health <= 0)
         {
-            OpenDoor(); // Open the door if the boss's health is 0 or less
+            Death(10000); // Open the door if the boss's health is 0 or less
         }
     }
+
 
     private void OpenDoor()
     {
@@ -75,6 +82,23 @@ public class BossLevel1 : Enemy
             doorAnimator.SetTrigger("Open");
         }
     }
+
+    private bool IsPlayerInRange()
+    {
+        if (playerTransform != null)
+        {
+            float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
+            bool isPlayerCloseEnough = distanceToPlayer <= attackRange;
+
+            // Determine if the player is in front of the boss
+            float directionToPlayer = playerTransform.position.x - transform.position.x;
+            bool isPlayerInFront = isMovingLeft ? directionToPlayer < 0 : directionToPlayer > 0;
+
+            return isPlayerCloseEnough && isPlayerInFront;
+        }
+        return false;
+    }
+
 
 
     private void FollowPlayer()
@@ -168,23 +192,17 @@ public class BossLevel1 : Enemy
     }
 
 
-
-
-    protected override void Attack()
+    protected override void Death(float _destroyTime)
     {
-        // Implement attack patterns based on the current phase
-        switch (currentPhase)
-        {
-            case 1:
-                // Phase 1 attack pattern
-                break;
-            case 2:
-                // Phase 2 attack pattern
-                break;
-            case 3:
-                // Phase 3 attack pattern
-                break;
-        }
+        OpenDoor();
+        anim.SetTrigger("Dead");
+        Debug.Log("Enemy Die trigger hit");
+
+    }
+
+    public void DestroyAfterDeath()
+    {
+        Destroy(gameObject);
     }
 
 
