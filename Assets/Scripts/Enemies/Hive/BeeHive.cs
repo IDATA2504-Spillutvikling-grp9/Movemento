@@ -7,21 +7,15 @@ public class BeeHive : Enemy
     [SerializeField] private float chaseDistance;       // Distance at which the BeeHive starts chasing the player.
     [SerializeField] private float stunDuration;        // Duration for which the BeeHive remains stunned.
     [SerializeField] private SpriteRenderer[] sra;
-    [SerializeField] private Animator anim2;
     private float timer;                                // General purpose timer used for different states.
-
-
 
     protected override void Start()
     {
         base.Start(); // Call the Start method of the base class (Enemy).
         ChangeState(EnemyStates.BeeHive_Idle); // Initialize state to Idle.
-        SpriteRenderer[] sra = GetComponentsInChildren<SpriteRenderer>();
-        anim2 = GetComponentInParent<Animator>();
+        sra = GetComponentsInChildren<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
     }
-
-
 
     protected override void UpdateEnemyStates()
     {
@@ -41,7 +35,7 @@ public class BeeHive : Enemy
             case EnemyStates.BeeHive_Chase:
                 // Move towards the player.
                 rb.MovePosition(Vector2.MoveTowards(transform.position, PlayerController.Instance.transform.position, Time.deltaTime * speed));
-                FlipBeeHive(); // Currently unused logic for flipping the BeeHive.
+                FlipBeeHive(); // Logic for flipping the BeeHive.
                 break;
 
             case EnemyStates.BeeHive_Stunned:
@@ -60,8 +54,6 @@ public class BeeHive : Enemy
                 break;
         }
     }
-
-
 
     protected override void Death(float destroyTime)
     {
@@ -84,41 +76,22 @@ public class BeeHive : Enemy
         }
     }
 
-
-
-    protected override void ChangeCurrentAnimation()
+    // Logic to turn the sprites.
+    void FlipBeeHive()
     {
-        // Update animation parameters based on current state.
-        anim2.SetBool("Idle", GetCurrentEnemyState == EnemyStates.BeeHive_Idle);
-        anim2.SetBool("Chase", GetCurrentEnemyState == EnemyStates.BeeHive_Chase);
-        anim2.SetBool("Stunned", GetCurrentEnemyState == EnemyStates.BeeHive_Stunned);
-
-        // Trigger death animation if in Death state.
-        if(GetCurrentEnemyState == EnemyStates.BeeHive_Death)
+        foreach (SpriteRenderer sr in sra)
         {
-            anim2.SetTrigger("Death");
+            // Determine if the player is to the left or right of the beehive
+            bool shouldFlip = PlayerController.Instance.transform.position.x < transform.position.x;
+
+            // Get the current scale
+            Vector3 currentScale = sr.transform.localScale;
+
+            // Set the x component of the scale to 1 or -1 based on the player's position
+            currentScale.x = shouldFlip ? -1 : 1;
+
+            // Apply the new scale
+            sr.transform.localScale = currentScale;
         }
     }
-
-
-
-    // Logic to turn the sprites, but sprite is not on object, so idk how to fix this atm.
- void FlipBeeHive()
-{
-    foreach (SpriteRenderer sr in sra)
-    {
-        // Determine if the player is to the left or right of the beehive
-        bool shouldFlip = PlayerController.Instance.transform.position.x < transform.position.x;
-
-        // Get the current scale
-        Vector3 currentScale = sr.transform.localScale;
-
-        // Set the x component of the scale to 1 or -1 based on the player's position
-        currentScale.x = shouldFlip ? -1 : 1;
-
-        // Apply the new scale
-        sr.transform.localScale = currentScale;
-    }
-}
-
 }
