@@ -93,7 +93,6 @@ public class BossDragonKnight : Enemy
         if (health <= 0 && isDeathTriggered)
         {
             Death(0);
-            Debug.Log("Death TRiggerd Update");
 
         }
         // Decrement attack countdown if not currently attacking
@@ -233,7 +232,7 @@ public class BossDragonKnight : Enemy
 
         // Perform three slashes with delays in between
         anim.SetTrigger("Slash");
-        
+
         SlashAngle();
         yield return new WaitForSeconds(RandonValueUnder1);
         anim.ResetTrigger("Slash");
@@ -253,22 +252,22 @@ public class BossDragonKnight : Enemy
     }
 
 
-        void SlashAngle()
+    void SlashAngle()
+    {
+        if (PlayerController.Instance.transform.position.x > transform.position.x ||
+            PlayerController.Instance.transform.position.x < transform.position.x)
         {
-            if (PlayerController.Instance.transform.position.x > transform.position.x ||
-                PlayerController.Instance.transform.position.x < transform.position.x)
-            {
-                Instantiate(slashEffect, SideAttackTransform);
-            }
-            if (PlayerController.Instance.transform.position.y > transform.position.y)
-            {
-                SlashEffectAtAngle(slashEffect, 80, UpAttackTransform);
-            }
-            if (PlayerController.Instance.transform.position.y < transform.position.y)
-            {
-                SlashEffectAtAngle(slashEffect, -90, DownAttackTransform);
-            }
-        } 
+            Instantiate(slashEffect, SideAttackTransform);
+        }
+        if (PlayerController.Instance.transform.position.y > transform.position.y)
+        {
+            SlashEffectAtAngle(slashEffect, 80, UpAttackTransform);
+        }
+        if (PlayerController.Instance.transform.position.y < transform.position.y)
+        {
+            SlashEffectAtAngle(slashEffect, -90, DownAttackTransform);
+        }
+    }
 
 
 
@@ -325,10 +324,10 @@ public class BossDragonKnight : Enemy
             ResetAllAttacks();
             anim.SetTrigger("TookDamage");
 
-                        
-                ResetAllAttacks(); //cancel any current attack to avoid bugs 
-                StartCoroutine(Parry());
-            
+
+            ResetAllAttacks(); //cancel any current attack to avoid bugs 
+            StartCoroutine(Parry());
+
 
         }
         else
@@ -348,8 +347,11 @@ public class BossDragonKnight : Enemy
     {
         ResetAllAttacks();
         rb.velocity = new Vector2(rb.velocity.x, -25);
+        anim.SetBool("Parry", false);
+        anim.SetBool("Lunge", false);
         anim.SetTrigger("Die");
         Debug.Log("Enemy Die trigger hit");
+
         isDeathTriggered = false;
 
     }
