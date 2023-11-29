@@ -16,15 +16,20 @@ public class Boss : Enemy
    private float chargeTimer = 0f;
    private float stopTimer = 0f;
 
+   private bool isDead = false;
+
    protected override void Start() {
     base.Start();
     currentEnemyState = EnemyStates.Boss_Idle;
+    anim.SetBool("Idle", true);
    }
 
    protected override void Update() {
     if(health <= 0) {
+        isDead = true;
         OpenDoor();
-        base.Death(0.1f);
+        anim.SetTrigger("Death");
+        base.Death(2f);
     }
     UpdateEnemyStates();
    }
@@ -39,38 +44,55 @@ public class Boss : Enemy
     float _dist = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
     switch (currentEnemyState) {
         case EnemyStates.Boss_Idle:
+        anim.SetBool("Walk", false);
         if(_dist < chaseDistance) {
             BossIdleState();
+            anim.SetBool("Idle", true);
         }
         break;
 
         case EnemyStates.Boss_Chase:
+        if(isDead == true) {
+            return;
+        }
+        anim.SetBool("Idle", false);
         BossChaseState();
+        anim.SetBool("Walk", true);
+        
         break;
     }
    }
 
-private void BossIdleState()
-{
-    if (chargeTimer >= timeBetweenCharges)
+    private void BossIdleState()
     {
-        chargeTimer = 0f;
-        currentEnemyState = EnemyStates.Boss_Chase;
+        if (chargeTimer >= timeBetweenCharges)
+        {
+            chargeTimer = 0f;
+            currentEnemyState = EnemyStates.Boss_Chase;
+        }
+        else
+        {
+            chargeTimer += Time.deltaTime;
+        }
     }
-    else
-    {
-        chargeTimer += Time.deltaTime;
-    }
-}
 
     private void BossChaseState()
     {
         float chargeStopTime = 2f;
-        
+
         if (!isCharging)
         {
-            Debug.Log("Moving");
             Vector2 directionToPlayer = (PlayerController.Instance.transform.position - transform.position).normalized;
+
+            if (directionToPlayer.x > 0)
+            {
+                transform.localScale = new Vector3(-1.5f, 1.5f, 1.5f);
+            }
+            else
+            {
+                transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            }
+
             rb.velocity = directionToPlayer * speed;
 
             if (stopTimer < chargeStopTime)
@@ -86,7 +108,7 @@ private void BossIdleState()
         }
         else
         {
-            float timeBetweenCharges = 5f;
+            float timeBetweenCharges = 3f;
             if (stopTimer < timeBetweenCharges)
             {
                 stopTimer += Time.deltaTime;
@@ -95,7 +117,13 @@ private void BossIdleState()
             {
                 stopTimer = 0f;
                 isCharging = false;
-                currentEnemyState = EnemyStates.Boss_Idle;
+
+                if (rb.velocity.magnitude <= 0.01f)
+                {
+                    currentEnemyState = EnemyStates.Boss_Idle;
+                    chargeTimer = 0f;
+                    anim.SetBool("Walk", false);
+                }
             }
         }
     }
