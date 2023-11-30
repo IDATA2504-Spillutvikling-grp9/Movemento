@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lavaboss : MonoBehaviour
+public class Lavaboss : Enemy
 {
     private PlayerDamageController playerDamageController;
     public GameObject bullet;
@@ -13,8 +13,6 @@ public class Lavaboss : MonoBehaviour
     private GameObject player;
     private float _angle; // The current angle
     private Vector2 _startPosition; // The starting position of the boss
-
-    public int health = 20;
 
     void Start()
     {
@@ -54,6 +52,18 @@ public class Lavaboss : MonoBehaviour
     void shoot()
     {
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
+    }
+
+    public override void EnemyHit(float _damageDone, Vector2 _hitDirection, float _hitForce)
+    {
+        base.EnemyHit(_damageDone, _hitDirection, _hitForce); // Call the base class method
+
+        if (health <= 0)
+        {
+            float destroyTime = 2.0f;
+            Death(destroyTime);
+        }
+
     }
 
 }
