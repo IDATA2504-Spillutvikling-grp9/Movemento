@@ -1107,8 +1107,10 @@ MonoBehaviour:
   recoilLength: 0.1
   recoilFactor: 0.1
   isRecoiling: 0
+  audioSource: {fileID: 0}
+  hit: {fileID: 0}
   chaseDistance: 15
-  stunDuration: 0.5
+  stunDuration: 0.4
 --- !u!50 &7179330279729080039
 Rigidbody2D:
   serializedVersion: 4
