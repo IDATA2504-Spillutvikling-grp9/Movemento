@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1769691006722566357, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
       propertyPath: m_SortingLayer
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1769691006722566357, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
       propertyPath: m_SortingOrder
@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2617397226802405339, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
       propertyPath: m_Name
-      value: Player Variant
+      value: New Player
       objectReference: {fileID: 0}
     - target: {fileID: 4897374496964729822, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
       propertyPath: slashEffect
@@ -70,11 +70,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8977044914987073716, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 164.6
+      value: 158.3
       objectReference: {fileID: 0}
     - target: {fileID: 8977044914987073716, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 50.2
+      value: 47.3
       objectReference: {fileID: 0}
     - target: {fileID: 8977044914987073716, guid: 691dc59e6e1562043a31eab69a6c4c68, type: 3}
       propertyPath: m_LocalPosition.z

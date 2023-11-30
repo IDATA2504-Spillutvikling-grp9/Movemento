@@ -38,10 +38,10 @@ public class BossDragonKnight : Enemy
     [Header("Particle Settings")]
     [SerializeField] GameObject slashEffect;                // sprite / effect used for the attack of the boss
     [Space(3)]
+    [SerializeField] private Animator doorAnimator;
     [HideInInspector] public bool damagedPlayer = false;    // checks for damage to player
     public static BossDragonKnight Instance;                // Setting up a singleton instance of the Boss.
-    private bool isDeathTriggered = true;
-    bool alive;
+    private bool isDeathTriggered;
 
 
     private void Awake()
@@ -55,6 +55,14 @@ public class BossDragonKnight : Enemy
             Instance = this;                        // Set this instance as the Singleton instance
         }
         // DontDestroyOnLoad(gameObject);
+    }
+
+    private void OpenDoor()
+    {
+        if (doorAnimator != null)
+        {
+            doorAnimator.SetTrigger("Open");
+        }
     }
 
 
@@ -83,7 +91,7 @@ public class BossDragonKnight : Enemy
         rb = GetComponent<Rigidbody2D>();
 
         ChangeState(EnemyStates.DragonKnight_Stage1);       // Set initial enemy state
-        alive = true;
+        isDeathTriggered = true;
     }
 
 
@@ -180,7 +188,6 @@ public class BossDragonKnight : Enemy
     [HideInInspector] public Vector2 moveToPosition;
     [HideInInspector] public bool diveAttack;
     public GameObject divingCollider;
-    private bool isFlashing = false;
     public GameObject pillar;
     private float hitFlashSpeed;
 
@@ -318,6 +325,11 @@ public class BossDragonKnight : Enemy
 
     public override void EnemyHit(float _damageDone, Vector2 _hitDirection, float _hitForce)
     {
+
+        if(health <= -1)
+        {
+            base.Death(0);
+        }
         if (!parrying)
         {
             base.EnemyHit(_damageDone, _hitDirection, _hitForce);
@@ -350,7 +362,7 @@ public class BossDragonKnight : Enemy
         anim.SetBool("Parry", false);
         anim.SetBool("Lunge", false);
         anim.SetTrigger("Die");
-        Debug.Log("Enemy Die trigger hit");
+        OpenDoor();
 
         isDeathTriggered = false;
 
@@ -363,57 +375,6 @@ public class BossDragonKnight : Enemy
 
 
     #endregion
-
-
-
-
-    /* #region Stage 2
-
-    void DiveAttackJump()
-    {
-        attacking = true;
-        moveToPosition = new Vector2(PlayerController.Instance.transform.position.x, rb.position.y + 10);
-        Debug.Log("Dive attack jump called");
-        diveAttack = true;
-        anim.SetBool("Jump", true);
-    }
-
-
-    public void Dive()
-    {
-        anim.SetBool("Dive", true);
-        anim.SetBool("Dive", false);
-    }
-
-
-    private void OnTriggerEnter2D(Collider2D _other)
-    {
-        if(_other.GetComponent<PlayerController>() != null && diveAttack)
-        {
-            _other.GetComponent<PlayerDamageController>().TakeDamage(damage * 2);
-            PlayerController.Instance.pState.recoilingX = true;
-        }
-    }
-
-    public void DivingPillars()
-    {
-        Vector2 _impactPoint = groundCheckPoint.position;
-        float _spawnDistance = 5;
-
-        for(int i = 0; i < 10; i++)
-        {
-            Vector2 _pillarSpawnPointRight = _impactPoint + new Vector2(_spawnDistance, 0);
-            Vector2 _pillarSpawnPointLeft = _impactPoint - new Vector2(_spawnDistance, 0);
-            Instantiate(pillar, _pillarSpawnPointRight, Quaternion.Euler(0, 0, -90));
-            Instantiate(pillar, _pillarSpawnPointLeft, Quaternion.Euler(0, 0, -90));
-
-            _spawnDistance += 5;
-        }
-        ResetAllAttacks();
-    }
-
-
-    #endregion */
     #endregion
 }
 

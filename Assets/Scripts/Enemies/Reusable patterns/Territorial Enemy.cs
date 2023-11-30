@@ -9,6 +9,8 @@ public class TerritorialEnemy : Enemy
     [SerializeField] private float attackRange = 2.0f; // Range at which the enemy will start attacking
     [SerializeField] private float chaseSpeed = 3.0f; // Speed when chasing the player
 
+    [SerializeField] private float chaseDistance;
+
     private bool playerInTerritory = false;
     private Transform playerTransform;
 
@@ -16,6 +18,7 @@ public class TerritorialEnemy : Enemy
     {
         base.Start();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        currentEnemyState = EnemyStates.TerritorialEnemy_Idle;
     }
 
     protected override void Update()
@@ -28,7 +31,28 @@ public class TerritorialEnemy : Enemy
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected override void UpdateEnemyStates()
+    {
+        float _dist = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
+        switch (currentEnemyState)
+        {
+            case EnemyStates.TerritorialEnemy_Idle:
+                if (_dist < chaseDistance)
+                {
+                    currentEnemyState = EnemyStates.TerritorialEnemy_Chase;
+                }
+                break;
+            case EnemyStates.TerritorialEnemy_Chase:
+                ChasePlayer();
+                if (_dist > chaseDistance)
+                {
+                    currentEnemyState = EnemyStates.TerritorialEnemy_Idle;
+                }
+                break;
+        }
+    }
+
+/*     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
@@ -44,43 +68,35 @@ public class TerritorialEnemy : Enemy
             playerInTerritory = false;
             // Reset to default behavior or state
         }
-    }
+    } */
 
     private void ChasePlayer()
-{
-    if (Vector2.Distance(transform.position, playerTransform.position) <= attackRange)
     {
-        AttackPlayer(); // Perform attack logic
-    }
-    else
-    {
-        // Chase the player
-        Vector2 direction = (playerTransform.position - transform.position).normalized;
-        rb.velocity = new Vector2(direction.x * chaseSpeed, rb.velocity.y);
-
-        // Check if the enemy's direction is opposite to that of the player's position
-        // Flip the enemy to face the player if necessary
-        if ((direction.x > 0 && transform.localScale.x > 0) || (direction.x < 0 && transform.localScale.x < 0))
+        if (Vector2.Distance(transform.position, playerTransform.position) <= attackRange)
         {
-            Flip();
+            AttackPlayer(); // Perform attack logic
+        }
+        else
+        {
+            // Chase the player
+            Vector2 direction = (playerTransform.position - transform.position).normalized;
+            rb.velocity = new Vector2(direction.x * chaseSpeed, rb.velocity.y);
+
+            // Check if the enemy's direction is opposite to that of the player's position
+            // Flip the enemy to face the player if necessary
+            if ((direction.x > 0 && transform.localScale.x > 0) || (direction.x < 0 && transform.localScale.x < 0))
+            {
+                Flip();
+            }
         }
     }
-}
 
-private void Flip()
-{
-    // Flip the sprite by scaling in the X direction
-    Vector3 theScale = transform.localScale;
-    theScale.x *= -1;
-    transform.localScale = theScale;
-}
-
-
-
-
-    protected override void Attack()
+    private void Flip()
     {
-        // Implement attack logic here
+        // Flip the sprite by scaling in the X direction
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 
     // Optional: Implement the logic for attacking the player

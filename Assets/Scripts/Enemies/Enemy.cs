@@ -35,7 +35,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float recoilLength;                  // Duration of the recoil effect after being hit.
     [SerializeField] protected float recoilFactor;                  // Factor by which the enemy recoils when hit.
     [SerializeField] protected bool isRecoiling = false;            // Flag to check if the enemy is currently recoiling.
+    [Space(2)]
+
+    [Header("Sound")]
+    [SerializeField] private AudioSource audioSource; 
+    [SerializeField] private AudioClip hit;
     protected float recoilTimer;                                    // Timer to track the duration of recoil.
+    
     
 
 
@@ -47,7 +53,8 @@ public class Enemy : MonoBehaviour
         SmallFrog_Idle, SmallFrog_Flip,                                                         // States for the Small Frog enemy.
         BeeHive_Idle, BeeHive_Chase, BeeHive_Stunned, BeeHive_Death,                            // States for the Bee Hive enemy.
         Boss_Idle, Boss_Chase, Boss_Death,                                                      // States for the Level 2 Boss enemy.
-        DragonKnight_Stage1, DragonKnight_Stage2, DragonKnight_Stage3,DragonKnight_Stage4,      // States for the dragonknight boss stages.
+        DragonKnight_Stage1, DragonKnight_Stage2, DragonKnight_Stage3,DragonKnight_Stage4,
+        TerritorialEnemy_Idle, TerritorialEnemy_Chase,  // States for the dragonknight boss stages.
     }
 
 
@@ -109,6 +116,7 @@ public class Enemy : MonoBehaviour
     // Method called when the enemy is hit.
     public virtual void EnemyHit(float _damageDone, Vector2 _hitDirection, float _hitForce)
     {
+        PlaySound(hit);
         health -= _damageDone; // Reducing health by the damage done.
         healthBar.UpdateHealthBar(health, maxHealth); // Updating the health bar UI.
         if (!isRecoiling)
@@ -172,5 +180,14 @@ public class Enemy : MonoBehaviour
     protected virtual void Attack()
     {
         PlayerDamageController.Instance.TakeDamage(damage);         // Deal damage to the player.
+    }
+
+    //Plays sounds
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
     }
 }

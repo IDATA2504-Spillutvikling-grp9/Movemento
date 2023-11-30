@@ -9,7 +9,6 @@ public class BossLevel1 : Enemy
     [SerializeField] private GameObject minionPrefab; // The prefab for spawned minions
 
     [Header("Movement Settings")]
-    [SerializeField] private float speed = 2.0f; // Speed of the boss
     private bool isMovingLeft = true; // Initial movement direction
 
     [Header("Player Tracking Settings")]
