@@ -360,52 +360,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /*
+        Method that shows what is the next level name on the end level screen.
+    */
     void UpdateNexLevelText() {
         nextLevelText.text = "Next level is: " + sceneName;
     }
 
     /*
-        Save the timer and scene name to a dictionary.
+        Turns on and of the screen that shows info about the healing ability
     */
-    private void SaveLevelData(float timer, string sceneName)
-    {
-        // Add or update the entry in the dictionary
-        levelDataDictionary[sceneName] = timer;
-
-        // Specify the file path (assuming the file is in the "Assets/Saves" folder)
-        string filePath = Path.Combine(Application.dataPath, "Saves", "levelData.json");
-
-        // Convert the dictionary to a JSON string
-        string json = JsonUtility.ToJson(levelDataDictionary);
-
-        // Write the JSON string to the file
-        File.WriteAllText(filePath, json);
-    }
-
-    /*
-        Method to load the saved level data.
-        You can call this method from another script or where needed.
-    */
-    public float LoadLevelData(string sceneName)
-    {
-        // Check if the dictionary contains the entry
-        if (levelDataDictionary.ContainsKey(sceneName))
-        {
-            // Return the saved timer for the specified scene
-            return levelDataDictionary[sceneName];
-        }
-        else
-        {
-            Debug.LogWarning("Level data not found for scene: " + sceneName);
-            return 0f;
-        }
-    }
-
     public void TurnOnAndOfHealingAbilityScreen() {
         healingAiblityScreen.SetActive(true);
         StartCoroutine(HealingAbilityScreenColldown());
     }
 
+    /*
+        Timer that turn of the healt ability screen afther 5 secunds.
+    */
     IEnumerator HealingAbilityScreenColldown() {
         yield return new WaitForSeconds(5f);
         healingAiblityScreen.SetActive(false);

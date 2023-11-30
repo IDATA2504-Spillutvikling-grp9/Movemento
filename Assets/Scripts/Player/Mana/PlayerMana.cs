@@ -12,15 +12,12 @@ public class PlayerMana : MonoBehaviour
     [SerializeField] public float manaGain;
     [SerializeField] public float mana;
 
-    private GameManager gameManager;
-
     
 
     void Start()
     {
         Mana = mana;
         manaStorage.fillAmount = mana;
-        gameManager = FindObjectOfType<GameManager>();
     }
 
 
@@ -39,10 +36,7 @@ public class PlayerMana : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.tag == "Healing") {
-            gameManager.TurnOnAndOfHealingAbilityScreen();
-        }
+    public float getManaValue() {
+        return mana;
     }
-
 }

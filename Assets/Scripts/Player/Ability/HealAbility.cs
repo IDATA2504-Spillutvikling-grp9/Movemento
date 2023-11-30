@@ -12,6 +12,8 @@ public class HealAbility : MonoBehaviour
     private PlayerHealth ph;
     private float healTimer;
 
+    private GameManager gameManager;
+
 
 
     private void Start()
@@ -19,6 +21,7 @@ public class HealAbility : MonoBehaviour
         pc = GetComponent<PlayerController>();
         pm = GetComponent<PlayerMana>();
         ph = GetComponent<PlayerHealth>();
+        gameManager = FindObjectOfType<GameManager>();
 
         if (TryGetComponent<HealAbility>(out var healAbility))
         {
@@ -31,7 +34,7 @@ public class HealAbility : MonoBehaviour
     private void Update()
     {
         // Check if the healing button is pressed and if health is less than maxHealth
-        if (Input.GetButton("Healing") && ph.Health < ph.maxHealth && !pc.pState.jumping && !pc.pState.dashing && pm.Mana >= 0) //pm.mana used to see if the char has enough mana to cast a full heal.
+         if (Input.GetButton("Healing") && ph.Health < ph.maxHealth && !pc.pState.jumping && !pc.pState.dashing && pm.Mana != 0) //pm.mana used to see if the char has enough mana to cast a full heal.
         {
             if (_healingVFX == null) // If the VFX is not already spawned, spawn it
             {
@@ -64,4 +67,11 @@ public class HealAbility : MonoBehaviour
             healTimer = 0;
         }
     }
+
+        void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.tag == "Healing") {
+            gameManager.TurnOnAndOfHealingAbilityScreen();
+        }
+    }
+
 }
