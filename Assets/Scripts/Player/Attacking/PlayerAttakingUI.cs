@@ -1,14 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerAttakingUI : MonoBehaviour
 {
-
     [Header("SwordCoolDownSettings")]
     [SerializeField] UnityEngine.UI.Image swordImage;
-    [SerializeField] float cooldownDuration = 1f;
+    [SerializeField] float maxFillAmount = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +14,8 @@ public class PlayerAttakingUI : MonoBehaviour
         swordImage.fillAmount = 0f;
     }
 
-    public void UpdateSliderValue(float startValue, float endValue) {
+    public void UpdateSliderValue(float startValue, float endValue, float cooldownDuration)
+    {
         StartCoroutine(UpdateSliderOverTime(startValue, endValue, cooldownDuration));
     }
 

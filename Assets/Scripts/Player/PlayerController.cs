@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
     //Game Manager script
     private GameManager gameManager;
 
+    private bool isMoveSoundPlaying = false;
+
     private bool isPaused;
 
     private void Awake()
@@ -66,7 +68,7 @@ public class PlayerController : MonoBehaviour
         {
             Instance = this;                        // Set this instance as the Singleton instance
         }
-       // DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject);
     }
 
 
@@ -173,16 +175,24 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(walkSpeed * xAxis, rb.velocity.y);
             anim.SetBool("Walking", rb.velocity.x != 0 && Grounded());      //Sets the Walking bool in animator to true, when conditions is met.
-            /*             if (rb.velocity.x != 0 && Grounded())
-                        {
-                            PlaySound(moveSound); // Play move sound when walking
-                        } */
+        if (rb.velocity.x != 0 && Grounded() && !isMoveSoundPlaying)
+        {
+            PlaySound(moveSound); // Play move sound when walking
+            isMoveSoundPlaying = true;
+            StartCoroutine(WaitForMoveSound());
+        }
         }
         else
         {
             rb.velocity = new Vector2(0, rb.velocity.y);                    //quick fix, to stop the player from moving while healing. REFACTOR LATER.
         }
     }
+
+    private IEnumerator WaitForMoveSound()
+{
+    yield return new WaitForSeconds(0.5f); // Wait for the duration of the move sound
+    isMoveSoundPlaying = false; // Set the flag to false when the sound is finished
+}
 
 
 

@@ -116,7 +116,8 @@ public class PlayerAttacks : MonoBehaviour
             timeSinceAttack = 0;
             pc.anim.SetTrigger("Attacking");
             StartCoroutine(AttackCooldown());
-            playerAttakingUI.UpdateSliderValue(1f, 0f);
+            float cooldownDuration = 0.5f;
+            playerAttakingUI.UpdateSliderValue(1f, 0f, cooldownDuration);
 
             if (yAxis == 0 || yAxis < 0 && pc.Grounded())
             {
