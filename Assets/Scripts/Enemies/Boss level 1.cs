@@ -158,7 +158,7 @@ public class BossLevel1 : Enemy
     {
         currentPhase = 2;
         speed *= 1.5f; // Increase speed for phase two
-        // Any other changes for phase two, e.g., jump height, aggression level
+        SpawnMinions();
     }
 
     private void EnterPhaseThree()
