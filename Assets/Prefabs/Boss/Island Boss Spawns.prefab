@@ -1914,9 +1914,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7923212444930730067, guid: 99542d892135fcb44baba15b698711e9, type: 3}
+      propertyPath: attackRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923212444930730067, guid: 99542d892135fcb44baba15b698711e9, type: 3}
+      propertyPath: attackTimer
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923212444930730067, guid: 99542d892135fcb44baba15b698711e9, type: 3}
+      propertyPath: slashEffect
+      value: 
+      objectReference: {fileID: 6953101319964618011, guid: a466c3741314c8d4bab8a3b33d5c546c, type: 3}
+    - target: {fileID: 7923212444930730067, guid: 99542d892135fcb44baba15b698711e9, type: 3}
       propertyPath: doorAnimator
       value: 
       objectReference: {fileID: 8337350998498445567}
+    - target: {fileID: 7975327246293336686, guid: 99542d892135fcb44baba15b698711e9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8615882214289511323, guid: 99542d892135fcb44baba15b698711e9, type: 3}
       propertyPath: m_Name
       value: IslandBoss
