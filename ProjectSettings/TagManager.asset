@@ -22,6 +22,7 @@ TagManager:
   - Spikes
   - ObjectDamage
   - BossCheckPoint
+  - Healing
   layers:
   - Default
   - TransparentFX

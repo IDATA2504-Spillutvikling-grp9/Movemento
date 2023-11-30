@@ -57,6 +57,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject endLevelScreen;
 
     /// <summary>
+    /// The healing ability screen
+    /// </summary>
+    [SerializeField] public GameObject healingAiblityScreen;
+    /// <summary>
     /// The name of the scene to be loaded.
     /// </summary>
     public string sceneName;
@@ -123,6 +127,7 @@ public class GameManager : MonoBehaviour
         SetSliderValueMusic();
         SetSliderValueGame();
         endLevelScreen.SetActive(false);
+        healingAiblityScreen.SetActive(false);
     }
 
     /*
@@ -394,5 +399,15 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("Level data not found for scene: " + sceneName);
             return 0f;
         }
+    }
+
+    public void TurnOnAndOfHealingAbilityScreen() {
+        healingAiblityScreen.SetActive(true);
+        StartCoroutine(HealingAbilityScreenColldown());
+    }
+
+    IEnumerator HealingAbilityScreenColldown() {
+        yield return new WaitForSeconds(5f);
+        healingAiblityScreen.SetActive(false);
     }
 }

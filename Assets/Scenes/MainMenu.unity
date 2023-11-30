@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 60909940}
   - component: {fileID: 60909939}
   m_Layer: 0
-  m_Name: Q
+  m_Name: Mouse1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,7 +269,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -54.3, y: -4.82}
-  m_SizeDelta: {x: 8, y: 8}
+  m_SizeDelta: {x: 8, y: 13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &60909939
 MonoBehaviour:
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a33635858d87bf547bf1c43ad26674d6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7dca835f6bd8da84cb544556fb2bbf98, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1408,7 +1408,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 75fdd5fab73368241af6833a5b8a660f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 852ed71025819974eaee06b652ba82bb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
