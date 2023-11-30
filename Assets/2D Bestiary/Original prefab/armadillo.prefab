@@ -2538,11 +2538,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  maxHealth: 0
+  speed: 1
+  damage: 1
+  enemyBloodSpatter: {fileID: 2873071832872826962, guid: ba94b020166eb7446b67aad75af3b46a, type: 3}
+  removeBloodVFX: 1
+  anim: {fileID: 0}
+  rb: {fileID: 0}
   recoilLength: 1
   recoilFactor: 1
   isRecoiling: 1
-  speed: 1
-  damage: 1
+  audioSource: {fileID: 0}
+  hit: {fileID: 0}
 --- !u!50 &2498640177663868983
 Rigidbody2D:
   serializedVersion: 4
