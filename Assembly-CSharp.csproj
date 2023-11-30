@@ -88,7 +88,6 @@
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemies\IslandBoss\StateMachine\Boss_Lunge.cs" />
-    <Compile Include="Assets\Scripts\Enemies\IslandBoss\Ability\DivingPillar.cs" />
     <Compile Include="Assets\Scripts\Enemies\Lavadamage.cs" />
     <Compile Include="Assets\Scripts\Player\Health\PlayerDeath.cs" />
     <Compile Include="Assets\Scripts\Enemies\IslandBoss\DragonKnightEvents.cs" />
