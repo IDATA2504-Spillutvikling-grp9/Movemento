@@ -95,6 +95,7 @@ public class SpawnController : MonoBehaviour
     /// Respawns the player at the initial spawn point.
     /// </summary>
     public void dieRespawn() {
+        respawnPoint = firstSpawn;
         player.transform.position = firstSpawn;
     }
 }
