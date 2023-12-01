@@ -186,10 +186,6 @@ public class BossDragonKnight : Enemy
     [HideInInspector] public float attackCountDown;             // Countdown timer for attacks
     [HideInInspector] public bool parrying;                     // Parry bool
     [HideInInspector] public Vector2 moveToPosition;
-    [HideInInspector] public bool diveAttack;
-    public GameObject divingCollider;
-    public GameObject pillar;
-    private float hitFlashSpeed;
 
     #endregion
 
@@ -240,17 +236,14 @@ public class BossDragonKnight : Enemy
         // Perform three slashes with delays in between
         anim.SetTrigger("Slash");
 
-        SlashAngle();
         yield return new WaitForSeconds(RandonValueUnder1);
         anim.ResetTrigger("Slash");
 
         anim.SetTrigger("Slash");
-        SlashAngle();
         yield return new WaitForSeconds(RandonValueUnder1);
         anim.ResetTrigger("Slash");
 
         anim.SetTrigger("Slash");
-        SlashAngle();
         yield return new WaitForSeconds(RandonValueUnder1);
         anim.ResetTrigger("Slash");
 
@@ -259,22 +252,14 @@ public class BossDragonKnight : Enemy
     }
 
 
-    void SlashAngle()
+     public void SlashAngle()
     {
         if (PlayerController.Instance.transform.position.x > transform.position.x ||
             PlayerController.Instance.transform.position.x < transform.position.x)
         {
             Instantiate(slashEffect, SideAttackTransform);
         }
-        if (PlayerController.Instance.transform.position.y > transform.position.y)
-        {
-            SlashEffectAtAngle(slashEffect, 80, UpAttackTransform);
-        }
-        if (PlayerController.Instance.transform.position.y < transform.position.y)
-        {
-            SlashEffectAtAngle(slashEffect, -90, DownAttackTransform);
-        }
-    }
+    } 
 
 
 
@@ -316,7 +301,6 @@ public class BossDragonKnight : Enemy
 
         // Perform the slash / reposte
         anim.SetTrigger("Slash");
-        //SlashAngle();
         yield return new WaitForSeconds(0.5f);
         anim.ResetTrigger("Slash");
 

@@ -14,11 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2253911629886400664, guid: 46b7509384e2df145bd59c17ec66f6ac, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2253911629886400664, guid: 46b7509384e2df145bd59c17ec66f6ac, type: 3}
       propertyPath: m_TagString
-      value: Ground
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 46b7509384e2df145bd59c17ec66f6ac, type: 3}
       propertyPath: m_SortingLayer
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b997fbea24690054f874c234f9d47726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 5
+  force: 2
 --- !u!60 &2116122768451098150
 PolygonCollider2D:
   m_ObjectHideFlags: 0

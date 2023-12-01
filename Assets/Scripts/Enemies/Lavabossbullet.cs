@@ -40,4 +40,9 @@ public class Lavabossbullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void DestroyProjectille()
+    {
+        //TODO
+    }
 }
