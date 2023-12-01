@@ -624,15 +624,15 @@ PlayerSettings:
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: Movemento
-  metroPackageVersion: 
-  metroCertificatePath: 
+  metroPackageVersion: 1.0.0.0
+  metroCertificatePath: Assets/WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 00bf4ec05c43db01
   metroApplicationDescription: Movemento
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Movemento
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0

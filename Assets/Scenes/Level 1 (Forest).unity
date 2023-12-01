@@ -1600,6 +1600,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GoToMainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 982702852974676151, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1642392843213481752, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1659,6 +1663,10 @@ PrefabInstance:
     - target: {fileID: 2068827281512865701, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: NextLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2118765830849421125, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2221841189867510179, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1740,6 +1748,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UIClick
       objectReference: {fileID: 0}
+    - target: {fileID: 3597558131893184089, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5185492539139950771, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1764,9 +1776,17 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UIClick
       objectReference: {fileID: 0}
+    - target: {fileID: 6274764586915320996, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6815716914772625486, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -2.999939
+      objectReference: {fileID: 0}
+    - target: {fileID: 6891900145907720094, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7482558760430307271, guid: 50bafea95b20502428b2a71084925b17, type: 3}
       propertyPath: m_Name
@@ -10861,6 +10881,11 @@ Transform:
   - {fileID: 1741410226}
   m_Father: {fileID: 317798566589129768}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &555227615 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4522776278944020386, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+  m_PrefabInstance: {fileID: 61953442}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &556180329
 GameObject:
   m_ObjectHideFlags: 0
@@ -31285,11 +31310,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2511041234601694380, guid: 9efb5e7cd6ba79f4a992ea5364908c48, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 384.08
+      value: 379.29
       objectReference: {fileID: 0}
     - target: {fileID: 2511041234601694380, guid: 9efb5e7cd6ba79f4a992ea5364908c48, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -20.24
+      value: -20.33
       objectReference: {fileID: 0}
     - target: {fileID: 2511041234601694380, guid: 9efb5e7cd6ba79f4a992ea5364908c48, type: 3}
       propertyPath: m_LocalPosition.z
@@ -31326,6 +31351,10 @@ PrefabInstance:
     - target: {fileID: 6821229720689894954, guid: 9efb5e7cd6ba79f4a992ea5364908c48, type: 3}
       propertyPath: m_Name
       value: EnableHealing
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821229720689894954, guid: 9efb5e7cd6ba79f4a992ea5364908c48, type: 3}
+      propertyPath: m_TagString
+      value: Healing
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -37498,7 +37527,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 796.14, y: -5.05, z: -0.22916579}
-  m_LocalScale: {x: 0.6125, y: 39.99673, z: 1}
+  m_LocalScale: {x: 0.6125, y: 16.99901, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 521961092}
@@ -44848,6 +44877,7 @@ MonoBehaviour:
   pauseScreen: {fileID: 61953447}
   optionMenuScreen: {fileID: 61953443}
   endLevelScreen: {fileID: 1008029483}
+  healingAiblityScreen: {fileID: 555227615}
   sceneName: SnowLevel
   resolutionDropdown: {fileID: 61953446}
   musicVolumeSlider: {fileID: 61953445}
