@@ -19,6 +19,7 @@ public class Lavaboss : Enemy
         // Save the starting position
         _startPosition = transform.position;
         player = GameObject.FindGameObjectWithTag("Player");
+        health = maxHealth;
     }
 
     void Update()
@@ -56,14 +57,20 @@ public class Lavaboss : Enemy
 
     public override void EnemyHit(float _damageDone, Vector2 _hitDirection, float _hitForce)
     {
-        base.EnemyHit(_damageDone, _hitDirection, _hitForce); // Call the base class method
+        base.EnemyHit(_damageDone, _hitDirection, _hitForce);
 
+        // Boss-specific hit logic
         if (health <= 0)
         {
-            float destroyTime = 2.0f;
-            Death(destroyTime);
+            Destroy(gameObject);
         }
+    }
 
+    private IEnumerator FlashSprite()
+    {
+        sr.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sr.color = Color.white;
     }
 
 }
