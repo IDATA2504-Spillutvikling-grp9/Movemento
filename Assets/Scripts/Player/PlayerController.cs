@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float groundCheckX = 0.5f;     //how far horizontally from ground chekc point to the edge of the player is
     [SerializeField] private float groundCheckY = 0.2f;     //how far down from ground chekc point is Grounded() checked
     [SerializeField] private LayerMask whatIsGround;        //sets the ground layer
-    private readonly float groundAngleCheck = 2;            //Used to check the angle of the surface under the player
     [Space(5)]
 
     [Header("Dash Settings")]
@@ -309,37 +308,6 @@ public class PlayerController : MonoBehaviour
         {
             jumpBufferCounter--;
         }
-    }
-
-
-
-    // Method to calculate the slope direction
-    private Vector2 CalculateSlopeDirection()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(groundCheckPoint.position, Vector2.down, groundAngleCheck, whatIsGround);
-        if (hit)
-        {
-            Vector2 normal = hit.normal;
-            Vector2 slopeDirection = new Vector2(normal.y, -normal.x); // Perpendicular to the normal
-
-            // Calculate the angle in degrees
-            float slopeAngle = Mathf.Atan2(slopeDirection.y, slopeDirection.x) * Mathf.Rad2Deg;
-
-            // Make the angle negative for slopes descending from top right to bottom left
-            if (slopeDirection.x < 0) slopeAngle = -slopeAngle;
-
-            // If the angle is very small, consider it as zero
-            if (Mathf.Abs(slopeAngle) < 0.01f) slopeAngle = 0f;
-
-            // Round the angle to two decimal places
-            slopeAngle = Mathf.Round(slopeAngle * 100f) / 100f;
-
-            /*  Debug.Log("Slope Angle: " + slopeAngle + " degrees"); */ //debug to check angle of slope.
-
-            return slopeDirection;
-        }
-
-        return Vector2.zero; // Return zero if not on a slope
     }
 
 
