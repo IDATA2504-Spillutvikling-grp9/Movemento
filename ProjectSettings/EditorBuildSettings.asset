@@ -9,26 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 7bbeb309f92515647b9430f1ca74450a
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
-    guid: bac92291cc5523f41b0f536fd9252974
-  - enabled: 0
-    path: Assets/Scenes/Level2.unity
-    guid: aea7cb3df87a4ad4e90d1698c182504c
-  - enabled: 1
-    path: Assets/Scenes/Level 3 (Island).unity
-    guid: 60e0032b34a53e9468448b63a8dc48cd
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Level 1 (Forest).unity
+    guid: e8aba67477a334801af227e83dc92b64
   - enabled: 1
     path: Assets/Scenes/Level 2 (Snow).unity
     guid: 99d67a6788f566848b8acd1717bb64d8
   - enabled: 1
-    path: Assets/Scenes/Level 1 (Forest).unity
-    guid: e8aba67477a334801af227e83dc92b64
-  - enabled: 0
-    path: Assets/Scenes/trash.unity
-    guid: 7dea021ce556c444a948624cc6f08e43
+    path: Assets/Scenes/Level 3 (Island).unity
+    guid: 60e0032b34a53e9468448b63a8dc48cd
   - enabled: 1
     path: Assets/Scenes/Level 4 (Lava).unity
     guid: 6d67b94c22a7e5946acd70e0c6a4e225

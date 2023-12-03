@@ -52,7 +52,7 @@ public class Lavaboss : Enemy
         }
 
         if(health <= 0) {
-            base.Death(2f);
+            base.Death(0);
             gameManager.EndLevel();
         }
     }

@@ -91,7 +91,6 @@
     <Compile Include="Assets\Scripts\Enemies\Lavadamage.cs" />
     <Compile Include="Assets\Scripts\Player\Health\PlayerDeath.cs" />
     <Compile Include="Assets\Scripts\Enemies\IslandBoss\DragonKnightEvents.cs" />
-    <Compile Include="Assets\Scripts\Enemies\IslandBoss\StateMachine\Boss_Dive.cs" />
     <Compile Include="Assets\Scripts\Enemies\Caterpillar.cs" />
     <Compile Include="Assets\Scripts\Enemies\Ghost.cs" />
     <Compile Include="Assets\Scripts\Player\SkyFollow.cs" />
@@ -108,7 +107,6 @@
     <Compile Include="Assets\_GabrielBissonnette\Sad - Main Menu Pack\Scripts\MainMenuManager.cs" />
     <Compile Include="Assets\Scripts\Player\SpawnController.cs" />
     <Compile Include="Assets\Scripts\UI\HeartController.cs" />
-    <Compile Include="Assets\Scripts\Enemies\Small Frog\SmallFrog.cs" />
     <Compile Include="Assets\Scripts\Enemies\IslandBoss\StateMachine\Boss_Jump.cs" />
     <Compile Include="Assets\_GabrielBissonnette\Sad - Main Menu Pack\Scripts\_menuAnimations.cs" />
   </ItemGroup>
