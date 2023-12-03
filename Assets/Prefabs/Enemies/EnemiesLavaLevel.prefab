@@ -394,7 +394,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: eecade9268749774d9f0a5294e986c47, type: 3}
     - target: {fileID: 8603506008123064120, guid: 614361b6c22be435e87b1feee4537092, type: 3}
       propertyPath: speed
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8603506008123064120, guid: 614361b6c22be435e87b1feee4537092, type: 3}
       propertyPath: audioSource
@@ -603,7 +603,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: eecade9268749774d9f0a5294e986c47, type: 3}
     - target: {fileID: 8603506008123064120, guid: 614361b6c22be435e87b1feee4537092, type: 3}
       propertyPath: speed
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8603506008123064120, guid: 614361b6c22be435e87b1feee4537092, type: 3}
       propertyPath: audioSource
@@ -1477,7 +1477,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: eecade9268749774d9f0a5294e986c47, type: 3}
     - target: {fileID: 8603506008123064120, guid: 614361b6c22be435e87b1feee4537092, type: 3}
       propertyPath: speed
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8603506008123064120, guid: 614361b6c22be435e87b1feee4537092, type: 3}
       propertyPath: audioSource
@@ -1686,7 +1686,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: eecade9268749774d9f0a5294e986c47, type: 3}
     - target: {fileID: 8603506008123064120, guid: 614361b6c22be435e87b1feee4537092, type: 3}
       propertyPath: speed
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8603506008123064120, guid: 614361b6c22be435e87b1feee4537092, type: 3}
       propertyPath: audioSource

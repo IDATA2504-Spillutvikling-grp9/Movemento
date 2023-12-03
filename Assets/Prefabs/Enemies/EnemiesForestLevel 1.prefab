@@ -360,7 +360,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4998967289256103799, guid: 48a420eeaa0093649872372c246a1fa9, type: 3}
       propertyPath: speed
-      value: 15
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4998967289256103799, guid: 48a420eeaa0093649872372c246a1fa9, type: 3}
       propertyPath: health
@@ -976,6 +976,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: eecade9268749774d9f0a5294e986c47, type: 3}
     - target: {fileID: 8603506008123064120, guid: 614361b6c22be435e87b1feee4537092, type: 3}
+      propertyPath: speed
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603506008123064120, guid: 614361b6c22be435e87b1feee4537092, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1166326814048956016}
@@ -1291,7 +1295,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4998967289256103799, guid: 48a420eeaa0093649872372c246a1fa9, type: 3}
       propertyPath: speed
-      value: 15
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4998967289256103799, guid: 48a420eeaa0093649872372c246a1fa9, type: 3}
       propertyPath: health
@@ -1369,7 +1373,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4998967289256103799, guid: 48a420eeaa0093649872372c246a1fa9, type: 3}
       propertyPath: speed
-      value: 15
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4998967289256103799, guid: 48a420eeaa0093649872372c246a1fa9, type: 3}
       propertyPath: health
@@ -1517,7 +1521,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4998967289256103799, guid: 48a420eeaa0093649872372c246a1fa9, type: 3}
       propertyPath: speed
-      value: 15
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4998967289256103799, guid: 48a420eeaa0093649872372c246a1fa9, type: 3}
       propertyPath: health
