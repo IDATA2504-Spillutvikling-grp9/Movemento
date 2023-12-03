@@ -42,7 +42,6 @@ public class DragonKnightEvents : MonoBehaviour
             {
                 // Access the PlayerDamageController component and call TakeDamage with the boss's damage value
                 collider.GetComponent<PlayerDamageController>().TakeDamage(BossDragonKnight.Instance.damage);
-                Debug.Log("Player hit and damaged");
 
                 // Break out of the loop after damaging the player
                 break;
