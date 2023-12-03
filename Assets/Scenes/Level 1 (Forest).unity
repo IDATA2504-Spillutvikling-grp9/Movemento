@@ -5728,16 +5728,48 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 27.26789, y: -4.0079603, z: 0}
-      leftTangent: {x: -12.304312, y: -1.9445729, z: 0}
-      rightTangent: {x: 9.439461, y: 1.4918151, z: 0}
+    - position: {x: 27.26788, y: -4.0079603, z: 0}
+      leftTangent: {x: -12.304289, y: -1.9445729, z: 0}
+      rightTangent: {x: 2.497652, y: 0.39473152, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 41.49231, y: -3.7461534, z: 0}
+      leftTangent: {x: -6.1538467, y: -0.76923084, z: 0}
+      rightTangent: {x: 1.2706604, y: 0.15883231, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 45.338463, y: -2.9769225, z: 0}
+      leftTangent: {x: -1.2702103, y: -0.051714182, z: 0}
+      rightTangent: {x: 1.1214752, y: 0.045372725, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 49.18462, y: -3.7461534, z: 0}
+      leftTangent: {x: -1.0363312, y: -0.10363364, z: 0}
+      rightTangent: {x: 2.6384087, y: 0.26384044, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 53.800003, y: -5.284615, z: 0}
+      leftTangent: {x: -2.7093277, y: 0.5327711, z: 0}
+      rightTangent: {x: 10.985672, y: -2.159666, z: 0}
       mode: 1
       height: 1
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
     - position: {x: 79.95385, y: -17.592308, z: 0}
-      leftTangent: {x: -8.808456, y: 11.307754, z: 0}
+      leftTangent: {x: -4.4423523, y: 5.7028084, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 2
       height: 1
@@ -6134,8 +6166,8 @@ SpriteShapeRenderer:
   - {fileID: -450873449423121466, guid: a9039dd5570910f4da903c4dd164a44b, type: 3}
   - {fileID: -7027585254569617934, guid: a9039dd5570910f4da903c4dd164a44b, type: 3}
   m_LocalAABB:
-    m_Center: {x: -10.140701, y: -5.700963, z: 0}
-    m_Extent: {x: 92.08217, y: 15.152917, z: 0}
+    m_Center: {x: -10.165787, y: -5.700963, z: 0}
+    m_Extent: {x: 92.05708, y: 15.152917, z: 0}
   m_SpriteSortPoint: 0
 --- !u!60 &255141331
 PolygonCollider2D:
