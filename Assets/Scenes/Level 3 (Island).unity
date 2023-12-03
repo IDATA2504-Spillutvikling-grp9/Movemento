@@ -4244,7 +4244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4279255068861641698, guid: f604152ea4ced4b449088832a1088a69, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5600005
+      value: -0.56000096
       objectReference: {fileID: 0}
     - target: {fileID: 4279255068861641698, guid: f604152ea4ced4b449088832a1088a69, type: 3}
       propertyPath: m_LocalPosition.y
@@ -58712,6 +58712,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2246447316010134251, guid: ede95d6bfcaa99247859d6782e69fbe8, type: 3}
+      propertyPath: moveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d8e49c776afc5fb4296da9742e517aac, type: 3}
     - target: {fileID: 3672253306906737230, guid: ede95d6bfcaa99247859d6782e69fbe8, type: 3}
       propertyPath: swordImage
       value: 

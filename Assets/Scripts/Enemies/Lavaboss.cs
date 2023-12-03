@@ -13,6 +13,7 @@ public class Lavaboss : Enemy
     private GameObject player;
     private float _angle; // The current angle
     private Vector2 _startPosition; // The starting position of the boss
+    private GameManager gameManager;
 
     protected override void Start()
     {
@@ -20,6 +21,7 @@ public class Lavaboss : Enemy
         _startPosition = transform.position;
         player = GameObject.FindGameObjectWithTag("Player");
         base.Start();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()
@@ -51,6 +53,7 @@ public class Lavaboss : Enemy
 
         if(health <= 0) {
             base.Death(2f);
+            gameManager.EndLevel();
         }
     }
 
@@ -62,12 +65,6 @@ public class Lavaboss : Enemy
     public override void EnemyHit(float _damageDone, Vector2 _hitDirection, float _hitForce)
     {
         base.EnemyHit(_damageDone, _hitDirection, _hitForce);
-
-        // Boss-specific hit logic
-       // if (health <= 0)
-        //{
-         //   Destroy(gameObject);
-       // }
     }
 
     private IEnumerator FlashSprite()

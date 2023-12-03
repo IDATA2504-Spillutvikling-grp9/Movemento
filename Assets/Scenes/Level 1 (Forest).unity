@@ -44018,7 +44018,7 @@ MonoBehaviour:
   optionMenuScreen: {fileID: 61953443}
   endLevelScreen: {fileID: 1008029483}
   healingAiblityScreen: {fileID: 555227615}
-  sceneName: SnowLevel
+  sceneName: Level 2 (Snow)
   resolutionDropdown: {fileID: 61953446}
   musicVolumeSlider: {fileID: 61953445}
   gameVolumeSlider: {fileID: 61953444}

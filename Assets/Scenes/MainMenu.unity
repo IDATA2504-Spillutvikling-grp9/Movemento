@@ -3301,7 +3301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5984647735808344626, guid: c2996d5e52df78e4e8e1feab3146a794, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: SnowLevel
+      value: Level 2 (Snow)
       objectReference: {fileID: 0}
     - target: {fileID: 5984647735808344626, guid: c2996d5e52df78e4e8e1feab3146a794, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -3931,7 +3931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5984647735808344626, guid: c2996d5e52df78e4e8e1feab3146a794, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: IslandLevel
+      value: Level 3 (Island)
       objectReference: {fileID: 0}
     - target: {fileID: 5984647735808344626, guid: c2996d5e52df78e4e8e1feab3146a794, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
