@@ -14985,11 +14985,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &756632998 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4522776278944020386, guid: 50bafea95b20502428b2a71084925b17, type: 3}
-  m_PrefabInstance: {fileID: 61953442}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &783454810
 GameObject:
   m_ObjectHideFlags: 0
@@ -44882,6 +44877,7 @@ MonoBehaviour:
   pauseScreen: {fileID: 61953447}
   optionMenuScreen: {fileID: 61953443}
   endLevelScreen: {fileID: 1008029483}
+  healingAiblityScreen: {fileID: 555227615}
   sceneName: SnowLevel
   resolutionDropdown: {fileID: 61953446}
   musicVolumeSlider: {fileID: 61953445}
