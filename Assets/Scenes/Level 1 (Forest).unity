@@ -6284,7 +6284,6 @@ PolygonCollider2D:
       - {x: 14.2129755, y: -4.0967293}
       - {x: 21.016804, y: -4.6814847}
       - {x: 42.54686, y: -2.8342733}
-      - {x: 58.62046, y: -8.047785}
       - {x: 69.75674, y: -12.137083}
       - {x: 76.47838, y: -16.335203}
       - {x: 63.612976, y: -16.303894}
@@ -11039,6 +11038,11 @@ Transform:
   - {fileID: 1741410226}
   m_Father: {fileID: 317798566589129768}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &555227615 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4522776278944020386, guid: 50bafea95b20502428b2a71084925b17, type: 3}
+  m_PrefabInstance: {fileID: 61953442}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &556180329
 GameObject:
   m_ObjectHideFlags: 0
@@ -45030,7 +45034,7 @@ MonoBehaviour:
   pauseScreen: {fileID: 61953447}
   optionMenuScreen: {fileID: 61953443}
   endLevelScreen: {fileID: 1008029483}
-  healingAiblityScreen: {fileID: 0}
+  healingAiblityScreen: {fileID: 555227615}
   sceneName: SnowLevel
   resolutionDropdown: {fileID: 61953446}
   musicVolumeSlider: {fileID: 61953445}
