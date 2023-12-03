@@ -48,6 +48,10 @@ public class Lavaboss : Enemy
                 shoot();
             }
         }
+
+        if(health <= 0) {
+            base.Death(2f);
+        }
     }
 
     void shoot()
